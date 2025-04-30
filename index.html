@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador IR com Previdência</title>
+</head>
+<body>
+  <h2>Simulador de Imposto de Renda</h2>
+
+  <form id="formIR">
+    <label for="salario">Digite seu salário:</label><br>
+    <input type="number" id="salario" required><br><br>
+
+    <label>Seu salário é:</label><br>
+    <input type="radio" name="tipo" value="mensal" required> Mensal<br>
+    <input type="radio" name="tipo" value="anual"> Anual<br><br>
+
+    <label>Você investe em previdência privada?</label><br>
+    <input type="radio" name="previdencia" value="sim"> Sim
+    <input type="radio" name="previdencia" value="nao" checked> Não<br><br>
+
+    <label>Quanto você investe em previdência (em % do seu salário)?</label><br>
+    <input type="number" id="percentual" value="5" min="0" max="12" step="0.1" disabled><br><br>
+
+    <button type="submit">Calcular IR</button>
+  </form>
+
+  <h3 id="resultado"></h3>
+
+  <script>
+    // Mostrar ou esconder o campo de percentual dependendo da escolha de previdência
+    document.querySelectorAll('input[name="previdencia"]').forEach(input => {
+      input.addEventListener('change', function() {
+        if (document.querySelector('input[name="previdencia"]:checked').value === 'sim') {
+          document.getElementById('percentual').disabled = false;
+        } else {
+          document.getElementById('percentual').disabled = true;
+        }
+      });
+    });
+
+    document.getElementById('formIR').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const salarioInput = parseFloat(document.getElementById('salario').value);
+      const tipo = document.querySelector('input[name="tipo"]:checked').value;
+      const investePrevidencia = document.querySelector('input[name="previdencia"]:checked').value === 'sim';
+      let percentualPrevidencia = investePrevidencia ? parseFloat(document.getElementById('percentual').value) : 0;
+      
+      let salarioMensal = tipo === 'anual' ? salarioInput / 12 : salarioInput;
+      
+      // Calcular valor investido em previdência (percentual do salário)
+      let valorInvestidoPrevidencia = salarioMensal * (percentualPrevidencia / 100);
+      
+      // Deduzir o valor da previdência do salário para calcular o IR
+      let salarioComPrevidencia = salarioMensal - valorInvestidoPrevidencia;
+
+      let aliquota = 0;
+      let deducao = 0;
+
+      // Calcular IR de acordo com o salário (agora com a dedução da previdência)
+      if (salarioComPrevidencia <= 2112.00) {
+        aliquota = 0;
+        deducao = 0;
+      } else if (salarioComPrevidencia <= 2826.65) {
+        aliquota = 0.075;
+        deducao = 158.40;
+      } else if (salarioComPrevidencia <= 3751.05) {
+        aliquota = 0.15;
+        deducao = 370.40;
+      } else if (salarioComPrevidencia <= 4664.68) {
+        aliquota = 0.225;
+        deducao = 651.73;
+      } else {
+        aliquota = 0.275;
+        deducao = 884.96;
+      }
+      
+      let irMensalComPrevidencia = (salarioComPrevidencia * aliquota) - deducao;
+      if (irMensalComPrevidencia < 0) irMensalComPrevidencia = 0; // Não pode ser negativo
+
+      // Cálculo do IR sem a previdência
+      salarioComPrevidencia = salarioMensal;
+      if (salarioComPrevidencia <= 2112.00) {
+        aliquota = 0;
+        deducao = 0;
+      } else if (salarioComPrevidencia <= 2826.65) {
+        aliquota = 0.075;
+        deducao = 158.40;
+      } else if (salarioComPrevidencia <= 3751.05) {
+        aliquota = 0.15;
+        deducao = 370.40;
+      } else if (salarioComPrevidencia <= 4664.68) {
+        aliquota = 0.225;
+        deducao = 651.73;
+      } else {
+        aliquota = 0.275;
+        deducao = 884.96;
+      }
+      
+      let irMensalSemPrevidencia = (salarioComPrevidencia * aliquota) - deducao;
+      if (irMensalSemPrevidencia < 0) irMensalSemPrevidencia = 0; // Não pode ser negativo
+
+      // Calcular o valor guardado na previdência
+      let valorGuardadoMensal = valorInvestidoPrevidencia;
+      let valorGuardadoAnual = valorGuardadoMensal * 12;
+
+      let resultadoTexto = "";
+
+      if (tipo === 'mensal') {
+        resultadoTexto = `
+          <b>Com Previdência:</b><br>
+          Imposto de Renda: R$ ${irMensalComPrevidencia.toFixed(2)} por mês<br>
+          Valor guardado na previdência: R$ ${valorGuardadoMensal.toFixed(2)} por mês<br>
+          Valor guardado na previdência por ano: R$ ${valorGuardadoAnual.toFixed(2)} por ano<br><br>
+
+          <b>Sem Previdência:</b><br>
+          Imposto de Renda: R$ ${irMensalSemPrevidencia.toFixed(2)} por mês
+        `;
+      } else {
+        resultadoTexto = `
+          <b>Com Previdência:</b><br>
+          Imposto de Renda: R$ ${(irMensalComPrevidencia * 12).toFixed(2)} por ano<br>
+          Valor guardado na previdência: R$ ${(valorGuardadoMensal * 12).toFixed(2)} por ano<br>
+          Valor guardado na previdência por mês: R$ ${valorGuardadoMensal.toFixed(2)} por mês<br><br>
+
+          <b>Sem Previdência:</b><br>
+          Imposto de Renda: R$ ${(irMensalSemPrevidencia * 12).toFixed(2)} por ano
+        `;
+      }
+
+      document.getElementById('resultado').innerHTML = resultadoTexto;
+    });
+  </script>
+</body>
+</html>
