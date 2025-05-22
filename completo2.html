@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INSS e IR com Períodos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+    <style>
+        .col-6{padding:0 8%}
+        body{padding-top:2rem}
+        .card{margin-bottom:1rem}
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <!-- ================= FORM PERÍODOS ================= -->
+        <div class="col-6">
+            <h4 class="mb-3">Períodos de salário & contribuição</h4>
+            <div id="campos"></div>
+            <button id="add" class="btn btn-outline-primary btn-sm mb-3">Adicionar período</button>
+            <form id="form">
+                <label for="qtdDependentes_input">Quantidade de dependentes:</label>
+                <input type="number" id="qtdDependentes_input" class="form-control mb-3">
+                <button type="submit" class="btn btn-primary">Calcular IR</button>
+            </form>
+        </div>
+
+        <!-- =============== RESULTADOS MENSAIS ============== -->
+        <div class="col-6">
+            <br><br>
+            <h7>Renda Bruta Mensal:</h7>
+            <p id="resultadoSalarioBruto"></p>
+            <h7>Contribuição Prev. Privada Mensal:</h7>
+            <p id="descontoCont"></p>
+            <h7>Contribuição INSS Mensal:</h7>
+            <p id="resultadoINSS"></p>
+            <h7>Dependentes Mensal:</h7>
+            <p id="resultado_descontoDependentes"></p>
+            <h7>Base de Cálculo Mensal:</h7>
+            <p id="resultado_salarioBase"></p>
+            <h6>Imposto de Renda Devido:</h6>
+            <p id="resultadoIR"></p>
+            <h6>Salário Final Mensal:</h6>
+            <h7 id="resultadoSalarioIR"></h7>
+            <p style="font-size:10px">após descontos de INSS, dependentes, contribuição e IR</p>
+        </div>
+
+        <!-- =============== SITUAÇÃO ATUAL ================== -->
+        <div class="col-6">
+            <br><br><br><br><hr><br>
+            <h4>Situação Atual</h4><br>
+            <h7>Renda Bruta Anual:</h7>
+            <p id="resultadoSalarioBruto_anual"></p>
+            <h7>Contribuição Prev. Privada Anual:</h7>
+            <p id="descontoCont_anual"></p>
+            <h7>Contribuição INSS Anual:</h7>
+            <p id="resultadoINSS_anual"></p>
+            <h7>Dependentes Anual:</h7>
+            <p id="resultado_descontoDependentes_anual"></p>
+            <h7>Base de Cálculo Anual:</h7>
+            <p id="resultado_salarioBase_anual"></p>
+            <h6>Imposto de Renda Devido:</h6>
+            <p id="resultadoIR_anual"></p>
+            <h6 style="color:darkblue">Incentivo Fiscal Anual</h6>
+            <p id="incentivoFiscal_anual_incentivo"></p><br>
+            <h6>Salário Final Anual:</h6>
+            <h7 id="resultadoSalarioIR_anual"></h7>
+            <p style="font-size:10px">após descontos de INSS, dependentes, contribuição e IR</p>
+        </div>
+
+        <!-- =============== INCENTIVO MAXIMO ================ -->
+        <div class="col-6">
+            <br><br><br><br><hr><br>
+            <h4>Incentivo Máximo</h4><br>
+            <h7>Renda Bruta Anual:</h7>
+            <p id="resultadoSalarioBruto_anual_incentivo"></p>
+            <h7>Contribuição Prev. Privada Anual:</h7>
+            <p id="descontoCont_anual_incentivo"></p>
+            <h7>Contribuição INSS Anual:</h7>
+            <p id="resultadoINSS_anual_incentivo"></p>
+            <h7>Dependentes Anual:</h7>
+            <p id="resultado_descontoDependentes_anual_incentivo"></p>
+            <h7>Base de Cálculo Anual:</h7>
+            <p id="resultado_salarioBase_anual_incentivo"></p>
+            <h6>Imposto de Renda Devido:</h6>
+            <p id="resultadoIR_anual_incentivo"></p>
+            <h6 style="color:darkblue">Incentivo Fiscal Anual</h6>
+            <p id="incentivoFiscal_anual_incentivoMaximo"></p><br>
+            <h6>Salário Final Anual:</h6>
+            <h7 id="resultadoSalarioIR_anual_incentivo"></h7>
+            <p style="font-size:10px">após descontos de INSS, dependentes, contribuição e IR</p>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br>
+</div>
+
+<!-- ======================= SCRIPTS ====================== -->
+<script>
+const MESES=["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+const opcoesMes=()=>MESES.map(m=>`<option value="${m}">${m}</option>`).join("");
+function criarBloco(){const div=document.createElement('div');div.className='card p-3';div.innerHTML=`<div class="form-row"><div class="form-group col-md-6"><label>Salário bruto (R$)</label><input type="number" class="form-control salario" required></div><div class="form-group col-md-6"><label>Contribuição à FUNEPP</label><input type="number" class="form-control perc" min="0" max="100" required></div><div class="form-group col-md-6"><label>Mês inicial</label><select class="form-control mesIni">${opcoesMes()}</select></div><div class="form-group col-md-6"><label>Mês final</label><select class="form-control mesFim">${opcoesMes()}</select></div></div>`;return div;}
+const campos=document.getElementById('campos');campos.appendChild(criarBloco());
+document.getElementById('add').onclick=()=>campos.appendChild(criarBloco());
+
+//===== Cálculo =====
+const form=document.getElementById('form');
+form.addEventListener('submit',e=>{e.preventDefault();calcular();});
+function mesesEntre(ini,fim){let start=MESES.indexOf(ini),end=MESES.indexOf(fim);if(end<start)end+=12;return end-start+1;}
+function calcular(){const blocos=document.querySelectorAll('.card');let salarioBrutoMensal=0,contribMensal=0;let mesesTotal=0;
+  blocos.forEach(b=>{const sal=b.querySelector('.salario').valueAsNumber||0;const perc=b.querySelector('.perc').valueAsNumber||0;const ini=b.querySelector('.mesIni').value;const fim=b.querySelector('.mesFim').value;const qMeses=mesesEntre(ini,fim);mesesTotal+=qMeses;salarioBrutoMensal+=sal*qMeses;contribMensal+=sal*(perc/100)*qMeses;});
+  if(mesesTotal===0)return; 
+  salarioBrutoMensal/=mesesTotal;contribMensal/=mesesTotal;
+  document.getElementById('percentualContribuicao')?.remove(); 
+
+  document.getElementById('descontoCont').innerText=contribMensal.toFixed(2);
+
+  const qtdDependentes=parseInt(document.getElementById('qtdDependentes_input').value)||0;
+  const descontoDependentes=qtdDependentes*189.59;
+  let resultadoINSS=0;
+  if(salarioBrutoMensal<=1518)resultadoINSS=(salarioBrutoMensal*7.5)/100;else if(salarioBrutoMensal<=2793.88)resultadoINSS=((salarioBrutoMensal-1518.01)*9)/100+113.85;
+  else if(salarioBrutoMensal<=4190.83)resultadoINSS=((salarioBrutoMensal-2793.89)*12)/100+113.85+114.82;else if(salarioBrutoMensal<=8157.41)resultadoINSS=((salarioBrutoMensal-4190.84)*14)/100+113.85+114.82+167.63;
+  else resultadoINSS=113.85+114.82+167.63+555.31;
+  const salarioBase=salarioBrutoMensal-resultadoINSS-descontoDependentes-contribMensal;
+  let resultadoIR=0;if(salarioBase<=2259.2)resultadoIR=0;else if(salarioBase<=2826.65)resultadoIR=(salarioBase*7.5)/100-169.44;else if(salarioBase<=3751.05)
+  resultadoIR=(salarioBase*15)/100-381.44;else if(salarioBase<=4664.68)resultadoIR=(salarioBase*22.5)/100-662.77;else resultadoIR=(salarioBase*27.5)/100-896;
+  const salarioFinal=salarioBase-resultadoIR;
+
+  // ----- Incentivo máximo -----
+  const contribMax=salarioBrutoMensal*0.12;
+  const baseIncentivo=salarioBrutoMensal-resultadoINSS-descontoDependentes-contribMax;
+  let irIncentivo=0;if(baseIncentivo<=2259.2)irIncentivo=0;else if(baseIncentivo<=2826.65)irIncentivo=(baseIncentivo*7.5)/100-169.44;
+  else if(baseIncentivo<=3751.05)irIncentivo=(baseIncentivo*15)/100-381.44;else if(baseIncentivo<=4664.68)irIncentivo=(baseIncentivo*22.5)/100-662.77;
+  else irIncentivo=(baseIncentivo*27.5)/100-896;
+  const salarioFinalInc=baseIncentivo-irIncentivo;
+
+  // ----- IR zerado -----
+  const baseZerado=salarioBrutoMensal-resultadoINSS-descontoDependentes;
+  let irZerado=0;if(baseZerado<=2259.2)irZerado=0;else if(baseZerado<=2826.65)irZerado=(baseZerado*7.5)/100-169.44;else if(baseZerado<=3751.05)irZerado=(baseZerado*15)/100-381.44;else if(baseZerado<=4664.68)irZerado=(baseZerado*22.5)/100-662.77;else irZerado=(baseZerado*27.5)/100-896;
+  const incentivoFiscal=irZerado-resultadoIR;
+  const incentivoFiscalMax=irZerado-irIncentivo;
+  
+  // ----- Exibe -----
+  document.getElementById('resultadoSalarioBruto').innerText=salarioBrutoMensal.toFixed(2);
+  document.getElementById('resultadoINSS').innerText=resultadoINSS.toFixed(2);
+  document.getElementById('resultado_descontoDependentes').innerText=descontoDependentes.toFixed(2);
+  document.getElementById('resultado_salarioBase').innerText=salarioBase.toFixed(2);
+  document.getElementById('resultadoIR').innerText=resultadoIR.toFixed(2);
+  document.getElementById('resultadoSalarioIR').innerText=salarioFinal.toFixed(2);
+  document.getElementById('resultadoSalarioBruto_anual').innerText=(salarioBrutoMensal*12).toFixed(2);
+  document.getElementById('resultadoINSS_anual').innerText=(resultadoINSS*12).toFixed(2);
+  document.getElementById('resultado_descontoDependentes_anual').innerText=(descontoDependentes*12).toFixed(2);
+  document.getElementById('descontoCont_anual').innerText=(contribMensal*12).toFixed(2);
+  document.getElementById('resultado_salarioBase_anual').innerText=(salarioBase*12).toFixed(2);
+  document.getElementById('resultadoIR_anual').innerText=(resultadoIR*12).toFixed(2);
+  document.getElementById('resultadoSalarioIR_anual').innerText=(salarioFinal*12).toFixed(2);
+  document.getElementById('incentivoFiscal_anual_incentivo').innerText=(incentivoFiscal*12).toFixed(2);
+  document.getElementById('resultadoSalarioBruto_anual_incentivo').innerText=(salarioBrutoMensal*12).toFixed(2);
+  document.getElementById('resultadoINSS_anual_incentivo').innerText=(resultadoINSS*12).toFixed(2);
+  document.getElementById('resultado_descontoDependentes_anual_incentivo').innerText=(descontoDependentes*12).toFixed(2);
+  document.getElementById('descontoCont_anual_incentivo').innerText=(contribMax*12).toFixed(2);
+  document.getElementById('resultado_salarioBase_anual_incentivo').innerText=(baseIncentivo*12).toFixed(2);
+  document.getElementById('resultadoIR_anual_incentivo').innerText=(irIncentivo*12).toFixed(2);
+  document.getElementById('resultadoSalarioIR_anual_incentivo').innerText=(salarioFinalInc*12).toFixed(2);
+  document.getElementById('incentivoFiscal_anual_incentivoMaximo').innerText=(incentivoFiscalMax*12).toFixed(2);
+}
+</script>
+</body>
+</html>
