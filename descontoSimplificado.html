@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IR com Desconto Simplificado</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+  <style>
+    body {
+      padding: 2rem;
+      background-color: #f4f4f4;
+    }
+    .resultado {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="mb-4">Cálculo do Imposto de Renda com Desconto Simplificado</h2>
+    
+    <div id="salariosContainer"></div>
+    <button id="addSalario" class="btn btn-outline-primary btn-sm mb-3">Adicionar Salário</button>
+
+    <br>
+    <button id="calcularIR" class="btn btn-primary">Calcular IR</button>
+
+    <div class="resultado mt-5">
+      <h4>Resultado Anual</h4>
+      <p><strong>Renda Bruta Anual:</strong> R$ <span id="rendaBruta"></span></p>
+      <p><strong>INSS Total:</strong> R$ <span id="inssTotal"></span></p>
+      <p><strong>Desconto Simplificado (20%, máx. R$16.754,34):</strong> R$ <span id="descontoSimplificado"></span></p>
+      <p><strong>Base de Cálculo:</strong> R$ <span id="baseCalculo"></span></p>
+      <p><strong>IR Devido:</strong> R$ <span id="irDevido"></span></p>
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('salariosContainer');
+    const btnAdd = document.getElementById('addSalario');
+    const btnCalcular = document.getElementById('calcularIR');
+
+    function criarCampoSalario() {
+      const div = document.createElement('div');
+      div.classList.add('form-group');
+      div.innerHTML = `
+        <label>Salário Bruto Mensal:</label>
+        <input type="number" class="form-control salario" placeholder="Ex: 3500" />
+      `;
+      container.appendChild(div);
+    }
+
+    // Cálculo por faixa do INSS válido para 2024
+    function calcularINSS(mensal) {
+      if (mensal <= 1412.00) return mensal * 0.075;
+      if (mensal <= 2666.68) return 1412 * 0.075 + (mensal - 1412) * 0.09;
+      if (mensal <= 4000.03) return 1412 * 0.075 + (2666.68 - 1412) * 0.09 + (mensal - 2666.68) * 0.12;
+      if (mensal <= 7786.02) return 1412 * 0.075 + (2666.68 - 1412) * 0.09 + (4000.03 - 2666.68) * 0.12 + (mensal - 4000.03) * 0.14;
+      return 908.86; // teto do INSS mensal
+    }
+
+    // IR anual com faixas atualizadas 2024
+    function calcularIR(baseAnual) {
+      if (baseAnual <= 24334.56) return 0;
+      if (baseAnual <= 36440.40) return baseAnual * 0.075 - 1825.92;
+      if (baseAnual <= 47174.36) return baseAnual * 0.15 - 3641.44;
+      if (baseAnual <= 55976.16) return baseAnual * 0.225 - 5027.68;
+      return baseAnual * 0.275 - 6927.44;
+    }
+
+    // Eventos
+    btnAdd.addEventListener('click', criarCampoSalario);
+    criarCampoSalario(); // já adiciona o primeiro campo
+
+    btnCalcular.addEventListener('click', () => {
+      const salarios = document.querySelectorAll('.salario');
+      let rendaMensalTotal = 0;
+      let inssMensalTotal = 0;
+
+      salarios.forEach(input => {
+        const salario = parseFloat(input.value) || 0;
+        rendaMensalTotal += salario;
+        inssMensalTotal += calcularINSS(salario);
+      });
+
+      const rendaBrutaAnual = rendaMensalTotal * 12;
+      const inssAnual = inssMensalTotal * 12;
+      const baseReduzida = rendaBrutaAnual - inssAnual;
+
+      const descontoSimplificado = Math.min(baseReduzida * 0.20, 16754.34);
+      const baseCalculo = baseReduzida - descontoSimplificado;
+      const imposto = calcularIR(baseCalculo);
+
+      document.getElementById('rendaBruta').textContent = rendaBrutaAnual.toFixed(2);
+      document.getElementById('inssTotal').textContent = inssAnual.toFixed(2);
+      document.getElementById('descontoSimplificado').textContent = descontoSimplificado.toFixed(2);
+      document.getElementById('baseCalculo').textContent = baseCalculo.toFixed(2);
+      document.getElementById('irDevido').textContent = imposto.toFixed(2);
+    });
+  </script>
+</body>
+</html>
