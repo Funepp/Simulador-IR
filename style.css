@@ -15,6 +15,8 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 0;
+      height: auto;
     }
 
     .divImg{
@@ -27,16 +29,14 @@ body {
 
     .divImg img {
       width: 80%;
-      margin-top: -10%;
       margin-bottom: 2rem;
     }
 
     .indicador {
-      padding: 0px !important;
       margin-top: 2rem;
       display: flex;
       flex-direction: column;
-      width: 110%;
+      width: 100%;
     }
 
     .circle {
@@ -44,7 +44,7 @@ body {
       height: 40px;
       border-radius: 50%;
       background: transparent;
-      border: 1px solid #fff;
+      border: 1.5px solid #fff;
       color: #fff;
       display: flex;
       align-items: center;
@@ -67,10 +67,6 @@ body {
     }
 
     /* passo ativo */
-    .step.ativo {
-      background-color: #2584c6; 
-      width: 100%;
-    }
 
     .step.ativo .step-title {
       color: #fff;             
@@ -79,9 +75,33 @@ body {
     .step.ativo {
       position: relative;
       background-color: #318dcf;
+      z-index: 1;
+      right: 0;
     }
 
-    
+    /* Seta branca só aparece em telas grandes */
+    @media (min-width: 992px) {
+      .step.ativo::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-right: 15px solid #fff;
+        z-index: 2;
+      }
+    }
+
+    /* Remove a seta em telas menores */
+    @media (max-width: 991.98px) {
+      .step.ativo::after {
+        display: none;
+      }
+    }
 
     .step.ativo::after {
       content: '';
@@ -96,11 +116,8 @@ body {
       border-right: 15px solid white; /* seta para a esquerda */
     }
 
-
-
-
     .link{
-      margin-top: 200%;
+      margin-top: 75%;
       width: 100%;
       justify-content: center;
       align-items: center;
@@ -115,6 +132,47 @@ body {
       border-radius: 10px;
       text-decoration: none;
     }
+    
+
+    /*  responsividade */
+    @media (max-width: 1000px) {
+      .divImg{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .divImg img {
+        width: 25%;
+        margin-bottom: 0;
+      }
+
+      .indicador {
+        margin-top: 1px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .link{
+        margin-top: 5%;
+        margin-bottom: 5%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+      }
+
+      .link a{
+        border: 1px solid #fff;
+        background-color: transparent;
+        color: #fff;
+        padding: 1.5% 10%;
+        border-radius: 10px;
+        text-decoration: none;
+      }
+    }
 
     /* ------------- Conteúdo -------------*/
     .espacoConteudo {
@@ -125,6 +183,34 @@ body {
 
 
     /* form */
+    .barraProgresso {
+      width: 100%;
+      margin-top: 5%;
+      margin-bottom: 5%;
+      align-items: center;
+    }
+
+    .progresso {
+      height: 10px;
+      width: 100%;
+      background: #e9ecef;
+      border-radius: 2px;
+    }
+
+    .prog-telaUm.ativo,
+    .prog-telaDois.ativo,
+    .prog-telaTres.ativo {
+      background: #2584c6;
+    }
+
+
+    .linha{
+      margin: 0% 0.25%;
+      padding: 2.5%;
+      border: 1px solid #d9d9d9;
+      margin-bottom: 5%;
+    }
+    
     .tela { display: none; }
     .tela.mostrar { display: block; }
 
@@ -177,3 +263,18 @@ body {
       text-align: left;
       border-radius: 5px;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
