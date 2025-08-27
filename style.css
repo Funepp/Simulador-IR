@@ -1,0 +1,179 @@
+body {
+      background: #fff;
+      font-family: 'PrimaryCustomFont', sans-serif;
+    }
+
+    .rowGeral {
+      height: 100vh;
+      display: flex;
+    }
+
+    /* ------------- Sidebar ------------- */
+    .espacoBanner {
+      background-color: #2584c6;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .divImg{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: #1c78ba; */
+    }
+
+    .divImg img {
+      width: 80%;
+      margin-top: -10%;
+      margin-bottom: 2rem;
+    }
+
+    .indicador {
+      padding: 0px !important;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      width: 110%;
+    }
+
+    .circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1px solid #fff;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .step {
+      width: 100%;     /* cada linha ocupa a largura toda da sidebar */
+      padding: 10px;   /* dá um respiro dentro do step */
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem; /* espaço entre círculo e texto */
+    }
+
+    .step-title {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* passo ativo */
+    .step.ativo {
+      background-color: #2584c6; 
+      width: 100%;
+    }
+
+    .step.ativo .step-title {
+      color: #fff;             
+    }
+
+    .step.ativo {
+      position: relative;
+      background-color: #318dcf;
+    }
+
+    
+
+    .step.ativo::after {
+      content: '';
+      position: absolute;
+      right: -1%; /* gruda no lado direito */
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-right: 15px solid white; /* seta para a esquerda */
+    }
+
+
+
+
+    .link{
+      margin-top: 200%;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+
+    .link a{
+      border: 1px solid #fff;
+      background-color: #ffffff25;
+      color: #fff;
+      padding: 5%;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+
+    /* ------------- Conteúdo -------------*/
+    .espacoConteudo {
+      padding: 3rem 3rem;
+      max-width: 100%;
+      width: 100%;
+    }
+
+
+    /* form */
+    .tela { display: none; }
+    .tela.mostrar { display: block; }
+
+    .mostrar h4{
+      color: #2584c6;
+    }
+
+    hr{
+      color: #2584c6;
+    }
+
+    .btn-direita {
+      display: block;
+      margin-left: auto;
+    }
+
+    .btn-primary{
+      background-color: #2584c6;
+    }
+
+    .btn-primary:hover{
+      background-color: #2583c6f1;
+    }
+
+    .btnVoltar{
+      border: none;
+      background-color: transparent;
+      color: #2584c6;
+    }
+
+    .btnVoltar:hover{
+      border: none;
+      background-color: transparent;
+      color: #0e5b92;
+    }
+
+    .aviso-tela2{
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      margin: 1.5rem 0rem 2.55rem 0rem;
+    }
+
+    .aviso-tela2 .aviso{
+      padding: 1rem;
+      background-color: #2583c624;
+      border: 1px solid #2584c6;
+      width: 100%;
+      height: auto;
+      text-align: left;
+      border-radius: 5px;
+    }
