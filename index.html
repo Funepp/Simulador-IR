@@ -16,16 +16,16 @@
         <div class="divImg">
             <img src="Logo_Funepp_Branco_PNG.png" alt="Logo FUNEPP">
         </div>
-        <div class="indicador">
-          <div class="step">
+        <div class="indicador row">
+          <div class="step col-xl-12 col-lg-12 col-md-4 col-sm-4">
             <div class="circle">1</div>
             <span class="step-title">Dados</span>
           </div>
-          <div class="step">
+          <div class="step col-xl-12 col-lg-12 col-md-4 col-sm-4">
             <div class="circle">2</div>
             <span class="step-title">Contribuição</span>
           </div>
-          <div class="step">
+          <div class="step col-xl-12 col-lg-12 col-md-4 col-sm-4">
             <div class="circle">3</div>
             <span class="step-title">Resultado</span>
           </div>
@@ -59,7 +59,7 @@
               <div id="areaPeriodos">
                 <!-- Primeira linha já no HTML -->
                 <div class="row linha">
-                  <div class="col-md-6">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label class="form-label">
                       Mês Inicial
                       <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
@@ -85,7 +85,7 @@
                       <option value="11">Dezembro</option>
                     </select>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label class="form-label">
                       Mês Final
                       <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
@@ -110,9 +110,10 @@
                       <option value="10">Novembro</option>
                       <option value="11">Dezembro</option>
                     </select>
+                    <div class="msg-erro"></div>
                   </div>
                   <br><br><br><br>
-                  <div class="col-md-6">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label class="form-label">
                       Salário
                       <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
@@ -124,8 +125,9 @@
                       </span>
                     </label>
                     <input type="text" class="form-control salario" placeholder="Salário">
+                    <div class="msg-erro"></div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label class="form-label">
                       Renda Extra
                       <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
@@ -137,9 +139,26 @@
                       </span>
                     </label>
                     <input type="text" class="form-control renda" placeholder="Renda Extra">
+                    <div class="msg-erro"></div>
+                  </div>
+                </div>    
+        </div>
+                <div class="row linhaDois">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <label class="form-label">
+                      Dependentes
+                      <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+                          <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
+                          <circle cx="8" cy="4.5" r="1"/>
+                        </svg>
+                      </span>
+                    </label>
+                    <input type="text" class="form-control dependentes" placeholder="Dependentes">
+                    <div class="msg-erro"></div>
                   </div>
                 </div>
-        </div>
         <br><br>
         <button type="button" class="btn btn-primary btn-direita" onclick="proximaTela()">Próximo</button>
     </div>
@@ -159,7 +178,7 @@
                   <div class="progresso prog-telaTres"></div>
                 </div>
               </div>
-              <div id="areaPeriodos">
+              <div id="areaPeriodosTela2">
                 <!-- Primeira linha já no HTML -->
                 <div class="col-12 aviso-tela2">
                   <div class="aviso">
@@ -200,19 +219,32 @@
                       <option value="10">Novembro</option>
                       <option value="11">Dezembro</option>
                     </select>
+                    <div class="msg-erro"></div>
                   </div>
                   <br><br><br><br>
                   <div class="col-md-4">
                     <label class="form-label">Contribuição %</label>
-                    <input type="number" class="form-control renda" placeholder="Contribuição %">
+                    <div class="input-group">
+                      <input type="number" class="form-control" placeholder="Contribuição %" min="1" max="12" step="1">
+                      <span class="input-group-text">%</span>
+                      <br>
+                      <div class="msg-erro"></div>
+                    </div>
                   </div>
                 </div>
         </div>
         <br><br>
 
 
-              <button type="button" class="btnVoltar" onclick="voltarTela()">&larr; Voltar</button>
-              <button type="button" class="btn btn-primary btn-direita" onclick="proximaTela()">Próximo</button>
+            <div class="d-flex justify-content-between mt-4">
+              <button type="button" class="btn btn-secondary btnVoltar" onclick="voltarTela()">
+                &larr; Voltar
+              </button><button type="button" class="btn btn-primary btn-direita" onclick="proximoDaTela2()">Próximo</button>
+
+
+               
+            </div>
+
             </div>
 
             <!-- Tela 3 -->
@@ -229,7 +261,26 @@
                   <div class="progresso prog-telaTres"></div>
                 </div>
               </div>
-              <p id="textoResultado"></p>
+
+              <div id="resultadoContainer" style="display:none; flex-direction:column; margin-top:20px;">
+                <div id="corpoResultadoNormal"></div>
+                <hr>
+                <div id="corpoResultadoComFunepp"></div>
+                <hr>
+                <div id="maximoContainer" style="display:none;">
+                  <h5>Máximo benefício</h5>
+                  <p><strong>Percentual atual:</strong> <span id="percentAtual"></span></p>
+                  <div class="progress">
+                    <div id="barraProgresso" class="progress-bar" role="progressbar"></div>
+                  </div>
+                  <p><strong>Valor faltante:</strong> <span id="valorFaltante"></span></p>
+                  <p><strong>Economia extra possível:</strong> <span id="economiaExtra"></span></p>
+                </div>
+              </div>
+
+
+              
+
               <button type="button" class="btn btn-secondary" onclick="voltarTela()">Voltar</button>
             </div>
 
@@ -241,6 +292,166 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    
+    function valorNumerico(valor) {
+  if (!valor) return 0;
+  return parseFloat(valor.replace(/\./g,'').replace(',', '.').replace(/[^\d.]/g,''));
+}
+
+
+
+function calcularINSSMensal(salario) {
+  if (salario <= 1518.00) return salario * 0.075;
+  if (salario <= 2793.88) return salario * 0.09 - 22.77;
+  if (salario <= 4190.83) return salario * 0.12 - 106.59;
+  if (salario <= 8157.41) return salario * 0.14 - 190.40;
+  return 8157.41 * 0.14 - 190.40;
+}
+
+function calcularIR(baseAnual) {
+  const baseMensal = baseAnual / 12;
+  if (baseMensal <= 2259.20) return 0;
+  if (baseMensal <= 2826.65) return (baseMensal * 0.075 - 169.44) * 12;
+  if (baseMensal <= 3751.05) return (baseMensal * 0.15 - 381.59) * 12;
+  if (baseMensal <= 4664.68) return (baseMensal * 0.225 - 662.77) * 12;
+  return (baseMensal * 0.275 - 896.00) * 12;
+}
+
+
+function calcularTotais() {
+  let totalSalario = 0;
+  let totalContribuicao = 0;
+  let totalINSS = 0;
+  let totalMeses = 0;
+
+  // Pega linhas de salários/rendas
+  const linhas = document.querySelectorAll("#areaPeriodos .linha");
+  linhas.forEach(linha => {
+    const inicio = parseInt(linha.querySelector(".inicio").value);
+    const fim = parseInt(linha.querySelector(".fim").value);
+    const salario = valorNumerico(linha.querySelector(".salario").value);
+const rendaExtra = valorNumerico(linha.querySelector(".renda").value);
+
+    const porcentagem = parseFloat(document.querySelector("#areaPeriodosTela2 input[type=number]").value) || 0;
+
+    const rendaTotal = salario + rendaExtra;
+    const mesesTrabalhados = fim - inicio + 1;
+    totalMeses += mesesTrabalhados;
+
+    totalSalario += rendaTotal * mesesTrabalhados;
+    totalContribuicao += (rendaTotal * (porcentagem / 100)) * mesesTrabalhados;
+    totalINSS += calcularINSSMensal(rendaTotal) * mesesTrabalhados;
+  });
+
+  const numeroDependentes = parseInt(document.querySelector(".dependentes").value) || 0;
+  const descontoDependentes = numeroDependentes * 189.59 * totalMeses;
+
+  return {
+    totalSalario,
+    totalContribuicao,
+    totalINSS,
+    descontoDependentes,
+    numeroDependentes,
+    baseLegal: totalSalario - totalINSS - descontoDependentes - totalContribuicao,
+    baseSimplificado: totalSalario - 607.20 * 12
+  };
+}
+
+function exibirResultado(titulo, dados, base, ir, descontoSimplificado = false) {
+  const corpoNormal = document.getElementById("corpoResultadoNormal");
+  const corpoFunepp = document.getElementById("corpoResultadoComFunepp");
+  const container = document.getElementById("resultadoContainer");
+
+  const dependentesHtmlNormal = descontoSimplificado ? "" : 
+    `<p><strong>Total Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>`;
+
+  const contribuicaoHtmlNormal = descontoSimplificado ? "" :
+    `<p><strong>Contribuição FUNEPP: </strong> R$ ${dados.totalContribuicao.toFixed(2)}</p>`;
+
+  const dependentesHtmlFunepp = descontoSimplificado ? "" :
+    `<p><strong>Total Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>`;
+
+  const contribuicao12 = dados.totalSalario * 0.12;
+  const baseComFunepp = base - contribuicao12;
+  const irComFunepp = calcularIR(baseComFunepp);
+
+  const contribuicaoHtmlFunepp = `<p><strong>Contribuição FUNEPP (12%):</strong> R$ ${contribuicao12.toFixed(2)}</p>`;
+
+  corpoNormal.innerHTML = `
+    <h5>${titulo}</h5>
+    <p><strong>Renda Bruta Total Anual:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
+    <p><strong>Total INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
+    ${dependentesHtmlNormal}
+    ${contribuicaoHtmlNormal}
+    <p><strong>Base de Cálculo:</strong> R$ ${base.toFixed(2)}</p>
+    <p><strong>IRRF Final Anual:</strong> R$ ${ir.toFixed(2)}</p>
+    <p><strong>Média IRRF Mensal:</strong> R$ ${(ir / 12).toFixed(2)}</p>
+  `;
+
+  corpoFunepp.innerHTML = `
+    <p><strong>Renda Bruta Total Anual:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
+    <p><strong>Total INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
+    ${dependentesHtmlFunepp}
+    ${contribuicaoHtmlFunepp}
+    <p><strong>Nova Base de Cálculo:</strong> R$ ${baseComFunepp.toFixed(2)}</p>
+    <p><strong>IRRF Final Anual:</strong> R$ ${irComFunepp.toFixed(2)}</p>
+    <p><strong>Média IRRF Mensal:</strong> R$ ${(irComFunepp / 12).toFixed(2)}</p>
+    <hr>
+    <p><strong>Economia de Imposto:</strong> R$ ${(ir - irComFunepp).toFixed(2)}</p>
+  `;
+
+  container.style.display = "flex";
+}
+function calcularResultado() {
+  const dados = calcularTotais();
+
+  // Cálculo do cenário atual
+  const baseAtual = dados.baseLegal; // já subtrai INSS, dependentes e contribuições informadas
+  const irAtual = calcularIR(baseAtual);
+
+  // Cálculo do cenário com 12% FUNEPP
+  const contribuicao12 = dados.totalSalario * 0.12; 
+  const baseComFunepp = baseAtual - (contribuicao12 - dados.totalContribuicao); // subtrai diferença para chegar a 12%
+  const irComFunepp = calcularIR(baseComFunepp);
+
+  // Exibir resultados
+  const corpoNormal = document.getElementById("corpoResultadoNormal");
+  const corpoFunepp = document.getElementById("corpoResultadoComFunepp");
+  const container = document.getElementById("resultadoContainer");
+
+  corpoNormal.innerHTML = `
+    <h5>Cenário Atual</h5>
+    <p><strong>Renda Bruta Total Anual:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
+    <p><strong>Total INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
+    <p><strong>Total Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>
+    <p><strong>Contribuição FUNEPP Informada:</strong> R$ ${dados.totalContribuicao.toFixed(2)}</p>
+    <p><strong>Base de Cálculo:</strong> R$ ${baseAtual.toFixed(2)}</p>
+    <p><strong>IRRF Final Anual:</strong> R$ ${irAtual.toFixed(2)}</p>
+    <p><strong>Média IRRF Mensal:</strong> R$ ${(irAtual / 12).toFixed(2)}</p>
+  `;
+
+  corpoFunepp.innerHTML = `
+    <h5>Cenário com Contribuição de 12% na FUNEPP</h5>
+    <p><strong>Renda Bruta Total Anual:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
+    <p><strong>Total INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
+    <p><strong>Total Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>
+    <p><strong>Contribuição FUNEPP (12%):</strong> R$ ${contribuicao12.toFixed(2)}</p>
+    <p><strong>Nova Base de Cálculo:</strong> R$ ${baseComFunepp.toFixed(2)}</p>
+    <p><strong>IRRF Final Anual:</strong> R$ ${irComFunepp.toFixed(2)}</p>
+    <p><strong>Média IRRF Mensal:</strong> R$ ${(irComFunepp / 12).toFixed(2)}</p>
+    <hr>
+    <p><strong>Economia de Imposto com 12% FUNEPP:</strong> R$ ${(irAtual - irComFunepp).toFixed(2)}</p>
+  `;
+
+  container.style.display = "flex";
+}
+
+
+
+
+
+
+
   // ------------ controle do form --------------
   let telaAtual = 0; 
   const todasTelas = document.querySelectorAll(".tela");
@@ -270,22 +481,13 @@
   }
   
 
-  function proximaTela() {
-    // exemplo que você tinha do IMC (vou deixar aqui, mas você pode apagar se não usar mais)
-    if (telaAtual === 1) {
-      const peso = parseFloat(document.getElementById("campoPeso")?.value);
-      const altura = parseFloat(document.getElementById("campoAltura")?.value);
-      if (peso && altura) {
-        const imc = (peso / (altura * altura)).toFixed(2);
-        document.getElementById("textoResultado").textContent = "Seu IMC é " + imc;
-      }
-    }
-
-    if (telaAtual < todasTelas.length - 1) {
-      telaAtual++;
-      mostrarTela(telaAtual);
-    }
+function proximaTela() {
+  if (telaAtual < todasTelas.length - 1) {
+    telaAtual++;
+    mostrarTela(telaAtual);
   }
+}
+
 
   function voltarTela() {
     if (telaAtual > 0) {
@@ -294,7 +496,6 @@
     }
   }
 
-  // ------------ função para pintar indicador --------------
   // ------------ função para pintar indicador --------------
   function atualizarPasso(num) {
     todosPassos.forEach((cadaPasso, i) => {
@@ -357,9 +558,8 @@
   });
 
   // Função para criar nova linha copiando a anterior
-  function criarNovaLinha(mesInicio) {
+  function criarNovaLinha(mesInicio, linhaBase) {
     const novaLinha = primeiraLinha.cloneNode(true); // copia tudo
-    // Atualiza mês inicial e mês final
     const selectInicio = novaLinha.querySelector(".inicio");
     const selectFim = novaLinha.querySelector(".fim");
 
@@ -375,40 +575,250 @@
     }
     selectFim.selectedIndex = mesInicio;
 
-    // Limpa o valor do salário
+    // Limpa valores
     novaLinha.querySelector(".salario").value = "";
     novaLinha.querySelector(".renda").value = "";
 
-    areaPeriodos.appendChild(novaLinha);
+    // Insere logo depois da linha base
+    linhaBase.insertAdjacentElement("afterend", novaLinha);
 
-    inicializarTooltips(novaLinha); // <-- inicializa tooltips só nos elementos da nova linha
+    inicializarTooltips(novaLinha);
 
-    // Aplica o evento de formatação nos novos campos
-  novaLinha.querySelectorAll('.salario, .renda').forEach(function(input) {
-    input.addEventListener('input', function() {
-      formatarMoedaBRL(this);
+    // Evento de formatação
+    novaLinha.querySelectorAll('.salario, .renda').forEach(function(input) {
+      input.addEventListener('input', function() {
+        formatarMoedaBRL(this);
+      });
     });
-  });
 
-    
-
-    // Evento para quando mudar mês final
+    // Evento quando mudar mês final
     selectFim.addEventListener("change", () => {
       ultimoMes = parseInt(selectFim.value);
+      // remove todas as linhas seguintes antes de criar de novo
+      removerLinhasApos(novaLinha);
       if (ultimoMes < 11) {
-        criarNovaLinha(ultimoMes + 1);
+        criarNovaLinha(ultimoMes + 1, novaLinha);
       }
     });
   }
 
-  // Adiciona o evento à primeira linha
+  // Função para remover todas as linhas depois da escolhida
+  function removerLinhasApos(linhaBase) {
+    let proxima = linhaBase.nextElementSibling;
+    while (proxima) {
+      let remover = proxima;
+      proxima = proxima.nextElementSibling;
+      remover.remove();
+    }
+  }
+
+  // Evento para a primeira linha
   const primeiroFim = primeiraLinha.querySelector(".fim");
   primeiroFim.addEventListener("change", () => {
     ultimoMes = parseInt(primeiroFim.value);
+    removerLinhasApos(primeiraLinha); // <-- limpa linhas seguintes antes de recriar
     if (ultimoMes < 11) {
-      criarNovaLinha(ultimoMes + 1);
+      criarNovaLinha(ultimoMes + 1, primeiraLinha);
     }
   });
+
+
+  // --------------- Tela 2  ---------------
+
+  const areaPeriodos2 = todasTelas[1].querySelector("#areaPeriodos");
+  const primeiraLinha2 = areaPeriodos2.querySelector(".linha");
+
+  function criarNovaLinhaTela2(mesInicio, linhaBase) {
+    const novaLinha = primeiraLinha2.cloneNode(true);
+    const selectInicio = novaLinha.querySelector(".inicio");
+    const selectFim = novaLinha.querySelector(".fim");
+    const inputContrib = novaLinha.querySelector('.form-control');
+
+    // Ajusta opções do mês inicial
+    for (let i = 0; i < selectInicio.options.length; i++) {
+      selectInicio.options[i].disabled = i < mesInicio;
+    }
+    selectInicio.selectedIndex = mesInicio;
+
+    // Ajusta opções do mês final
+    for (let i = 0; i < selectFim.options.length; i++) {
+      selectFim.options[i].disabled = i < mesInicio;
+    }
+    selectFim.selectedIndex = mesInicio;
+
+    // Limpa valor da contribuição
+    inputContrib.value = "";
+
+    linhaBase.insertAdjacentElement("afterend", novaLinha);
+
+    inicializarTooltips(novaLinha);
+
+    // Limita contribuição de 1 a 12
+    limitarContribuicao(inputContrib);
+
+    // Evento quando mudar mês final
+    selectFim.addEventListener("change", () => {
+      let ultimoMes = parseInt(selectFim.value);
+      removerLinhasAposTela2(novaLinha);
+      if (ultimoMes < 11) {
+        criarNovaLinhaTela2(ultimoMes + 1, novaLinha);
+      }
+    });
+  }
+
+  function removerLinhasAposTela2(linhaBase) {
+    let proxima = linhaBase.nextElementSibling;
+    while (proxima) {
+      let remover = proxima;
+      proxima = proxima.nextElementSibling;
+      remover.remove();
+    }
+  }
+
+  // Evento para a primeira linha da tela 2
+  const primeiroFim2 = primeiraLinha2.querySelector(".fim");
+  primeiroFim2.addEventListener("change", () => {
+    let ultimoMes = parseInt(primeiroFim2.value);
+    removerLinhasAposTela2(primeiraLinha2);
+    if (ultimoMes < 11) {
+      criarNovaLinhaTela2(ultimoMes + 1, primeiraLinha2);
+    }
+  });
+
+
+  // Função para limitar o valor máximo a 12
+  function limitarContribuicao(input) {
+    input.addEventListener('input', function() {
+      // Remove qualquer caractere não numérico
+      this.value = this.value.replace(/[^0-9]/g, '');
+
+      // Impede valores menores que 1
+      if (this.value !== '' && parseInt(this.value) < 1) {
+        this.value = 1;
+      }
+      // Impede valores maiores que 12
+      if (parseInt(this.value) > 12) {
+        this.value = 12;
+      }
+    });
+  }
+
+  // Aplica na linha inicial da tela 2
+  document.querySelectorAll('.tela')[1].querySelectorAll('.linha .form-control').forEach(limitarContribuicao);
+
+
+  // TELA 1 e TELA 2 - bloquear telas enquanto não preencher tudo
+
+function marcarErro(campo, mensagem = "Campo obrigatório") {
+  campo.classList.add("is-invalid");
+  // Busca a .msg-erro mais próxima dentro da mesma .linha
+  let divErro = campo.closest(".linha")?.querySelector(".msg-erro");
+  // Se houver mais de uma .msg-erro na linha, pega a que está logo após o campo
+  if (campo.parentElement.querySelector(".msg-erro")) {
+    divErro = campo.parentElement.querySelector(".msg-erro");
+  }
+  if (divErro) {
+    divErro.textContent = mensagem;
+    divErro.style.color = "red";
+    divErro.style.fontSize = "0.9em";
+    divErro.style.marginTop = "4px";
+  }
+
+  if (!campo.dataset.listenerAdicionado) {
+    campo.addEventListener("input", () => limparErro(campo));
+    campo.addEventListener("change", () => limparErro(campo));
+    campo.dataset.listenerAdicionado = "true";
+  }
+}
+
+  // Função auxiliar para limpar erro de um campo
+  function limparErro(campo) {
+    campo.classList.remove("is-invalid");
+    const divErro = campo.closest("div").querySelector(".msg-erro");
+    if (divErro) {
+      divErro.textContent = "";
+    }
+  }
+
+
+function validarTela1() {
+  const linhas = todasTelas[0].querySelectorAll(".linha");
+  let valido = true;
+
+  linhas.forEach(linha => {
+    const salario = linha.querySelector(".salario");
+    const renda = linha.querySelector(".renda");
+
+    if (!salario.value.trim()) {
+      marcarErro(salario);
+      valido = false;
+    } else {
+      limparErro(salario);
+    }
+
+    if (!renda.value.trim()) {
+      marcarErro(renda);
+      valido = false;
+    } else {
+      limparErro(renda);
+    }
+  });
+
+  // Pega o último "fim"
+  const ultimoFim = linhas[linhas.length - 1].querySelector(".fim");
+  if (parseInt(ultimoFim.value) !== 11) {
+    marcarErro(ultimoFim, "Preencher salário mensal até Dezembro");
+    valido = false;
+  } else {
+    // só limpa o erro do último select, sem apagar os outros
+    if (ultimoFim.classList.contains("is-invalid")) {
+      limparErro(ultimoFim);
+    }
+  }
+
+  return valido;
+}
+
+function validarTela2() {
+  let valido = true;
+  const inputs = document.querySelectorAll('.tela')[1].querySelectorAll('input, select');
+  inputs.forEach(campo => {
+    if (!campo.value) {
+      campo.classList.add('is-invalid');
+      valido = false;
+    } else {
+      campo.classList.remove('is-invalid');
+    }
+  });
+  return valido;
+}
+
+function proximoDaTela2() {
+  if (validarTela2()) {
+    calcularResultado();
+    proximaTela();
+  }
+}
+
+
+
+  function proximaTela() {
+    if (telaAtual === 0) {
+      if (!validarTela1()) return;
+    }
+
+    if (telaAtual === 1) {
+      if (!validarTela2()) return;
+    }
+
+    if (telaAtual < todasTelas.length - 1) {
+      telaAtual++;
+      mostrarTela(telaAtual);
+    }
+  }
+
+  
+
 
   
 </script>
