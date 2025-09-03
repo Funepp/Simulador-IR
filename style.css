@@ -1,22 +1,27 @@
-body {
+    body {
       background: #fff;
       font-family: 'PrimaryCustomFont', sans-serif;
     }
 
-    .rowGeral {
-      height: 100vh;
-      display: flex;
-    }
-
+    
     /* ------------- Sidebar ------------- */
     .espacoBanner {
+      overflow-x: hidden;
       background-color: #2584c6;
       color: white;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0;
-      height: auto;
+      padding: 0;      
+      /* fixar na tela */
+      position: sticky; /* ou fixed se quiser fixar sempre no lugar */
+      top: 0;
+      height: 100vh; /* altura igual à tela */
+      overflow-y: auto; /* caso o conteúdo da sidebar seja maior que a tela */
+    }
+
+    .sidebar{
+      height: 100% !important;
     }
 
     .divImg{
@@ -33,7 +38,6 @@ body {
     }
 
     .indicador {
-      margin-top: 2rem;
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -131,28 +135,59 @@ body {
       padding: 5%;
       border-radius: 10px;
       text-decoration: none;
+      margin: 0 5%;
+      text-align: center;
+      font-size: 100%;
     }
+  
     
 
     /*  responsividade */
-    @media (max-width: 1000px) {
+    @media (max-width: 990px) {
+      .espacoBanner {
+        height: auto;
+        position: initial;
+      }
+
       .divImg{
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 0rem !important;
       }
 
       .divImg img {
-        width: 25%;
-        margin-bottom: 0;
+        width: 25% !important;
+        margin-bottom: 0rem !important;
       }
 
       .indicador {
-        margin-top: 1px;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         display: flex;
-        flex-direction: column;
-        width: 100%;
+        text-align: center;
+        gap: 0.5rem;
+        margin-top: 0 !important;
+        top: 0 !important;
+      }
+
+      .step {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        text-align: center;
+        width: auto;
+        flex: 1 1 0;
+      }
+
+      .step.ativo {
+        position: relative;
+        border-radius: 10px;
+        background-color: #318dcf;
+        z-index: 1;
+        right: 0;
       }
 
       .link{
@@ -165,12 +200,21 @@ body {
       }
 
       .link a{
-        border: 1px solid #fff;
+        border-style: solid;
+        border-color: #fff;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        border-radius: 0px;
         background-color: transparent;
         color: #fff;
-        padding: 1.5% 10%;
-        border-radius: 10px;
+        padding: 1% 4%;
         text-decoration: none;
+        font-size: 13px;
+      }
+
+      label{
+        margin-top: 5%;
       }
     }
 
@@ -205,10 +249,32 @@ body {
 
 
     .linha{
-      margin: 0% 0.25%;
-      padding: 2.5%;
+      padding: 3% 2.5% 5% 2.5%;
       border: 1px solid #d9d9d9;
+      margin-bottom: 7.5%;
       margin-bottom: 5%;
+    }
+
+    .linhaDois{
+      padding: 3% 2.5% 5% 2.5%;
+      border: 1px solid #d9d9d9;
+      margin-bottom: 7.5%;
+      margin-bottom: 5%;
+    }
+
+    /* tooltips */
+    .tooltip.bs-tooltip-auto[x-placement^=top], 
+    .tooltip.bs-tooltip-top {
+      --bs-tooltip-bg: #2584c6;
+      --bs-tooltip-color: #fff;
+    }
+
+    .tooltip-inner {
+      background-color: #2584c6 !important;
+      color: #fff !important;
+      border-radius: 6px;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
     }
     
     .tela { display: none; }
@@ -239,6 +305,12 @@ body {
       border: none;
       background-color: transparent;
       color: #2584c6;
+    }
+
+    .btnVoltar:active{
+      border: none;
+      background-color: transparent !important;
+      color: #0e5b92 !important;
     }
 
     .btnVoltar:hover{
