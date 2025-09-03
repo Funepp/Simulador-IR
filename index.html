@@ -317,31 +317,42 @@ function calcularIR(baseAnual) {
   return (baseMensal * 0.275 - 896.00) * 12;
 }
 
-
 function calcularTotais() {
   let totalSalario = 0;
-  let totalContribuicao = 0;
   let totalINSS = 0;
   let totalMeses = 0;
+  let totalContribuicao = 0;
+  let somaPercentual = 0;
 
-  // Pega linhas de salários/rendas
+  // TELA 1: salários/rendas
   const linhas = document.querySelectorAll("#areaPeriodos .linha");
   linhas.forEach(linha => {
     const inicio = parseInt(linha.querySelector(".inicio").value);
     const fim = parseInt(linha.querySelector(".fim").value);
     const salario = valorNumerico(linha.querySelector(".salario").value);
-const rendaExtra = valorNumerico(linha.querySelector(".renda").value);
+    const rendaExtra = valorNumerico(linha.querySelector(".renda").value);
 
-    const porcentagem = parseFloat(document.querySelector("#areaPeriodosTela2 input[type=number]").value) || 0;
-
-    const rendaTotal = salario + rendaExtra;
     const mesesTrabalhados = fim - inicio + 1;
     totalMeses += mesesTrabalhados;
+    const rendaTotal = salario + rendaExtra;
 
     totalSalario += rendaTotal * mesesTrabalhados;
-    totalContribuicao += (rendaTotal * (porcentagem / 100)) * mesesTrabalhados;
     totalINSS += calcularINSSMensal(rendaTotal) * mesesTrabalhados;
   });
+
+  // TELA 2: contribuição FUNEPP
+  const linhasContrib = document.querySelectorAll("#areaPeriodosTela2 .linha");
+  linhasContrib.forEach(linha => {
+    const inicio = parseInt(linha.querySelector(".inicio").value);
+    const fim = parseInt(linha.querySelector(".fim").value);
+    const mesesPeriodo = fim - inicio + 1;
+    const percentual = parseFloat(linha.querySelector('input[type=number]').value) || 0;
+
+    somaPercentual += percentual * mesesPeriodo;
+    totalContribuicao += (totalSalario / totalMeses) * (percentual / 100) * mesesPeriodo;
+  });
+
+  const mediaPercentual = totalMeses ? somaPercentual / totalMeses : 0;
 
   const numeroDependentes = parseInt(document.querySelector(".dependentes").value) || 0;
   const descontoDependentes = numeroDependentes * 189.59 * totalMeses;
@@ -353,9 +364,11 @@ const rendaExtra = valorNumerico(linha.querySelector(".renda").value);
     descontoDependentes,
     numeroDependentes,
     baseLegal: totalSalario - totalINSS - descontoDependentes - totalContribuicao,
-    baseSimplificado: totalSalario - 607.20 * 12
+    baseSimplificado: totalSalario - 607.20 * 12,
+    mediaPercentual
   };
 }
+
 
 function exibirResultado(titulo, dados, base, ir, descontoSimplificado = false) {
   const corpoNormal = document.getElementById("corpoResultadoNormal");
@@ -623,68 +636,74 @@ function proximaTela() {
   });
 
 
-  // --------------- Tela 2  ---------------
+  // ...existing code...
 
-  const areaPeriodos2 = todasTelas[1].querySelector("#areaPeriodos");
-  const primeiraLinha2 = areaPeriodos2.querySelector(".linha");
+// --------------- Tela 2  ---------------
 
-  function criarNovaLinhaTela2(mesInicio, linhaBase) {
-    const novaLinha = primeiraLinha2.cloneNode(true);
-    const selectInicio = novaLinha.querySelector(".inicio");
-    const selectFim = novaLinha.querySelector(".fim");
-    const inputContrib = novaLinha.querySelector('.form-control');
+// Pega o container de períodos da tela 2
+const areaPeriodosTela2 = document.getElementById("areaPeriodosTela2");
+const primeiraLinha2 = areaPeriodosTela2.querySelector(".linha");
 
-    // Ajusta opções do mês inicial
-    for (let i = 0; i < selectInicio.options.length; i++) {
-      selectInicio.options[i].disabled = i < mesInicio;
-    }
-    selectInicio.selectedIndex = mesInicio;
+// Função para criar nova linha na tela 2
+function criarNovaLinhaTela2(mesInicio, linhaBase) {
+  const novaLinha = primeiraLinha2.cloneNode(true);
+  const selectInicio = novaLinha.querySelector(".inicio");
+  const selectFim = novaLinha.querySelector(".fim");
+  const inputContrib = novaLinha.querySelector('.form-control');
 
-    // Ajusta opções do mês final
-    for (let i = 0; i < selectFim.options.length; i++) {
-      selectFim.options[i].disabled = i < mesInicio;
-    }
-    selectFim.selectedIndex = mesInicio;
-
-    // Limpa valor da contribuição
-    inputContrib.value = "";
-
-    linhaBase.insertAdjacentElement("afterend", novaLinha);
-
-    inicializarTooltips(novaLinha);
-
-    // Limita contribuição de 1 a 12
-    limitarContribuicao(inputContrib);
-
-    // Evento quando mudar mês final
-    selectFim.addEventListener("change", () => {
-      let ultimoMes = parseInt(selectFim.value);
-      removerLinhasAposTela2(novaLinha);
-      if (ultimoMes < 11) {
-        criarNovaLinhaTela2(ultimoMes + 1, novaLinha);
-      }
-    });
+  // Ajusta opções do mês inicial
+  for (let i = 0; i < selectInicio.options.length; i++) {
+    selectInicio.options[i].disabled = i < mesInicio;
   }
+  selectInicio.selectedIndex = mesInicio;
 
-  function removerLinhasAposTela2(linhaBase) {
-    let proxima = linhaBase.nextElementSibling;
-    while (proxima) {
-      let remover = proxima;
-      proxima = proxima.nextElementSibling;
-      remover.remove();
-    }
+  // Ajusta opções do mês final
+  for (let i = 0; i < selectFim.options.length; i++) {
+    selectFim.options[i].disabled = i < mesInicio;
   }
+  selectFim.selectedIndex = mesInicio;
 
-  // Evento para a primeira linha da tela 2
-  const primeiroFim2 = primeiraLinha2.querySelector(".fim");
-  primeiroFim2.addEventListener("change", () => {
-    let ultimoMes = parseInt(primeiroFim2.value);
-    removerLinhasAposTela2(primeiraLinha2);
+  // Limpa valor da contribuição
+  inputContrib.value = "";
+
+  linhaBase.insertAdjacentElement("afterend", novaLinha);
+
+  inicializarTooltips(novaLinha);
+
+  // Limita contribuição de 1 a 12
+  limitarContribuicao(inputContrib);
+
+  // Evento quando mudar mês final
+  selectFim.addEventListener("change", () => {
+    let ultimoMes = parseInt(selectFim.value);
+    removerLinhasAposTela2(novaLinha);
     if (ultimoMes < 11) {
-      criarNovaLinhaTela2(ultimoMes + 1, primeiraLinha2);
+      criarNovaLinhaTela2(ultimoMes + 1, novaLinha);
     }
   });
+}
 
+// Função para remover todas as linhas depois da escolhida
+function removerLinhasAposTela2(linhaBase) {
+  let proxima = linhaBase.nextElementSibling;
+  while (proxima) {
+    let remover = proxima;
+    proxima = proxima.nextElementSibling;
+    remover.remove();
+  }
+}
+
+// Evento para a primeira linha da tela 2
+const primeiroFim2 = primeiraLinha2.querySelector(".fim");
+primeiroFim2.addEventListener("change", () => {
+  let ultimoMes = parseInt(primeiroFim2.value);
+  removerLinhasAposTela2(primeiraLinha2);
+  if (ultimoMes < 11) {
+    criarNovaLinhaTela2(ultimoMes + 1, primeiraLinha2);
+  }
+});
+
+// ...existing code...
 
   // Função para limitar o valor máximo a 12
   function limitarContribuicao(input) {
