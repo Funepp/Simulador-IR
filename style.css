@@ -164,25 +164,37 @@
         margin-bottom: 0rem !important;
       }
 
-      .indicador {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        text-align: center;
-        gap: 0.5rem;
-        margin-top: 0 !important;
-        top: 0 !important;
-      }
+     .indicador {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      margin-top: 0 !important;
+      top: 0 !important;
+      font-size: 15px;
+    }
 
-      .step {
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        text-align: center;
-        width: auto;
-        flex: 1 1 0;
-      }
+    .circle{
+      width: 27px !important;
+      height: 27px !important
+    }
+
+.step {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 33%;
+  width: 33%;
+  padding: 4px 2px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+}
 
       .step.ativo {
         position: relative;
@@ -201,17 +213,16 @@
       }
 
       .link a{
-        border-style: solid;
-        border-color: #fff;
-        border-top: 0px;
-        border-left: 0px;
-        border-right: 0px;
-        border-radius: 0px;
-        background-color: transparent;
-        color: #fff;
-        padding: 1% 4%;
+        border: 1px solid #2584c6;
+        background-color: #fff;
+        color: #2584c6;
+        padding: 1% 8%;
+        font-size: 15px;
+        border-radius: 10px;
         text-decoration: none;
-        font-size: 13px;
+        margin: 0 5%;
+        text-align: center;
+        font-size: 100%;
       }
 
       label{
@@ -424,27 +435,71 @@
     }
 
 
-    .cardResultado-Um, .cardResultado-Dois{
-      border-radius: 12px !important;
-      background-color: #fff;
-      padding: 0% !important;
-      height: 50vh;
-      width: 100%;
-    }
+    /* Moderniza os cards de cenário */
+.cardResultado-Um, .cardResultado-Dois {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #0001;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  margin: 1rem 0.5rem;
+  transition: box-shadow 0.2s;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid #e0e0e0;
+}
 
-    .cardTitulo {
-      padding: 2.5%;
-      font-weight: bold;
-      height: 15%;
-      color: #fff;
-      border-radius: 12px 12px 0px 0px;
-      background-color: #2584c6;
-    }
+.cardTitulo {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #2584c6;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
-    .cardConteudo {
-      padding: 2.5% 0% 0% 0%;
-    }
-    
+
+
+.cardConteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.cardConteudo p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  background: #f7f7f7;
+  border-radius: 6px;
+  padding: 0.5rem 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardLinha-Um, .cardLinha-Dois, .cardLinha-Tres {
+  background: #2583c61a !important;
+  font-weight: bold;
+  color: #2584c6;
+}
+
+
+
+@media (max-width: 990px) {
+  .cardResultado-Um, .cardResultado-Dois {
+    padding: 1rem 0.5rem;
+    min-width: 0;
+    min-height: 0;
+  }
+  .cardConteudo p {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.5rem;
+  }
+}
 
     .left{
       padding: 0px 6px !important;
@@ -500,3 +555,5 @@
     .investido-extra{
       margin-top: 2%;
     }
+
+    
