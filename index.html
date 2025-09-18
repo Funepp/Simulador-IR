@@ -331,7 +331,7 @@
                 </div>
 
                 
-                <button type="button" class="temporario" onclick="mostrarDiferenca()">Ver diferença entre simplificado e comum</button>
+                <button type="button" class="temporario" style="display: none;" onclick="mostrarDiferenca()">Ver diferença entre simplificado e comum</button>
 
                 <div id="resultadoContainer" style="display:none; flex-direction:column; margin-top:20px;">
                   <div id="corpoResultadoNormal"></div>
@@ -582,10 +582,9 @@ function calcularResultado() {
             </div>
           </div>
         </div>
-
-        <div class="col-12 economia">
+      </div>
+      <div class="col-12 economia">
           <p>Você pode economizar <span>R$ ${(irSimplificado - irSimplificadoFunepp).toFixed(2)}</span> em Imposto de Renda por ano se investir <span>12%</span> na FUNEPP.</p>
-        </div>
       </div>
     `;
   } else {
