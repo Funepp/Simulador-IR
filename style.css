@@ -1,5 +1,5 @@
     body {
-      background: #fff;
+      background: #f7f7f7;
       font-family: 'PrimaryCustomFont', sans-serif;
     }
 
@@ -7,8 +7,8 @@
     /* ------------- Sidebar ------------- */
     .espacoBanner {
       overflow-x: hidden;
-      background-color: #2584c6;
-      color: white;
+      background-color: #ffffff;
+      color: #2584c6 !important;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -48,8 +48,8 @@
       height: 40px;
       border-radius: 50%;
       background: transparent;
-      border: 1.5px solid #fff;
-      color: #fff;
+      border: 1.5px solid #2584c6;
+      color: #2584c6 !important;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -66,19 +66,21 @@
     }
 
     .step-title {
-      color: #fff;
+      color: #2584c6;
       font-weight: 500;
     }
 
     /* passo ativo */
 
     .step.ativo .step-title {
-      color: #fff;             
+      color: #2584c6 !important;             
     }
+
+
 
     .step.ativo {
       position: relative;
-      background-color: #318dcf;
+      background-color: #f7f7f7d7;
       z-index: 1;
       right: 0;
     }
@@ -95,7 +97,7 @@
         height: 0;
         border-top: 15px solid transparent;
         border-bottom: 15px solid transparent;
-        border-right: 15px solid #fff;
+        border-right: 15px solid #2584c6 !important;
         z-index: 2;
       }
     }
@@ -129,9 +131,9 @@
     }
 
     .link a{
-      border: 1px solid #fff;
-      background-color: #ffffff25;
-      color: #fff;
+      border: 1px solid #2584c6;
+      background-color: #fff;
+      color: #2584c6;
       padding: 5%;
       border-radius: 10px;
       text-decoration: none;
@@ -158,7 +160,7 @@
       }
 
       .divImg img {
-        width: 25% !important;
+        width: 28.5% !important;
         margin-bottom: 0rem !important;
       }
 
@@ -185,7 +187,6 @@
       .step.ativo {
         position: relative;
         border-radius: 10px;
-        background-color: #318dcf;
         z-index: 1;
         right: 0;
       }
@@ -219,17 +220,39 @@
     }
 
     /* ------------- Conteúdo -------------*/
+    .msg-erro {
+      font-size: 0.75em !important;
+      color: red;
+      margin-top: 4px;
+    }
+  
     .espacoConteudo {
-      padding: 3rem 3rem;
       max-width: 100%;
       width: 100%;
+    }
+
+    .conteudo{
+      padding: 3rem 3rem;
+    }
+
+    .tituloTopo{
+      width: 100%;
+      height: 20vh;
+      background-color: #2584c6;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .tituloTopo h4{
+      text-align: left !important;
+      color: #fff !important;
     }
 
 
     /* form */
     .barraProgresso {
       width: 100%;
-      margin-top: 5%;
       margin-bottom: 5%;
       align-items: center;
     }
@@ -237,7 +260,7 @@
     .progresso {
       height: 10px;
       width: 100%;
-      background: #e9ecef;
+      background: #ffffff;
       border-radius: 2px;
     }
 
@@ -250,16 +273,16 @@
 
     .linha{
       padding: 3% 2.5% 5% 2.5%;
-      border: 1px solid #d9d9d9;
-      margin-bottom: 7.5%;
-      margin-bottom: 5%;
+      background-color: #fff;
+      border-radius: 15px;
+      margin-bottom: 3%;
     }
 
     .linhaDois{
       padding: 3% 2.5% 5% 2.5%;
-      border: 1px solid #d9d9d9;
-      margin-bottom: 7.5%;
-      margin-bottom: 5%;
+      background-color: #fff;
+      border-radius: 15px;
+      margin-bottom: 2.5%;
     }
 
     /* tooltips */
@@ -280,9 +303,6 @@
     .tela { display: none; }
     .tela.mostrar { display: block; }
 
-    .mostrar h4{
-      color: #2584c6;
-    }
 
     hr{
       color: #2584c6;
@@ -350,3 +370,133 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+    #renda{
+      display: none;
+    }
+
+    #diferenca{
+      display: none;
+    }
+
+
+
+    /* ------------ TELA 3 --------------- */
+
+    .barra-tracinhos {
+      display: flex;
+      gap: 4px;
+      height: 32px;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .tracinho {
+      flex: 1;
+      height: 100%;
+      border-radius: 4px;
+      background: #e0e0e0;
+      border: 1px solid #ccc;
+      transition: background 0.3s;
+    }
+    .tracinho.preenchido {
+      background: #2584c6;
+      border-color: #2584c6;
+    }
+    .tracinho.maximo {
+      background: #198754;
+      border-color: #198754;
+    }
+
+
+    .cardTotal {
+      justify-content: center;
+      display: flex;
+      align-items: center;
+    }
+
+
+    .cardResultado-Um, .cardResultado-Dois{
+      border-radius: 12px !important;
+      background-color: #fff;
+      padding: 0% !important;
+      height: 50vh;
+      width: 100%;
+    }
+
+    .cardTitulo {
+      padding: 2.5%;
+      font-weight: bold;
+      height: 15%;
+      color: #fff;
+      border-radius: 12px 12px 0px 0px;
+      background-color: #2584c6;
+    }
+
+    .cardConteudo {
+      padding: 2.5% 0% 0% 0%;
+    }
+    
+
+    .left{
+      padding: 0px 6px !important;
+    }
+
+    .cardLinha-Um {
+      background: #2583c61a;   
+      padding: 4px 6px;
+    }
+
+    .cardLinha-Dois {
+      background: #2583c65e;   
+      padding: 10px 6px;
+    }
+
+    .cardLinha-Tres {
+      background: #2583c65e;   
+      padding: 10px 6px;
+    }
+
+    .rowTotal{
+      justify-content: center;
+      display: flex;
+      align-items: center;
+    }
+
+    .economia {
+      border-left: 10px solid #2584c6;
+      padding: 1rem;
+      background-color: #fff;
+      border-radius: 5px;
+      margin-top: 3rem;
+      width: 98%;
+    }
+
+    .economia span{
+      color: #2584c6;
+      font-weight: bold;
+    }
+
+
+ 
+
+    .rowFinal{
+      padding: 5%;
+      background-color: #fff;
+      margin-top: 5rem;
+      border-radius: 12px;
+      width: 98%;
+    }
+
+
+    .investido-extra{
+      margin-top: 2%;
+    }
