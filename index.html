@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simulador de Contribuição FUNEPP</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -44,10 +49,11 @@
             <!-- Tela 1 -->
             <div class="tela mostrar row">
               <div class="tituloTopo col-12">
-                <h4>SIMULADOR INCENTIVO FISCAL</h4>
+                <h4>Simulador Incentivo Fiscal</h4>
+                <p>Contribuições e benefícios de forma simples</p>
               </div>
               <div class="conteudo col-12">
-                <div class="row barraProgresso">
+                <div class="row barraProgresso justify-content-center">
                   <div class="col-4">
                     <div class="progresso prog-telaUm"></div>
                   </div>
@@ -58,10 +64,22 @@
                     <div class="progresso prog-telaTres"></div>
                   </div>
                 </div>
+
+                <div class="row">
+                  <div class="col-12 colTexto">
+                    <h4>Faça sua simulação</h4>
+                    <p>Descubra como investir na FUNEPP pode aumentar seus benefícios fiscais e reduzir o valor do seu Imposto de Renda. Preencha os dados abaixo e veja o impacto direto na sua economia anual.</p>
+                  </div>
+                </div>
+
                 <div id="areaPeriodos">
                   <!-- Primeira linha já no HTML -->
                   <div class="row linha">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="col-12 colTitulo-card">
+                      <h5>Períodos de Salário</h5>
+                      <hr>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">                      
                       <label class="form-label">
                         Mês Inicial
                         <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
@@ -72,20 +90,23 @@
                           </svg>
                         </span>
                       </label>
-                      <select class="form-select inicio" disabled>
-                        <option value="0" selected>Janeiro</option>
-                        <option value="1">Fevereiro</option>
-                        <option value="2">Março</option>
-                        <option value="3">Abril</option>
-                        <option value="4">Maio</option>
-                        <option value="5">Junho</option>
-                        <option value="6">Julho</option>
-                        <option value="7">Agosto</option>
-                        <option value="8">Setembro</option>
-                        <option value="9">Outubro</option>
-                        <option value="10">Novembro</option>
-                        <option value="11">Dezembro</option>
-                      </select>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                        <select class="form-select inicio" disabled>
+                          <option value="0" selected>Janeiro</option>
+                          <option value="1">Fevereiro</option>
+                          <option value="2">Março</option>
+                          <option value="3">Abril</option>
+                          <option value="4">Maio</option>
+                          <option value="5">Junho</option>
+                          <option value="6">Julho</option>
+                          <option value="7">Agosto</option>
+                          <option value="8">Setembro</option>
+                          <option value="9">Outubro</option>
+                          <option value="10">Novembro</option>
+                          <option value="11">Dezembro</option>
+                        </select>
+                      </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                       <label class="form-label">
@@ -98,20 +119,23 @@
                           </svg>
                         </span>
                       </label>
-                      <select class="form-select fim">
-                        <option value="0" selected>Janeiro</option>
-                        <option value="1">Fevereiro</option>
-                        <option value="2">Março</option>
-                        <option value="3">Abril</option>
-                        <option value="4">Maio</option>
-                        <option value="5">Junho</option>
-                        <option value="6">Julho</option>
-                        <option value="7">Agosto</option>
-                        <option value="8">Setembro</option>
-                        <option value="9">Outubro</option>
-                        <option value="10">Novembro</option>
-                        <option value="11">Dezembro</option>
-                      </select>
+                      <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                        <select class="form-select fim">
+                          <option value="0" selected>Janeiro</option>
+                          <option value="1">Fevereiro</option>
+                          <option value="2">Março</option>
+                          <option value="3">Abril</option>
+                          <option value="4">Maio</option>
+                          <option value="5">Junho</option>
+                          <option value="6">Julho</option>
+                          <option value="7">Agosto</option>
+                          <option value="8">Setembro</option>
+                          <option value="9">Outubro</option>
+                          <option value="10">Novembro</option>
+                          <option value="11">Dezembro</option>
+                        </select>
+                      </div>
                       <div class="msg-erro"></div>
                     </div>
                     <br><br><br><br>
@@ -126,25 +150,15 @@
                           </svg>
                         </span>
                       </label>
-                      <input type="text" class="form-control salario" placeholder="Salário">
-                      <div class="msg-erro"></div>
+                      <div class="input-group">
+  <span class="input-group-text"><i class="bi bi-cash"></i></span>
+  <input type="text" class="form-control salario" placeholder="Salário">
+</div>
+<div class="msg-erro"></div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
 
-                      <div class="renda" id="renda">
-                        <label class="form-label">
-                          Renda Extra
-                          <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                              <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-                              <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
-                              <circle cx="8" cy="4.5" r="1"/>
-                            </svg>
-                          </span>
-                        </label>
-                        <input type="text" class="form-control renda" placeholder="Renda Extra" style="margin-bottom: 5%;">
-                        <div class="msg-erro"></div>
-                      </div>
+                      
 
                       <label class="form-label">
                           Você possui Preser ou ATS?
@@ -166,11 +180,34 @@
                         <label class="form-check-label" for="nao">Não</label>
                       </div>
                       <div class="msg-erro" id="erro-preser"></div>
+
+                      <div class="renda" id="renda" style="display:none;">
+                        <br>
+                        <label class="form-label">
+                          Renda Extra
+                          <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                              <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+                              <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
+                              <circle cx="8" cy="4.5" r="1"/>
+                            </svg>
+                          </span>
+                        </label>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="bi bi-coin"></i></span>
+                          <input type="text" class="form-control" placeholder="Renda Extra">
+                        </div>
+                        <div class="msg-erro"></div>
+                      </div>
                     </div>
                   </div>
               </div>    
         
                 <div class="row linhaDois">
+                  <div class="col-12 colTitulo-card">
+                      <h5>Informações Adicionais</h5>
+                      <hr>
+                    </div>
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label class="form-label">
                       Dependentes
@@ -182,7 +219,10 @@
                         </svg>
                       </span>
                     </label>
-                    <input type="text" class="form-control dependentes" placeholder="Dependentes" max="10">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-people"></i></span>
+                      <input type="text" class="form-control dependentes" placeholder="Dependentes" max="10">
+                    </div>
                     <div class="msg-erro"></div>
                   </div>
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -196,7 +236,10 @@
                         </svg>
                       </span>
                     </label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-briefcase"></i></span>  
                       <input type="text" class="form-control outrasRendas" placeholder="Outras Rendas">
+                    </div>
                     <!-- <div class="msg-erro"></div> -->
                   </div>
                 </div>
@@ -208,7 +251,8 @@
             <!-- Tela 2 -->
             <div class="tela row">
               <div class="tituloTopo col-12">
-                <h4>SIMULADOR INCENTIVO FISCAL</h4>
+                <h4>Simulador Incentivo Fiscal</h4>
+                <p>Contribuições e benefícios de forma simples</p>
               </div>
               <div class="conteudo col-12">
                   <div class="row barraProgresso justify-content-center">
@@ -224,12 +268,17 @@
                   </div>
                   <div id="areaPeriodosTela2">
                     <!-- Primeira linha já no HTML -->
-                    <div class="col-12 aviso-tela2">
-                      <div class="aviso">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quia cum incidunt ab quaerat harum repellat voluptatem delectus nesciunt autem, sit voluptatum a quis et, velit cupiditate quibusdam dignissimos doloribus?</p>
-                      </div>
+                    <div class="row">
+                    <div class="col-12 colTexto">
+                      <h4>Suas Contribuições</h4>
+                      <p>Informe os períodos e percentuais de contribuição na FUNEPP para simular o impacto direto no seu benefício fiscal. Preencha os dados abaixo e veja como sua escolha pode aumentar sua economia no Imposto de Renda.</p>
                     </div>
+                </div>
                     <div class="row linha">
+                      <div class="col-12 colTitulo-card">
+                      <h5>Períodos de Contribuição</h5>
+                      <hr>
+                    </div>
                       <div class="col-md-4">
                         <label class="form-label">Mês inicial</label>
                         <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
@@ -239,20 +288,23 @@
                             <circle cx="8" cy="4.5" r="1"/>
                           </svg>
                         </span>
-                        <select class="form-select inicio" disabled>
-                          <option value="0" selected>Janeiro</option>
-                          <option value="1">Fevereiro</option>
-                          <option value="2">Março</option>
-                          <option value="3">Abril</option>
-                          <option value="4">Maio</option>
-                          <option value="5">Junho</option>
-                          <option value="6">Julho</option>
-                          <option value="7">Agosto</option>
-                          <option value="8">Setembro</option>
-                          <option value="9">Outubro</option>
-                          <option value="10">Novembro</option>
-                          <option value="11">Dezembro</option>
-                        </select>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                          <select class="form-select inicio" disabled>
+                            <option value="0" selected>Janeiro</option>
+                            <option value="1">Fevereiro</option>
+                            <option value="2">Março</option>
+                            <option value="3">Abril</option>
+                            <option value="4">Maio</option>
+                            <option value="5">Junho</option>
+                            <option value="6">Julho</option>
+                            <option value="7">Agosto</option>
+                            <option value="8">Setembro</option>
+                            <option value="9">Outubro</option>
+                            <option value="10">Novembro</option>
+                            <option value="11">Dezembro</option>
+                          </select>
+                        </div>
                       </div>
                       <div class="col-md-4">
                         <label class="form-label">Mês final</label>
@@ -263,20 +315,23 @@
                             <circle cx="8" cy="4.5" r="1"/>
                           </svg>
                         </span>
-                        <select class="form-select fim">
-                          <option value="0" selected>Janeiro</option>
-                          <option value="1">Fevereiro</option>
-                          <option value="2">Março</option>
-                          <option value="3">Abril</option>
-                          <option value="4">Maio</option>
-                          <option value="5">Junho</option>
-                          <option value="6">Julho</option>
-                          <option value="7">Agosto</option>
-                          <option value="8">Setembro</option>
-                          <option value="9">Outubro</option>
-                          <option value="10">Novembro</option>
-                          <option value="11">Dezembro</option>
-                        </select>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                          <select class="form-select fim">
+                            <option value="0" selected>Janeiro</option>
+                            <option value="1">Fevereiro</option>
+                            <option value="2">Março</option>
+                            <option value="3">Abril</option>
+                            <option value="4">Maio</option>
+                            <option value="5">Junho</option>
+                            <option value="6">Julho</option>
+                            <option value="7">Agosto</option>
+                            <option value="8">Setembro</option>
+                            <option value="9">Outubro</option>
+                            <option value="10">Novembro</option>
+                            <option value="11">Dezembro</option>
+                          </select>
+                        </div>
                         <div class="msg-erro"></div>
                       </div>
                       <br><br><br><br>
@@ -290,8 +345,8 @@
                           </svg>
                         </span>
                         <div class="input-group">
-                          <input type="number" class="form-control" placeholder="Contribuição %" min="0" max="12" step="1">
                           <span class="input-group-text">%</span>
+                          <input type="number" class="form-control" placeholder="Contribuição %" min="0" max="12" step="1" style="border-radius: 0px 10px 10px 0px;">
                           <br>
                           <div class="msg-erro"></div>
                         </div>
@@ -304,7 +359,37 @@
                 <div class="d-flex justify-content-between mt-4">
                   <button type="button" class="btn btn-secondary btnVoltar" onclick="voltarTela()">
                     &larr; Voltar
-                  </button><button type="button" class="btn btn-primary btn-direita" onclick="proximoDaTela2()">Próximo</button>
+                  </button>
+
+
+
+                  <!-- Botão para acionar modal -->
+<!-- Botão Simular -->
+<button type="button" class="btn btn-primary" onclick="abrirModalSimulacao()">
+  Simular
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modalExemplo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Aviso</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <p>Informamos que o resultado apresentado é apenas uma simulação e que poderá ser feito em diversos períodos do ano, mediante a análise de cada caso.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="btnSeguirSimulacao" onclick="proximoDaTela2()">Seguir para simulação</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 
 
             </div>   
@@ -315,7 +400,8 @@
             <!-- Tela 3 -->
             <div class="tela row">
               <div class="tituloTopo col-12 mb-3">
-                <h4>SIMULADOR INCENTIVO FISCAL</h4>
+                <h4>Simulador Incentivo Fiscal</h4>
+                <p>Contribuições e benefícios de forma simples</p>
               </div>
               <div class="conteudo col-12">
                 <div class="row barraProgresso justify-content-center">
@@ -556,62 +642,60 @@ function calcularResultado() {
   if ((mediaComum + mediaComumFunepp) <= (mediaSimplificado + mediaSimplificadoFunepp)) {
     melhorRow = `
       <div class="row mt-4 rowTotal">
-        <div id="corpoResultadoNormalMelhor" class="col-xl-6 col-lg-6 col-md-12 col-sm-12 cardTotal">
-          <div class="cardResultado-Um">
-            <div class="cardTitulo">CENÁRIO ATUAL - Anual</div>
+        <div id="corpoResultadoNormalMelhor" class="row cardTotal">
+          <div class="cardResultado-Um col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <div class="cardTitulo">CENÁRIO ATUAL - ANUAL</div>
             <div class="cardConteudo">
-              <p class="left"><strong>Renda Bruta:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-              <p class="left"><strong>INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
-              <p class="left"><strong>Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>
-              <p class="cardLinha-Um"><strong>Contribuição FUNEPP:</strong> R$ ${dados.totalContribuicao.toFixed(2)}</p>
-              <p class="left"><strong>Base de Cálculo:</strong> R$ ${baseLegal.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-shield-lock"></i>INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>
+              <p class="cardLinha-Um"><strong><i class="bi bi-gem"></i>Contribuição FUNEPP:</strong> R$ ${dados.totalContribuicao.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-calculator"></i>Base de Cálculo:</strong> R$ ${baseLegal.toFixed(2)}</p>
               <p class="cardLinha-Dois"><strong>IRRF Final: R$ ${irLegal.toFixed(2)}</strong></p>
             </div>
-          </div>
-        </div>
-        <div id="corpoResultadoLegalFuneppMelhor" class="col-xl-6 col-lg-6 col-md-12 col-sm-12 cardTotal">
-          <div class="cardResultado-Dois">
+          </div> <div class="cardResultado-Dois col-xl-6 col-lg-6 col-md-12 col-sm-12">
             <div class="cardTitulo">CONTRIBUIÇÃO 12% - FUNEPP</div>
             <div class="cardConteudo">
-              <p class="left"><strong>Renda Bruta:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-              <p class="left"><strong>INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
-              <p class="left"><strong>Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>
-              <p class="cardLinha-Um"><strong>Contribuição FUNEPP (12%):</strong> R$ ${contribuicao12.toFixed(2)}</p>
-              <p class="left"><strong>Base de Cálculo:</strong> R$ ${baseLegalFunepp.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-shield-lock"></i>INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>
+              <p class="cardLinha-Um"><strong><i class="bi bi-gem"></i>Contribuição FUNEPP (12%):</strong> R$ ${contribuicao12.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-calculator"></i>Base de Cálculo:</strong> R$ ${baseLegalFunepp.toFixed(2)}</p>
               <p class="cardLinha-Tres"><strong>IRRF Final: R$ ${irLegalFunepp.toFixed(2)}</strong></p>
             </div>
           </div>
         </div>
       </div>
+      <!--
       <div class="col-12 economia">
           <p>Você pode economizar <span>R$ ${(irSimplificado - irSimplificadoFunepp).toFixed(2)}</span> em Imposto de Renda por ano se investir <span>12%</span> na FUNEPP.</p>
+          <p></p>
       </div>
+      -->
     `;
   } else {
     melhorRow = `
       <div class="row mt-4 rowTotal">
-        <div id="corpoResultadoSimplificadoMelhor" class="col-xl-6 col-lg-6 col-md-12 col-sm-12 cardTotal">
-          <div class="cardResultado-Um">
-            <div class="cardTitulo">CENÁRIO ATUAL - Anual</div>
+        <div id="corpoResultadoSimplificadoMelhor" class="row cardTotal">
+          <div class="cardResultado-Um col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <div class="cardTitulo">CENÁRIO ATUAL - ANUAL</div>
             <div class="cardConteudo">
-              <p class="left"><strong>Renda Bruta:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-              <p class="left"><strong>INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
-              <p class="left"><strong>Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>
-              <p class="cardLinha-Um"><strong>Contribuição FUNEPP:</strong> R$ ${dados.totalContribuicao.toFixed(2)}</p>
-              <p class="left"><strong>Base de Cálculo:</strong> R$ ${baseSimplificado.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-shield-lock"></i>INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>
+              <p class="cardLinha-Um"><strong><i class="bi bi-gem"></i>Contribuição FUNEPP:</strong> R$ ${dados.totalContribuicao.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-calculator"></i>Base de Cálculo:</strong> R$ ${baseSimplificado.toFixed(2)}</p>
               <p class="cardLinha-Dois"><strong>IRRF Final: R$ ${irSimplificado.toFixed(2)}</strong></p>
             </div>
           </div>
-        </div>
-        <div id="corpoResultadoSimplificadoFuneppMelhor" class="col-xl-6 col-lg-6 col-md-12 col-sm-12 cardTotal">
-          <div class="cardResultado-Dois">
+          <div class="cardResultado-Dois col-xl-6 col-lg-6 col-md-12 col-sm-12">
             <div class="cardTitulo">CONTRIBUIÇÃO 12% - FUNEPP</div>
             <div class="cardConteudo">
-              <p class="left"><strong>Renda Bruta:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-              <p class="left"><strong>INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
-              <p class="left"><strong>Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>
-              <p class="cardLinha-Um"><strong>Contribuição FUNEPP (12%):</strong> R$ ${contribuicao12.toFixed(2)}</p>
-              <p class="left"><strong>Base de Cálculo:</strong> R$ ${baseSimplificadoFunepp.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-shield-lock"></i>INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>
+              <p class="cardLinha-Um"><strong><i class="bi bi-gem"></i>Contribuição FUNEPP (12%):</strong> R$ ${contribuicao12.toFixed(2)}</p>
+              <p class="left"><strong><i class="bi bi-calculator"></i>Base de Cálculo:</strong> R$ ${baseSimplificadoFunepp.toFixed(2)}</p>
               <p class="cardLinha-Tres"><strong>IRRF Final: R$ ${irSimplificadoFunepp.toFixed(2)}</strong></p>
             </div>
           </div>
@@ -677,42 +761,57 @@ function calcularResultado() {
     
 
     <!-- Bloco bonito para quanto falta investir, barra e campo de valor já investido -->
-    <div class="row rowFinal">
-      <div class="col-5">
-        <div class="falta-investir">
-          <strong>Para atingir o benefício fiscal máximo:</strong>
-          <div>
-            Falta investir
-            <span>
-              R$ ${faltaInvestir.toLocaleString('pt-BR', {minimumFractionDigits:2})}
-            </span>
-            em FUNEPP.
-          </div>
-        </div>
+    <div class="row rowFinal align-items-center gy-4">
+  <div class="col-12">
+    <div class="falta-investir p-4 bg-white rounded-4 shadow-sm">
+      <strong class="tituloFim">Para atingir o benefício fiscal máximo:</strong>
+      <div class="fs-6 text-secondary">
+        Falta investir
+        <span id="valorFaltaInvestir" style="color:#2584c6; font-weight:600;">
+          R$ ${faltaInvestir.toLocaleString('pt-BR', {minimumFractionDigits:2})}
+        </span>
+        em FUNEPP.
       </div>
-      <div class="col-7">
-        <div class="barra-contribuicao">
-          <label for="barraContribuicao" class="form-label mb-2" style="font-weight:500;">Sua % de contribuição na FUNEPP:</label>
-          <div id="barraContribuicao" class="barra-tracinhos"></div>
-          <!-- O texto da barra já é gerado pelo JS -->
-        </div>
+      <div>
+        <span id="valorInvestidoExtra" style="color:#2584c6; font-weight:500;"></span>
       </div>
-      <div class="col-12">
-        <div class="investido-extra">
-          <label for="investidoExtra" class="form-label mb-2" style="font-weight:500;">Você investiu algum valor extra na FUNEPP?</label>
-          <div class="input-group">
-            <input type="text" id="investidoExtra" class="form-control" placeholder="Digite o valor já investido (R$)">
-            <button type="button" class="btn btn-primary" onclick="atualizarBarraComInvestido()">Atualizar</button>
-          </div>
-        </div>
+
+      <div class="barra-contribuicao">
+        <label for="barraContribuicao" class="form-label fw-semibold mb-3">
+          Sua % de contribuição na FUNEPP:
+        </label>
+        <div id="barraContribuicao" class="barra-tracinhos d-flex gap-2" aria-live="polite"></div>
       </div>
     </div>
+  </div>
+  <div class="col-12">
+    <div class="investido-extra p-4 bg-white rounded-4 shadow-sm">
+      <label for="investidoExtra" class="form-label fw-semibold mb-3">
+        Você investiu algum valor extra na FUNEPP?
+      </label>
+      <div class="input-group rounded-3 borderFim">
+        <input 
+          type="text" 
+          id="investidoExtra" 
+          class="form-control border-0" 
+          style="color: #2584c6;"
+          placeholder="Digite o valor já investido (R$)"
+          aria-describedby="btnAtualizar"
+        />
+        <button type="button" class="btn btn-primary buttonFim" onclick="atualizarBarraComInvestido()">Atualizar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
   `;
   container.style.display = "block";
-// ...existing code...
+
 document.getElementById('investidoExtra').value = '';
 atualizarBarraComInvestido();
-// ...existing code...
+
   
 }
 
@@ -746,11 +845,11 @@ atualizarBarraComInvestido();
       document.querySelectorAll('.prog-telaTres').forEach(el => el.classList.add('ativo'));
     }
 
-    // ...existing code...
+    
 // Mostra a barra só na tela 3 (índice 2)
 const barraContainer = document.getElementById('barraContribuicaoContainer');
 if (barraContainer) barraContainer.style.display = (num === 2) ? 'block' : 'none';
-// ...existing code...
+
   }
 
 
@@ -767,18 +866,22 @@ if (barraContainer) barraContainer.style.display = (num === 2) ? 'block' : 'none
   }
 
   // ------------ função para pintar indicador --------------
-  function atualizarPasso(num) {
-    todosPassos.forEach((cadaPasso, i) => {
-      // remove a classe ativo de todos
-      cadaPasso.classList.remove("ativo");
+function atualizarPasso(num) {
+  todosPassos.forEach((cadaPasso, i) => {
+    cadaPasso.classList.remove("ativo");
+    cadaPasso.querySelector('.circle').classList.remove("circle-azul");
 
-      // adiciona no passo atual
-      if (i === num) {
-        cadaPasso.classList.add("ativo");
-      }
-    });
-  }
+    // Passo ativo normal
+    if (i === num) {
+      cadaPasso.classList.add("ativo");
+    }
 
+    // Se estiver na tela 3 (num === 2), deixa o círculo do passo 2 azul
+    if (num === 2 && i === 1) {
+      cadaPasso.querySelector('.circle').classList.add("circle-azul");
+    }
+  });
+}
 
   // já mostra a tela inicial e pinta o passo 1
   mostrarTela(telaAtual);
@@ -866,7 +969,6 @@ document.querySelectorAll('.salario, .renda, .outrasRendas').forEach(function(in
 
     // Insere logo depois da linha base
     linhaBase.insertAdjacentElement("afterend", novaLinha);
-
     inicializarTooltips(novaLinha);
 
     // Evento de formatação
@@ -908,7 +1010,7 @@ document.querySelectorAll('.salario, .renda, .outrasRendas').forEach(function(in
   });
 
 
-  // ...existing code...
+  
 
 // --------------- Tela 2  ---------------
 
@@ -999,11 +1101,16 @@ primeiroFim2.addEventListener("change", () => {
 
 function marcarErro(campo, mensagem = "Campo obrigatório") {
   campo.classList.add("is-invalid");
-  // Busca a .msg-erro mais próxima dentro da mesma .linha
-  let divErro = campo.closest(".linha")?.querySelector(".msg-erro");
-  // Se houver mais de uma .msg-erro na linha, pega a que está logo após o campo
-  if (campo.parentElement.querySelector(".msg-erro")) {
-    divErro = campo.parentElement.querySelector(".msg-erro");
+  // Busca a .msg-erro logo após o campo
+  let divErro = campo.nextElementSibling;
+  // Se não encontrar, procura dentro do parent
+  if (!divErro || !divErro.classList.contains("msg-erro")) {
+    // Busca fora do input-group, no próximo irmão do parent
+    if (campo.parentElement.nextElementSibling && campo.parentElement.nextElementSibling.classList.contains("msg-erro")) {
+      divErro = campo.parentElement.nextElementSibling;
+    } else {
+      divErro = campo.parentElement.querySelector(".msg-erro");
+    }
   }
   if (divErro) {
     divErro.textContent = mensagem;
@@ -1019,14 +1126,20 @@ function marcarErro(campo, mensagem = "Campo obrigatório") {
   }
 }
 
-  // Função auxiliar para limpar erro de um campo
-  function limparErro(campo) {
-    campo.classList.remove("is-invalid");
-    const divErro = campo.closest("div").querySelector(".msg-erro");
-    if (divErro) {
-      divErro.textContent = "";
+function limparErro(campo) {
+  campo.classList.remove("is-invalid");
+  let divErro = campo.nextElementSibling;
+  if (!divErro || !divErro.classList.contains("msg-erro")) {
+    if (campo.parentElement.nextElementSibling && campo.parentElement.nextElementSibling.classList.contains("msg-erro")) {
+      divErro = campo.parentElement.nextElementSibling;
+    } else {
+      divErro = campo.parentElement.querySelector(".msg-erro");
     }
   }
+  if (divErro) {
+    divErro.textContent = "";
+  }
+}
 
 
 
@@ -1036,15 +1149,8 @@ function validarTela1() {
 
   linhas.forEach(linha => {
     const salario = linha.querySelector(".salario");
-    const renda = linha.querySelector("input.renda");
+    const renda = linha.querySelector(".renda input"); // <-- CORRIGIDO
     const outrasRendas = todasTelas[0].querySelector(".outrasRendas");
-
-    // if (outrasRendas.value.trim() === "" || valorNumerico(outrasRendas.value) < 0) {
-    //   // marcarErro(outrasRendas, "Campo obrigatório (se não possuir, colocar 0)");
-    //   valido = false;
-    // } else {
-    //   limparErro(outrasRendas);
-    // }
 
     if (valorNumerico(salario.value) <= 0) {
       marcarErro(salario, "Informe um salário maior que zero");
@@ -1053,16 +1159,16 @@ function validarTela1() {
       limparErro(salario);
     }
 
-    if (valorNumerico(renda.value) < 0) {
+    if (renda && valorNumerico(renda.value) < 0) {
       marcarErro(renda, "Informe uma renda extra válida");
       valido = false;
-    } else {
+    } else if (renda) {
       limparErro(renda);
     }
 
     const sim = linha.querySelector("#sim");
     if (sim && sim.checked) {
-      if (renda.value.trim() === "") {
+      if (renda && renda.value.trim() === "") {
         marcarErro(renda, "Campo obrigatório para quem possui Preser ou ATS");
         valido = false;
       }
@@ -1080,10 +1186,10 @@ function validarTela1() {
 
   // Outras Rendas
   // const outrasRendas = todasTelas[0].querySelector(".outrasRendas");
-  // if (outrasRendas.value.trim() === "" || valorNumerico(outrasRendas.value) < 0) {
+  // if (outrasRendas && (outrasRendas.value.trim() === "" || valorNumerico(outrasRendas.value) < 0)) {
   //   marcarErro(outrasRendas, "Campo obrigatório (se não possuir, colocar 0)");
   //   valido = false;
-  // } else {
+  // } else if (outrasRendas) {
   //   limparErro(outrasRendas);
   // }
 
@@ -1241,11 +1347,10 @@ function proximaTela() {
   const irLegalNova = calcularIR(baseLegalNova);
 
   // Recalcula base e IRRF simplificado
-// ...existing code...
-// Recalcula base e IRRF simplificado
+
 const baseSimplificadoNova = dados.totalSalario - dados.descontoSimplificado - aporteExtra;
 const irSimplificadoNova = calcularIR(baseSimplificadoNova);
-// ...existing code...
+
 
   document.getElementById('resultadoAporteExtra').innerHTML = `
     <div class="row mt-4">
@@ -1270,12 +1375,24 @@ function atualizarBarraContribuicao(percentual) {
   const barra = document.getElementById('barraContribuicao');
   barra.innerHTML = ''; // Limpa
 
+  // Define a cor para todas as barras preenchidas
+  let corClasse = '';
+  if (percentual <= 4) {
+    corClasse = 'vermelho';
+  } else if (percentual <= 7) {
+    corClasse = 'amarelo';
+  } else if (percentual <= 11) {
+    corClasse = 'azul';
+  } else if (percentual >= 12) {
+    corClasse = 'verde';
+  }
+
   // Gera 12 tracinhos
   for (let i = 1; i <= 12; i++) {
     const div = document.createElement('div');
     div.classList.add('tracinho');
     if (i <= Math.floor(percentual)) {
-      div.classList.add(i === 12 ? 'maximo' : 'preenchido');
+      if (corClasse) div.classList.add(corClasse);
     }
     barra.appendChild(div);
   }
@@ -1292,16 +1409,55 @@ function atualizarBarraContribuicao(percentual) {
   barra.nextElementSibling.textContent = texto;
 }
 
+let investidoExtraAcumulado = 0;
+
 function atualizarBarraComInvestido() {
   const dados = calcularTotais();
-  const investidoExtra = valorNumerico(document.getElementById('investidoExtra').value);
-  const totalInvestido = dados.totalContribuicao + investidoExtra;
-  // Percentual em relação ao máximo permitido (12% da renda bruta)
+  const investidoExtraInput = document.getElementById('investidoExtra');
+  let novoInvestimento = valorNumerico(investidoExtraInput.value);
+
+  // Acumula o valor investido
+  investidoExtraAcumulado += novoInvestimento;
+
+  // Limpa o campo após somar
+  investidoExtraInput.value = '';
+
+  const totalInvestido = dados.totalContribuicao + investidoExtraAcumulado;
   const maximo = dados.totalSalario * 0.12;
   let percentual = maximo > 0 ? (totalInvestido / maximo) * 12 : 0;
   if (percentual > 12) percentual = 12;
   atualizarBarraContribuicao(percentual);
+
+  // Atualiza o valor "Falta investir"
+  const faltaInvestir = maximo - totalInvestido;
+  const faltaInvestirSpan = document.getElementById('valorFaltaInvestir');
+  if (faltaInvestirSpan) {
+    faltaInvestirSpan.textContent = 'R$ ' + Math.max(0, faltaInvestir).toLocaleString('pt-BR', {minimumFractionDigits:2});
+  }
 }
+
+function abrirModalSimulacao() {
+  if (validarTela2()) {
+    // Só abre o modal se estiver tudo válido
+    const modal = new bootstrap.Modal(document.getElementById('modalExemplo'));
+    modal.show();
+  }
+  // Se não estiver válido, os avisos já aparecem nos campos
+}
+
+document.getElementById('btnSeguirSimulacao').addEventListener('click', function() {
+  // Só segue se a tela 2 estiver válida
+  if (validarTela2()) {
+    const modal = bootstrap.Modal.getInstance(document.getElementById('modalExemplo'));
+    modal.hide();
+    telaAtual = 2;
+    mostrarTela(telaAtual);
+    calcularResultado(); // se quiser calcular ao avançar
+  }
+  // Se não estiver válido, não faz nada (avisos já aparecem)
+});
+
+
 </script>
 
 </body>
