@@ -77,6 +77,16 @@
     }
 
 
+    /* Cor do círculo do passo ativo */
+    .step.ativo .circle {
+      background: #2584c6;
+      color: #fff !important;
+      border-color: #2584c6;
+      transition: background 0.2s;
+    }
+  
+
+
 
     .step.ativo {
       position: relative;
@@ -84,6 +94,19 @@
       z-index: 1;
       right: 0;
     }
+
+    .step:first-child .circle {
+    background: #2584c6;
+    color: #fff !important;
+    border-color: #2584c6;
+  }
+
+  /* Só pinta o círculo azul, sem fundo/seta do passo */
+.circle.circle-azul {
+  background: #2584c6 !important;
+  color: #fff !important;
+  border-color: #2584c6 !important;
+}
 
     /* Seta branca só aparece em telas grandes */
     @media (min-width: 992px) {
@@ -216,7 +239,7 @@
         border: 1px solid #2584c6;
         background-color: #fff;
         color: #2584c6;
-        padding: 1% 8%;
+        padding: 10px 8%;
         font-size: 15px;
         border-radius: 10px;
         text-decoration: none;
@@ -248,51 +271,119 @@
 
     .tituloTopo{
       width: 100%;
-      height: 20vh;
-      background-color: #2584c6;
-      align-items: center;
-      display: flex;
-      justify-content: center;
+      height: auto;
+      padding: 3% 0% 2.5% 0%;
+      background: linear-gradient(500deg, #2584c6 0%, #2e8dd1 90%);
+      text-align: center;
     }
 
     .tituloTopo h4{
-      text-align: left !important;
+      text-align: center !important;
       color: #fff !important;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .tituloTopo p{
+      text-align: center !important;
+      color: #fff !important;
+      font-size: 0.9rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     }
 
 
     /* form */
     .barraProgresso {
-      width: 100%;
-      margin-bottom: 5%;
-      align-items: center;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 18px;
+  margin: auto auto 50px auto;
+  padding: 0;
+}
+
+.barraProgresso .col-4 {
+  flex: 1 1 0;
+  max-width: 120px;
+  min-width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.progresso {
+  width: 48px;
+  height: 12px;
+  border-radius: 8px;
+  background: #e0e0e0;
+  transition: background 0.2s;
+}
+
+.progresso.ativo {
+  background: #2584c6;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
 
     .progresso {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
       height: 10px;
       width: 100%;
       background: #ffffff;
-      border-radius: 2px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+      border-radius: 15px;
     }
 
     .prog-telaUm.ativo,
     .prog-telaDois.ativo,
     .prog-telaTres.ativo {
       background: #2584c6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
 
+
+    .colTexto{
+      background-color: #2583c61a;
+      border-left: 5px solid #2584c6;
+      border-radius: 5px;
+      text-align: left;
+      margin: 0% 0% 3% 0%;
+      padding: 2%;
+      color: #3f3f3f;
+      font-size: 15px;
+    }
+
+    .colTexto h4{
+      font-size: 18px;
+      color: #2584c6;
+      font-weight: bold;
+    }
+
+    .colTitulo-card h5{
+      color: #2584c6;
+      font-size: 1.15rem;
+    }
 
     .linha{
       padding: 3% 2.5% 5% 2.5%;
       background-color: #fff;
-      border-radius: 15px;
+      border-radius: 5px;
       margin-bottom: 3%;
     }
 
     .linhaDois{
       padding: 3% 2.5% 5% 2.5%;
       background-color: #fff;
-      border-radius: 15px;
+      border-radius: 5px;
       margin-bottom: 2.5%;
     }
 
@@ -326,6 +417,7 @@
 
     .btn-primary{
       background-color: #2584c6;
+      padding: 0.5% 5%;
     }
 
     .btn-primary:hover{
@@ -369,11 +461,31 @@
 
 
 
+    .modal-content{
+      border-left: 10px solid #2584c6 !important;
+    }
 
 
+    .modal-footer{
+      border: none !important;
+      margin-top: -5%;
+    }
 
+    .modal-footer .btn{
+      color: #2584c6;
+      background: transparent;
+    }
 
+    .modal-header{
+      color: #2584c6;
+    }
 
+    .modal-header .close{
+      border: none;
+      background: transparent;
+      color: #2584c6;
+      font-size: 1.5rem;
+    }
 
 
 
@@ -403,66 +515,60 @@
 
     /* ------------ TELA 3 --------------- */
 
-    .barra-tracinhos {
-      display: flex;
-      gap: 4px;
-      height: 32px;
-      align-items: center;
-      margin-top: 8px;
-    }
-    .tracinho {
-      flex: 1;
-      height: 100%;
-      border-radius: 4px;
-      background: #e0e0e0;
-      border: 1px solid #ccc;
-      transition: background 0.3s;
-    }
-    .tracinho.preenchido {
-      background: #2584c6;
-      border-color: #2584c6;
-    }
-    .tracinho.maximo {
-      background: #198754;
-      border-color: #198754;
-    }
 
 
     .cardTotal {
       justify-content: center;
       display: flex;
       align-items: center;
+      padding: 10px 40px !important;
+      background-color: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      margin: auto;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
 
     /* Moderniza os cards de cenário */
 .cardResultado-Um, .cardResultado-Dois {
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 4px 24px #0001;
   padding: 2rem 1.5rem 1.5rem 1.5rem;
-  margin: 1rem 0.5rem;
-  transition: box-shadow 0.2s;
-  width: 100%;
-  height: auto;
+  transition: box-shadow 0.2s, transform 0.2s;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  border: 1px solid #e0e0e0;
+  align-items: stretch;
 }
+
+.cardConteudo p,
+.cardLinha-Um,
+.cardLinha-Dois,
+.cardLinha-Tres {
+  padding: 0.6rem 1.5rem !important;
+}
+
+/* .cardResultado-Um:hover, .cardResultado-Dois:hover {
+  box-shadow: 0 8px 32px #2584c633;
+  transform: translateY(-2px) scale(1.01);
+} */
 
 .cardTitulo {
-  font-size: 1.15rem;
-  font-weight: bold;
-  color: #2584c6;
+  font-size: 1.25rem;
+  color: #2584c6 !important;
+  background: transparent;
   margin-bottom: 1.2rem;
   letter-spacing: 0.5px;
+  padding-left: 12px;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  min-height: 48px;
 }
 
-
+.left i, .cardLinha-Um i{
+  color: #2584c6;
+  margin-right: 8px;
+}
 
 .cardConteudo {
   display: flex;
@@ -474,20 +580,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
-  background: #f7f7f7;
-  border-radius: 6px;
-  padding: 0.5rem 0.8rem;
+  font-size: 1.05rem;
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
   margin-bottom: 0.5rem;
+  transition: background 0.2s;
 }
 
-.cardLinha-Um, .cardLinha-Dois, .cardLinha-Tres {
-  background: #2583c61a !important;
-  font-weight: bold;
+
+
+
+.cardLinha-Um {
+  background: #2583c621 !important;
   color: #2584c6;
 }
 
-
+.cardLinha-Dois, .cardLinha-Tres {
+  background: #2584c6 !important;
+  color: #ffffff;
+  text-align: center !important;
+  justify-content: center !important;
+  align-items: center !important;
+  display: flex !important;
+}
 
 @media (max-width: 990px) {
   .cardResultado-Um, .cardResultado-Dois {
@@ -496,10 +611,24 @@
     min-height: 0;
   }
   .cardConteudo p {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     padding: 0.4rem 0.5rem;
   }
 }
+
+.cardTitulo {
+  font-size: 1.15rem;
+  color: #2584c6;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+
+
 
     .left{
       padding: 0px 6px !important;
@@ -544,16 +673,151 @@
  
 
     .rowFinal{
-      padding: 5%;
-      background-color: #fff;
       margin-top: 5rem;
       border-radius: 12px;
-      width: 98%;
     }
 
 
     .investido-extra{
       margin-top: 2%;
+    }
+
+    
+.barra-tracinhos {
+  display: flex;
+  gap: 4px;
+  height: 32px;
+  align-items: center;
+  margin-top: 8px;
+}
+.tracinho {
+  flex: 1;
+  height: 100%;
+  border-radius: 4px;
+  background: #e0e0e0;
+  border: 1px solid #ccc;
+  transition: background 0.3s;
+}
+.tracinho.preenchido {
+  background: #2584c6;
+  border-color: #2584c6;
+}
+.tracinho.maximo {
+  background: #198754;
+  border-color: #198754;
+}
+.tracinho.vermelho {
+  background: #e74c3c;
+  border-color: #e74c3c;
+}
+.tracinho.amarelo {
+  background: #f7c948;
+  border-color: #f7c948;
+}
+.tracinho.azul {
+  background: #2584c6;
+  border-color: #2584c6;
+}
+.tracinho.verde {
+  background: #198754;
+  border-color: #198754;
+}
+
+.barra-contribuicao{
+  margin-top: 5%;
+}
+
+.borderFim{
+  border: 1px solid #2583c6;
+}
+
+.buttonFim{
+  color: #fff;
+  background-color: #2584c6;
+}
+
+.faltaInvestir{
+  color: #2583c6 !important;
+}
+
+
+/* Linha fina vertical entre os dois lados do card comparativo */
+.cardResultado-Um {
+  border-right: 1px solid #2583c65e;
+  padding-right: 24px;
+}
+
+.cardResultado-Dois {
+  padding-left: 24px;
+}
+
+
+
+
+@media (max-width: 990px) {
+  .cardResultado-Um {
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding-right: 0;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+  .cardResultado-Dois {
+    padding-left: 0;
+  }
+}
+
+    body {
+      background-color: #f8f9fc;
+      font-family: "Segoe UI", sans-serif;
+    }
+    .form-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+      margin-bottom: 2rem;
+      overflow: hidden;
+      border: 1px solid #e3e6ed;
+    }
+    .form-card-header {
+      background: linear-gradient(90deg, #0069d9, #0088ff);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .form-card-body {
+      padding: 2rem;
+    }
+    .input-group-text {
+      background-color: #f1f5fb;
+      border: 1px solid #d8dee9;
+      border-right: none;
+      color: #0069d9;
+    }
+    .form-control, .form-select {
+      border-radius: 10px;
+      border: 1px solid #d8dee9;
+      font-size: 0.95rem;
+      padding: 0.65rem 1rem;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: #0069d9;
+      box-shadow: 0 0 0 0.25rem rgba(0, 105, 217, 0.15);
+    }
+    .btn-custom {
+      background: linear-gradient(90deg, #0069d9, #0088ff);
+      color: white;
+      border-radius: 10px;
+      padding: 0.8rem 1.6rem;
+      font-weight: 500;
+      border: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 8px rgba(0, 105, 217, 0.25);
+    }
+    .btn-custom:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0, 105, 217, 0.3);
     }
 
     
