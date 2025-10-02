@@ -674,7 +674,7 @@ function calcularResultado() {
             <div class="cardConteudo">
               <p class="left"><strong style="font-weight: 500;"><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> ${dados.totalSalario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong style="font-weight: 500;"><i class="bi bi-shield-lock"></i>INSS:</strong> ${dados.totalINSS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
-              <p class="left"><strong style="font-weight: 500;"><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> ${dados.descontoDependentes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="left"><strong style="font-weight: 500;"><i class="bi bi-people"></i>Dependentes:</strong> ${dados.descontoDependentes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="cardLinha-Um"><strong style="font-weight: 500;"><i class="bi bi-gem"></i>Contribuição FUNEPP:</strong> ${dados.totalContribuicao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong style="font-weight: 500;"><i class="bi bi-calculator"></i>Base de Cálculo:</strong> ${baseLegal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="cardLinha-Dois"><strong style="font-weight: 500;">IRRF Final: ${irLegal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></p>
@@ -684,7 +684,7 @@ function calcularResultado() {
             <div class="cardConteudo">
               <p class="left"><strong style="font-weight: 500;"><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> ${dados.totalSalario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong style="font-weight: 500;"><i class="bi bi-shield-lock"></i>INSS:</strong> ${dados.totalINSS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
-              <p class="left"><strong style="font-weight: 500;"><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> ${dados.descontoDependentes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="left"><strong style="font-weight: 500;"><i class="bi bi-people"></i>Dependentes:</strong> ${dados.descontoDependentes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="cardLinha-Um"><strong style="font-weight: 500;"><i class="bi bi-gem"></i>Contribuição 12%:</strong> ${contribuicao12.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong style="font-weight: 500;"><i class="bi bi-calculator"></i>Base de Cálculo:</strong> ${baseLegalFunepp.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="cardLinha-Tres"><strong style="font-weight: 500;">IRRF Final: ${irLegalFunepp.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></p>
@@ -811,7 +811,7 @@ function calcularResultado() {
           id="investidoExtra" 
           class="form-control border-0" 
           style="color: #2584c6;"
-          placeholder="Digite o valor já investido (R$)"
+          placeholder="Digite o valor (R$)"
           aria-describedby="btnAtualizar"
         />
         <button type="button" class="btn btn-primary buttonFim" onclick="atualizarBarraComInvestido()">Atualizar</button>
@@ -828,7 +828,7 @@ function calcularResultado() {
 
 <div class="row">
   <div class="col-12 d-flex justify-content-end">
-    <button id="btnBaixarPDF" class="btn btn-primary mt-4" onclick="baixarSimulacaoPDF()">Baixar PDF da Simulação</button>
+    <button id="btnBaixarPDF" class="btn btn-primary mt-4" style="color: #2584c6; background-color: transparent; border: none;" onclick="baixarSimulacaoPDF()">Baixar PDF da Simulação</button>
   </div>
 </div>
 
