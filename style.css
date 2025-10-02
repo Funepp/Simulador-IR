@@ -357,7 +357,7 @@
       border-radius: 5px;
       text-align: left;
       margin: 0% 0% 3% 0%;
-      padding: 2%;
+      padding: 5% 6%;
       color: #3f3f3f;
       font-size: 15px;
     }
@@ -373,7 +373,7 @@
       border-radius: 5px;
       text-align: left;
       margin: 0% 0% 3% 0%;
-      padding: 2%;
+      padding: 5% 6%;
       color: #d7efff;
       font-size: 15px;
     }
@@ -886,5 +886,39 @@
 @media (min-width: 1600px) {
   .divImg img {
     max-width: 65%;
+  }
+}
+
+@media (max-width: 600px) {
+  .rowTotal {
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex;
+    align-items: stretch !important;
+    justify-content: center !important;
+    padding: 10% !important;
+  }
+  .cardTotal {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    display: block !important;
+  }
+  .cardResultado-Um, .cardResultado-Dois {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+  .cardConteudo {
+    padding: 0 !important;
+  }
+  .conteudo, .espacoConteudo {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
