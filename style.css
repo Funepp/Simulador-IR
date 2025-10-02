@@ -357,7 +357,7 @@
       border-radius: 5px;
       text-align: left;
       margin: 0% 0% 3% 0%;
-      padding: 5% 6%;
+      padding: 3% 4.5%;
       color: #3f3f3f;
       font-size: 15px;
     }
@@ -373,7 +373,7 @@
       border-radius: 5px;
       text-align: left;
       margin: 0% 0% 3% 0%;
-      padding: 5% 6%;
+      padding: 3% 4.5%;
       color: #d7efff;
       font-size: 15px;
     }
@@ -922,4 +922,33 @@
     padding-left: 12px !important;
     padding-right: 12px !important;
   }
+
+
+  
+    .colTexto{
+      background-color: #2583c61a;
+      border-left: 5px solid #2584c6;
+      border-radius: 5px;
+      text-align: left;
+      margin: 0% 0% 3% 0%;
+      padding: 5%;
+      color: #3f3f3f;
+      font-size: 15px;
+    }
+
+    .colTexto h4{
+      font-size: 18px;
+      color: #2584c6;
+      font-weight: bold;
+    }
+
+    .colResultado{
+      background-color: #2583c6;
+      border-radius: 5px;
+      text-align: left;
+      margin: 0% 0% 3% 0%;
+      padding: 5%;
+      color: #d7efff;
+      font-size: 15px;
+    }
 }
