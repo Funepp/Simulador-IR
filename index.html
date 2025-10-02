@@ -11,6 +11,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
   <div class="container-fluid">
@@ -82,7 +84,7 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">                      
                       <label class="form-label">
                         Mês Inicial
-                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Mês de início do período (padrão)." style="cursor:pointer; color:#2584c6; margin-left:4px;">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
                             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
@@ -111,7 +113,7 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                       <label class="form-label">
                         Mês Final
-                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Mês de finalização do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
                             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
@@ -142,7 +144,7 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                       <label class="form-label">
                         Salário
-                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Informe o valor bruto do seu salário ou renda mensal, sem descontos." style="cursor:pointer; color:#2584c6; margin-left:4px;">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
                             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
@@ -151,10 +153,10 @@
                         </span>
                       </label>
                       <div class="input-group">
-  <span class="input-group-text"><i class="bi bi-cash"></i></span>
-  <input type="text" class="form-control salario" placeholder="Salário">
-</div>
-<div class="msg-erro"></div>
+                        <span class="input-group-text"><i class="bi bi-cash"></i></span>
+                        <input type="text" class="form-control salario" placeholder="Salário">
+                      </div>
+                      <div class="msg-erro"></div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
 
@@ -162,7 +164,7 @@
 
                       <label class="form-label">
                           Você possui Preser ou ATS?
-                          <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                          <span data-bs-toggle="tooltip" data-bs-placement="top" title="Se você recebe Preser ou ATS, marque 'Sim' e informe o valor mensal." style="cursor:pointer; color:#2584c6; margin-left:4px;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                               <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
                               <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
@@ -172,20 +174,19 @@
                       </label>
                       <br>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="preserAts" id="sim" onclick="mostrarDiv()">
-                        <label class="form-check-label" for="sim">Sim</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="preserAts" id="nao" onclick="mostrarDiv2()">
-                        <label class="form-check-label" for="nao">Não</label>
-                      </div>
-                      <div class="msg-erro" id="erro-preser"></div>
+  <input class="form-check-input preser-sim" type="radio" name="preserAts" onclick="mostrarDiv(event)">
+<label class="form-check-label">Sim</label>
 
-                      <div class="renda" id="renda" style="display:none;">
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input preser-nao" type="radio" name="preserAts" onclick="mostrarDiv2(event)">
+<label class="form-check-label">Não</label>
+</div>
+<div class="renda" style="display:none;">
                         <br>
                         <label class="form-label">
                           Renda Extra
-                          <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                          <span data-bs-toggle="tooltip" data-bs-placement="top" title="Informe o valor do Preser e/ou ATS." style="cursor:pointer; color:#2584c6; margin-left:4px;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                               <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
                               <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
@@ -211,7 +212,7 @@
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label class="form-label">
                       Dependentes
-                      <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                      <span data-bs-toggle="tooltip" data-bs-placement="top" title="Informe o número de dependentes para dedução no cálculo do IRRF. Se não houver, informe 0." style="cursor:pointer; color:#2584c6; margin-left:4px;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                           <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
                           <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
@@ -228,7 +229,7 @@
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label class="form-label">
                       Outras Rendas
-                      <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                      <span data-bs-toggle="tooltip" data-bs-placement="top" title="Se houver, inclua outras fontes de renda mensal além do salário." style="cursor:pointer; color:#2584c6; margin-left:4px;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                           <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
                           <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
@@ -281,7 +282,7 @@
                     </div>
                       <div class="col-md-4">
                         <label class="form-label">Mês inicial</label>
-                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Mês de início do período (padrão)." style="cursor:pointer; color:#2584c6; margin-left:4px;">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
                             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
@@ -308,7 +309,7 @@
                       </div>
                       <div class="col-md-4">
                         <label class="form-label">Mês final</label>
-                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Mês de finalização do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
                             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
@@ -337,7 +338,7 @@
                       <br><br><br><br>
                       <div class="col-md-4">
                         <label class="form-label">Contribuição %</label>
-                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione o mês de início do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Indique o percentual do salário que você contribui para a FUNEPP." style="cursor:pointer; color:#2584c6; margin-left:4px;">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
                             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
@@ -416,7 +417,14 @@
                   </div>
                 </div>
 
-                
+                <div class="row">
+                    <div class="col-12 colResultado">
+                      <h4>Resultado da simulação</h4>
+                      <p>Veja abaixo o resultado da sua simulação. Os valores apresentados são estimativas baseadas nos dados informados e servem apenas para referência. Para informações detalhadas e análise personalizada, consulte a FUNEPP.</p>
+                    </div>
+                </div>
+
+
                 <button type="button" class="temporario" style="display: none;" onclick="mostrarDiferenca()">Ver diferença entre simplificado e comum</button>
 
                 <div id="resultadoContainer" style="display:none; flex-direction:column; margin-top:20px;">
@@ -449,6 +457,8 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="script.js"></script>
   <script>
     
     function valorNumerico(valor) {
@@ -486,20 +496,21 @@ function calcularTotais() {
   const linhas = document.querySelectorAll("#areaPeriodos .linha");
   const outrasRendas = valorNumerico(document.querySelector(".outrasRendas")?.value);
 
-  linhas.forEach(linha => {
-    const inicio = parseInt(linha.querySelector(".inicio").value);
-    const fim = parseInt(linha.querySelector(".fim").value);
-    const salario = valorNumerico(linha.querySelector(".salario").value);
-    const rendaExtraInput = linha.querySelector(".renda input");
-    const rendaExtra = rendaExtraInput ? valorNumerico(rendaExtraInput.value) : 0;
+linhas.forEach(linha => {
+  const inicio = parseInt(linha.querySelector(".inicio").value);
+  const fim = parseInt(linha.querySelector(".fim").value);
+  const salario = valorNumerico(linha.querySelector(".salario").value);
+  const rendaExtraInput = linha.querySelector(".renda input");
+  const rendaExtra = rendaExtraInput ? valorNumerico(rendaExtraInput.value) : 0;
 
-    const mesesTrabalhados = fim - inicio + 1;
-    totalMeses += mesesTrabalhados;
+  const mesesTrabalhados = fim - inicio + 1;
+  console.log(`Período: ${inicio} a ${fim} = ${mesesTrabalhados} meses, Salário: ${salario}, Renda Extra: ${rendaExtra}, Total: ${(salario + rendaExtra) * mesesTrabalhados}`);
 
-    const rendaTotalLinha = salario + rendaExtra;
-    totalSalario += rendaTotalLinha * mesesTrabalhados;
-    totalINSS += calcularINSSMensal(rendaTotalLinha) * mesesTrabalhados;
-  });
+  totalMeses += mesesTrabalhados;
+  const rendaTotalLinha = salario + rendaExtra;
+  totalSalario += rendaTotalLinha * mesesTrabalhados;
+  totalINSS += calcularINSSMensal(rendaTotalLinha) * mesesTrabalhados;
+});
 
   // Soma outras rendas para todos os meses
   totalSalario += outrasRendas * totalMeses;
@@ -579,7 +590,7 @@ function exibirResultado(titulo, dados, base, ir, descontoSimplificado = false) 
   const baseComFunepp = base - contribuicao12;
   const irComFunepp = calcularIR(baseComFunepp);
 
-  const contribuicaoHtmlFunepp = `<p><strong>Contribuição FUNEPP (12%):</strong> R$ ${contribuicao12.toFixed(2)}</p>`;
+  const contribuicaoHtmlFunepp = `<p><strong>Contribuição (12%):</strong> R$ ${contribuicao12.toFixed(2)}</p>`;
 
   corpoNormal.innerHTML = `
     <h5>${titulo}</h5>
@@ -611,6 +622,7 @@ function exibirResultado(titulo, dados, base, ir, descontoSimplificado = false) 
 function calcularResultado() {
   const dados = calcularTotais();
 
+
   // --- CENÁRIOS COM DEDUÇÕES LEGAIS ---
   const baseLegal = dados.baseLegal;
   const irLegal = calcularIR(baseLegal);
@@ -639,6 +651,20 @@ function calcularResultado() {
 
   // Se o comum for melhor, mostra os blocos comuns; se o simplificado for melhor, mostra os blocos simplificados
   let melhorRow = "";
+
+  // ...dentro da função calcularResultado...
+
+  let economia = 0;
+  if ((mediaComum + mediaComumFunepp) <= (mediaSimplificado + mediaSimplificadoFunepp)) {
+    // Cenário legal é melhor
+    economia = irLegal - irLegalFunepp;
+  } else {
+    // Cenário simplificado é melhor
+    economia = irSimplificado - irSimplificadoFunepp;
+  }
+
+
+
   if ((mediaComum + mediaComumFunepp) <= (mediaSimplificado + mediaSimplificadoFunepp)) {
     melhorRow = `
       <div class="row mt-4 rowTotal">
@@ -646,32 +672,26 @@ function calcularResultado() {
           <div class="cardResultado-Um col-xl-6 col-lg-6 col-md-12 col-sm-12">
             <div class="cardTitulo">CENÁRIO ATUAL - ANUAL</div>
             <div class="cardConteudo">
-              <p class="left"><strong><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-              <p class="left"><strong><i class="bi bi-shield-lock"></i>INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
-              <p class="left"><strong><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>
-              <p class="cardLinha-Um"><strong><i class="bi bi-gem"></i>Contribuição FUNEPP:</strong> R$ ${dados.totalContribuicao.toFixed(2)}</p>
-              <p class="left"><strong><i class="bi bi-calculator"></i>Base de Cálculo:</strong> R$ ${baseLegal.toFixed(2)}</p>
-              <p class="cardLinha-Dois"><strong>IRRF Final: R$ ${irLegal.toFixed(2)}</strong></p>
+              <p class="left"><strong style="font-weight: 500;"><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> ${dados.totalSalario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="left"><strong style="font-weight: 500;"><i class="bi bi-shield-lock"></i>INSS:</strong> ${dados.totalINSS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="left"><strong style="font-weight: 500;"><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> ${dados.descontoDependentes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="cardLinha-Um"><strong style="font-weight: 500;"><i class="bi bi-gem"></i>Contribuição FUNEPP:</strong> ${dados.totalContribuicao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="left"><strong style="font-weight: 500;"><i class="bi bi-calculator"></i>Base de Cálculo:</strong> ${baseLegal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="cardLinha-Dois"><strong style="font-weight: 500;">IRRF Final: ${irLegal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></p>
             </div>
           </div> <div class="cardResultado-Dois col-xl-6 col-lg-6 col-md-12 col-sm-12">
             <div class="cardTitulo">CONTRIBUIÇÃO 12% - FUNEPP</div>
             <div class="cardConteudo">
-              <p class="left"><strong><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-              <p class="left"><strong><i class="bi bi-shield-lock"></i>INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
-              <p class="left"><strong><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>
-              <p class="cardLinha-Um"><strong><i class="bi bi-gem"></i>Contribuição FUNEPP (12%):</strong> R$ ${contribuicao12.toFixed(2)}</p>
-              <p class="left"><strong><i class="bi bi-calculator"></i>Base de Cálculo:</strong> R$ ${baseLegalFunepp.toFixed(2)}</p>
-              <p class="cardLinha-Tres"><strong>IRRF Final: R$ ${irLegalFunepp.toFixed(2)}</strong></p>
+              <p class="left"><strong style="font-weight: 500;"><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> ${dados.totalSalario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="left"><strong style="font-weight: 500;"><i class="bi bi-shield-lock"></i>INSS:</strong> ${dados.totalINSS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="left"><strong style="font-weight: 500;"><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> ${dados.descontoDependentes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="cardLinha-Um"><strong style="font-weight: 500;"><i class="bi bi-gem"></i>Contribuição 12%:</strong> ${contribuicao12.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="left"><strong style="font-weight: 500;"><i class="bi bi-calculator"></i>Base de Cálculo:</strong> ${baseLegalFunepp.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="cardLinha-Tres"><strong style="font-weight: 500;">IRRF Final: ${irLegalFunepp.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></p>
             </div>
           </div>
         </div>
       </div>
-      <!--
-      <div class="col-12 economia">
-          <p>Você pode economizar <span>R$ ${(irSimplificado - irSimplificadoFunepp).toFixed(2)}</span> em Imposto de Renda por ano se investir <span>12%</span> na FUNEPP.</p>
-          <p></p>
-      </div>
-      -->
     `;
   } else {
     melhorRow = `
@@ -680,31 +700,27 @@ function calcularResultado() {
           <div class="cardResultado-Um col-xl-6 col-lg-6 col-md-12 col-sm-12">
             <div class="cardTitulo">CENÁRIO ATUAL - ANUAL</div>
             <div class="cardConteudo">
-              <p class="left"><strong><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-              <p class="left"><strong><i class="bi bi-shield-lock"></i>INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
-              <p class="left"><strong><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>
-              <p class="cardLinha-Um"><strong><i class="bi bi-gem"></i>Contribuição FUNEPP:</strong> R$ ${dados.totalContribuicao.toFixed(2)}</p>
-              <p class="left"><strong><i class="bi bi-calculator"></i>Base de Cálculo:</strong> R$ ${baseSimplificado.toFixed(2)}</p>
-              <p class="cardLinha-Dois"><strong>IRRF Final: R$ ${irSimplificado.toFixed(2)}</strong></p>
+              <p class="left"><strong><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> ${dados.totalSalario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="left"><strong><i class="bi bi-shield-lock"></i>INSS:</strong> ${dados.totalINSS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="left"><strong><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> ${dados.descontoDependentes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="cardLinha-Um"><strong><i class="bi bi-gem"></i>Contribuição FUNEPP:</strong> ${dados.totalContribuicao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="left"><strong><i class="bi bi-calculator"></i>Base de Cálculo:</strong> ${baseSimplificado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="cardLinha-Dois"><strong>IRRF Final: ${irSimplificado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></p>
             </div>
           </div>
           <div class="cardResultado-Dois col-xl-6 col-lg-6 col-md-12 col-sm-12">
             <div class="cardTitulo">CONTRIBUIÇÃO 12% - FUNEPP</div>
             <div class="cardConteudo">
-              <p class="left"><strong><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-              <p class="left"><strong><i class="bi bi-shield-lock"></i>INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
-              <p class="left"><strong><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>
-              <p class="cardLinha-Um"><strong><i class="bi bi-gem"></i>Contribuição FUNEPP (12%):</strong> R$ ${contribuicao12.toFixed(2)}</p>
-              <p class="left"><strong><i class="bi bi-calculator"></i>Base de Cálculo:</strong> R$ ${baseSimplificadoFunepp.toFixed(2)}</p>
-              <p class="cardLinha-Tres"><strong>IRRF Final: R$ ${irSimplificadoFunepp.toFixed(2)}</strong></p>
+              <p class="left"><strong><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> ${dados.totalSalario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="left"><strong><i class="bi bi-shield-lock"></i>INSS:</strong> ${dados.totalINSS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="left"><strong><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> ${dados.descontoDependentes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="cardLinha-Um"><strong><i class="bi bi-gem"></i>Contribuição FUNEPP (12%):</strong> ${contribuicao12.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="left"><strong><i class="bi bi-calculator"></i>Base de Cálculo:</strong> ${baseSimplificadoFunepp.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+              <p class="cardLinha-Tres"><strong>IRRF Final: ${irSimplificadoFunepp.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></p>
             </div>
           </div>
         </div>
 
-        
-        <div class="col-12 economia">
-          <p>Você pode economizar <span>R$ ${(irSimplificado - irSimplificadoFunepp).toFixed(2)}</span> em Imposto de Renda por ano se investir <span>12%</span> na FUNEPP.</p>
-        </div>
       </div>
     `;
   }
@@ -727,7 +743,7 @@ function calcularResultado() {
         <div id="corpoResultadoLegalFunepp" class="col-6">
           <h5>CONTRIBUIÇÃO 12% - FUNEPP (deduções legais)</h5>
           <p><strong>Renda Bruta Total Anual:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-          <p><strong>Contribuição FUNEPP (12%):</strong> R$ ${contribuicao12.toFixed(2)}</p>
+          <p><strong>Contribuição 12%:</strong> R$ ${contribuicao12.toFixed(2)}</p>
           <p><strong>Nova Base de Cálculo:</strong> R$ ${baseLegalFunepp.toFixed(2)}</p>
           <p><strong>IRRF Final Anual:</strong> R$ ${irLegalFunepp.toFixed(2)}</p>
           <p><strong>Média IRRF Mensal:</strong> R$ ${mediaComumFunepp.toFixed(2)}</p>
@@ -747,7 +763,7 @@ function calcularResultado() {
         <div id="corpoResultadoSimplificadoFunepp" class="col-6">
           <h5>CONTRIBUIÇÃO 12% - FUNEPP (simplificado)</h5>
           <p><strong>Renda Bruta Total Anual:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-          <p><strong>Contribuição FUNEPP (12%):</strong> R$ ${contribuicao12.toFixed(2)}</p>
+          <p><strong>Contribuição 12%:</strong> R$ ${contribuicao12.toFixed(2)}</p>
           <p><strong>Nova Base de Cálculo:</strong> R$ ${baseSimplificadoFunepp.toFixed(2)}</p>
           <p><strong>IRRF Final Anual:</strong> R$ ${irSimplificadoFunepp.toFixed(2)}</p>
           <p><strong>Média IRRF Mensal:</strong> R$ ${mediaSimplificadoFunepp.toFixed(2)}</p>
@@ -764,18 +780,18 @@ function calcularResultado() {
     <div class="row rowFinal align-items-center gy-4">
   <div class="col-12">
     <div class="falta-investir p-4 bg-white rounded-4 shadow-sm">
-      <strong class="tituloFim">Para atingir o benefício fiscal máximo:</strong>
+      <strong class="d-block mb-3 fs-5 text-dark">Para atingir o benefício fiscal máximo:</strong>
       <div class="fs-6 text-secondary">
         Falta investir
         <span id="valorFaltaInvestir" style="color:#2584c6; font-weight:600;">
-          R$ ${faltaInvestir.toLocaleString('pt-BR', {minimumFractionDigits:2})}
+          ${(faltaInvestir).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
         </span>
         em FUNEPP.
       </div>
       <div>
         <span id="valorInvestidoExtra" style="color:#2584c6; font-weight:500;"></span>
       </div>
-
+      <hr>
       <div class="barra-contribuicao">
         <label for="barraContribuicao" class="form-label fw-semibold mb-3">
           Sua % de contribuição na FUNEPP:
@@ -802,6 +818,18 @@ function calcularResultado() {
       </div>
     </div>
   </div>
+
+  <div class="col-12 economia">
+  <p>Você pode economizar <span>
+    ${economia.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+  </span> em Imposto de Renda por ano se investir <span>12%</span> na FUNEPP.</p>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-12 d-flex justify-content-end">
+    <button id="btnBaixarPDF" class="btn btn-primary mt-4" onclick="baixarSimulacaoPDF()">Baixar PDF da Simulação</button>
+  </div>
 </div>
 
 
@@ -809,7 +837,15 @@ function calcularResultado() {
   `;
   container.style.display = "block";
 
-document.getElementById('investidoExtra').value = '';
+// ...dentro da função calcularResultado, após container.innerHTML = ...
+
+const investidoExtraInput = document.getElementById('investidoExtra');
+if (investidoExtraInput) {
+  investidoExtraInput.value = '';
+  investidoExtraInput.addEventListener('input', function() {
+    formatarMoedaBRL(this);
+  });
+}
 atualizarBarraComInvestido();
 
   
@@ -924,32 +960,62 @@ function atualizarPasso(num) {
   }
 
   // Aplica o evento nos campos já existentes
-document.querySelectorAll('.salario, .renda, .outrasRendas').forEach(function(input) {
+document.querySelectorAll('.salario, .outrasRendas, .renda input').forEach(function(input) {
   input.addEventListener('input', function() {
     formatarMoedaBRL(this);
   });
 });
 
   // Função para criar nova linha copiando a anterior
-  function criarNovaLinha(mesInicio, linhaBase) {
-    const novaLinha = primeiraLinha.cloneNode(true); // copia tudo
+  // ...dentro da função criarNovaLinha...
+
+function criarNovaLinha(mesInicio, linhaBase) {
+  // ...dentro da função criarNovaLinha...
+
+const novaLinha = primeiraLinha.cloneNode(true);
+
+// Desmarca os radios "Preser ou ATS" na nova linha
+novaLinha.querySelectorAll('.preser-sim, .preser-nao').forEach(radio => {
+  radio.checked = false;
+});
+
+
+
+// ...restante do código...
+  // Gera um id único para o grupo de radios
+  const uniqueId = 'preserAts_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
+
+  // Atualiza o atributo name dos radios
+  novaLinha.querySelectorAll('input[type="radio"][name="preserAts"]').forEach((radio, idx) => {
+    radio.name = uniqueId;
+    // Atualiza também o id e o for do label para acessibilidade
+    radio.id = uniqueId + '_' + (idx === 0 ? 'sim' : 'nao');
+    const label = novaLinha.querySelector('label[for="' + (idx === 0 ? 'sim' : 'nao') + '"]');
+    if (label) label.setAttribute('for', radio.id);
+  });
+
+  // ...restante do código da função...
+  // ...existing code...
+
     const selectInicio = novaLinha.querySelector(".inicio");
     const selectFim = novaLinha.querySelector(".fim");
 
-      const checkboxSim = novaLinha.querySelector('#sim');
-  const checkboxNao = novaLinha.querySelector('#nao');
-  const divRenda = novaLinha.querySelector('#renda');
+// ...dentro da função criarNovaLinha...
 
-  if (checkboxSim && divRenda) {
-    checkboxSim.addEventListener('change', function() {
-      divRenda.style.display = checkboxSim.checked ? 'block' : 'none';
-    });
-  }
-  if (checkboxNao && divRenda) {
-    checkboxNao.addEventListener('change', function() {
-      divRenda.style.display = 'none';
-    });
-  }
+const checkboxSim = novaLinha.querySelector('.preser-sim');
+const checkboxNao = novaLinha.querySelector('.preser-nao');
+const divRenda = novaLinha.querySelector('.renda');
+
+if (checkboxSim && divRenda) {
+  checkboxSim.addEventListener('change', function() {
+    divRenda.style.display = checkboxSim.checked ? 'block' : 'none';
+  });
+}
+if (checkboxNao && divRenda) {
+  checkboxNao.addEventListener('change', function() {
+    divRenda.style.display = 'none';
+  });
+}
 
     // Ajusta opções do mês inicial
     for (let i = 0; i < selectInicio.options.length; i++) {
@@ -972,11 +1038,13 @@ document.querySelectorAll('.salario, .renda, .outrasRendas').forEach(function(in
     inicializarTooltips(novaLinha);
 
     // Evento de formatação
-    novaLinha.querySelectorAll('.salario, .renda').forEach(function(input) {
-      input.addEventListener('input', function() {
-        formatarMoedaBRL(this);
-      });
-    });
+    // ...dentro da função criarNovaLinha...
+
+novaLinha.querySelectorAll('.salario, .renda input').forEach(function(input) {
+  input.addEventListener('input', function() {
+    formatarMoedaBRL(this);
+  });
+});
 
     // Evento quando mudar mês final
     selectFim.addEventListener("change", () => {
@@ -987,6 +1055,16 @@ document.querySelectorAll('.salario, .renda, .outrasRendas').forEach(function(in
         criarNovaLinha(ultimoMes + 1, novaLinha);
       }
     });
+
+
+    // ...dentro da função criarNovaLinha...
+
+// Limpa valores
+novaLinha.querySelector(".salario").value = "";
+const rendaInput = novaLinha.querySelector(".renda input");
+if (rendaInput) rendaInput.value = ""; // <-- Limpa o campo "Renda Extra"
+
+
   }
 
   // Função para remover todas as linhas depois da escolhida
@@ -1194,17 +1272,30 @@ function validarTela1() {
   // }
 
   // Preser ou ATS (checkboxes)
-  const sim = document.getElementById("sim");
-  const nao = document.getElementById("nao");
-  const erroPreser = document.getElementById("erro-preser");
-  if (!sim.checked && !nao.checked) {
-    erroPreser.textContent = "Campo obrigatório";
-    erroPreser.style.color = "red";
-    erroPreser.style.fontSize = "0.85em";
+// ...dentro da função validarTela1...
+
+linhas.forEach(linha => {
+  // ...validação salário/renda...
+
+  // Validação dos radios Preser/ATS
+  const radioSim = linha.querySelector('.preser-sim');
+  const radioNao = linha.querySelector('.preser-nao');
+  const radios = [radioSim, radioNao];
+  const algumMarcado = radios.some(r => r && r.checked);
+
+  // Mensagem de erro (pode criar uma div .msg-erro logo após os radios)
+  let erroDiv = linha.querySelector('.msg-erro');
+  if (!algumMarcado) {
+    if (erroDiv) {
+      erroDiv.textContent = "Selecione se possui Preser ou ATS";
+      erroDiv.style.color = "red";
+      erroDiv.style.fontSize = "0.85em";
+    }
     valido = false;
   } else {
-    erroPreser.textContent = "";
+    if (erroDiv) erroDiv.textContent = "";
   }
+});
 
   // Pega o último "fim"
   const ultimoFim = linhas[linhas.length - 1].querySelector(".fim");
@@ -1218,12 +1309,6 @@ function validarTela1() {
   return valido;
 }
 
-document.getElementById("sim").addEventListener("change", function() {
-  document.getElementById("erro-preser").textContent = "";
-});
-document.getElementById("nao").addEventListener("change", function() {
-  document.getElementById("erro-preser").textContent = "";
-});
 
 
 
@@ -1293,27 +1378,23 @@ function proximaTela() {
 }
 
 
-  function mostrarDiv(){
-    var checkbox = document.getElementById('sim');
-    var div = document.getElementById('renda');
+// ...existing code...
 
-    if(checkbox.checked){
-      div.style.display = 'block';
-    }else{
-      div.style.display = 'none';
-    }
+function mostrarDiv(event) {
+  const linha = event.target.closest('.linha');
+  const divRenda = linha.querySelector('.renda');
+  if (event.target.checked) {
+    divRenda.style.display = 'block';
+  } else {
+    divRenda.style.display = 'none';
   }
+}
 
-  function mostrarDiv2(){
-    var checkbox2 = document.getElementById('sim');
-    var div2 = document.getElementById('renda');
-
-    if(checkbox2.checked){
-      div2.style.display = 'none';
-    }else{
-      div2.style.display = 'none';
-    }
-  }
+function mostrarDiv2(event) {
+  const linha = event.target.closest('.linha');
+  const divRenda = linha.querySelector('.renda');
+  divRenda.style.display = 'none';
+}
 
   function mostrarDiferenca(){
       var divDiferenca = document.getElementById('diferenca');
@@ -1371,42 +1452,62 @@ const irSimplificadoNova = calcularIR(baseSimplificadoNova);
   `;
 }
 
-function atualizarBarraContribuicao(percentual) {
+function atualizarBarraContribuicao(percentual, faltaInvestir) {
   const barra = document.getElementById('barraContribuicao');
-  barra.innerHTML = ''; // Limpa
+  barra.innerHTML = '';
 
-  // Define a cor para todas as barras preenchidas
+  let quadrados = Math.round(percentual);
+
+  // Nunca mostra 12% se faltaInvestir > 0
+  let texto;
+  if (faltaInvestir <= 0 && quadrados >= 12) {
+    quadrados = 12;
+    texto = '12%';
+  } else {
+    quadrados = Math.min(quadrados, 11);
+    texto = quadrados + '%';
+  }
+
+  // Define cor única para todos os quadrados pintados
   let corClasse = '';
-  if (percentual <= 4) {
+  if (quadrados < 5) {
     corClasse = 'vermelho';
-  } else if (percentual <= 7) {
+  } else if (quadrados < 8) {
     corClasse = 'amarelo';
-  } else if (percentual <= 11) {
+  } else if (quadrados < 12) {
     corClasse = 'azul';
-  } else if (percentual >= 12) {
+  } else {
     corClasse = 'verde';
   }
 
-  // Gera 12 tracinhos
   for (let i = 1; i <= 12; i++) {
     const div = document.createElement('div');
     div.classList.add('tracinho');
-    if (i <= Math.floor(percentual)) {
-      if (corClasse) div.classList.add(corClasse);
+    if (i <= quadrados) {
+      div.classList.add(corClasse);
     }
     barra.appendChild(div);
   }
 
-  // Texto embaixo (opcional)
-  let texto = percentual >= 12 ? '12% (máximo)' : percentual.toFixed(1).replace('.', ',') + '%';
-  if (!barra.nextElementSibling || !barra.nextElementSibling.classList.contains('barra-texto')) {
-    const span = document.createElement('div');
-    span.className = 'barra-texto';
-    span.style.marginTop = '6px';
-    span.style.fontWeight = 'bold';
-    barra.parentNode.appendChild(span);
+  // Cria/atualiza o texto ao lado da barra
+  if (!barra.parentNode.classList.contains('barra-flex')) {
+    const flexDiv = document.createElement('div');
+    flexDiv.className = 'barra-flex d-flex align-items-center gap-2';
+    barra.parentNode.insertBefore(flexDiv, barra);
+    flexDiv.appendChild(barra);
   }
-  barra.nextElementSibling.textContent = texto;
+
+  let barraFlex = barra.parentNode;
+  let textoDiv = barraFlex.querySelector('.barra-texto');
+  if (!textoDiv) {
+    textoDiv = document.createElement('div');
+    textoDiv.className = 'barra-texto';
+    textoDiv.style.fontWeight = 'bold';
+    textoDiv.style.minWidth = '48px';
+    textoDiv.style.color = '#2584c6';
+    barraFlex.insertBefore(textoDiv, barra);
+  }
+  textoDiv.textContent = texto;
 }
 
 let investidoExtraAcumulado = 0;
@@ -1416,23 +1517,22 @@ function atualizarBarraComInvestido() {
   const investidoExtraInput = document.getElementById('investidoExtra');
   let novoInvestimento = valorNumerico(investidoExtraInput.value);
 
-  // Acumula o valor investido
   investidoExtraAcumulado += novoInvestimento;
-
-  // Limpa o campo após somar
   investidoExtraInput.value = '';
 
   const totalInvestido = dados.totalContribuicao + investidoExtraAcumulado;
   const maximo = dados.totalSalario * 0.12;
-  let percentual = maximo > 0 ? (totalInvestido / maximo) * 12 : 0;
-  if (percentual > 12) percentual = 12;
-  atualizarBarraContribuicao(percentual);
-
-  // Atualiza o valor "Falta investir"
   const faltaInvestir = maximo - totalInvestido;
+
+  // Calcula percentual normalmente
+  let percentual = maximo > 0 ? (totalInvestido / maximo) * 12 : 0;
+
+  // Passa faltaInvestir para a barra
+  atualizarBarraContribuicao(percentual, faltaInvestir);
+
   const faltaInvestirSpan = document.getElementById('valorFaltaInvestir');
   if (faltaInvestirSpan) {
-    faltaInvestirSpan.textContent = 'R$ ' + Math.max(0, faltaInvestir).toLocaleString('pt-BR', {minimumFractionDigits:2});
+    faltaInvestirSpan.textContent = Math.max(0, faltaInvestir).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
 }
 
