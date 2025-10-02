@@ -368,6 +368,23 @@
       font-weight: bold;
     }
 
+    .colResultado{
+      background-color: #2583c6;
+      border-left: 5px solid #fff;
+      border-radius: 5px;
+      text-align: left;
+      margin: 0% 0% 3% 0%;
+      padding: 2%;
+      color: #d7efff;
+      font-size: 15px;
+    }
+
+    .colResultado h4{
+      font-size: 22px;
+      color: #fff;
+      font-weight: bold;
+    }
+
     .colTitulo-card h5{
       color: #2584c6;
       font-size: 1.15rem;
@@ -821,3 +838,23 @@
     }
 
     
+.barra-flex {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.barra-texto {
+  font-weight: bold;
+  color: #2584c6;
+  min-width: 48px;
+  font-size: 1.08rem;
+}
+
+.barra-tracinhos {
+  display: flex;
+  gap: 4px;
+  height: 22px;
+  align-items: center;
+  margin-top: 0px;
+  width: 700px; /* Adicione esta linha */
+}
