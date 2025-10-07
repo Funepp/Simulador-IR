@@ -6,6 +6,7 @@
     
     /* ------------- Sidebar ------------- */
     .espacoBanner {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
       overflow-x: hidden;
       background-color: #ffffff;
       color: #2584c6 !important;
@@ -67,7 +68,6 @@
 
     .step-title {
       color: #2584c6;
-      font-weight: 500;
     }
 
     /* passo ativo */
@@ -90,7 +90,7 @@
 
     .step.ativo {
       position: relative;
-      background-color: #f7f7f7d7;
+      background-color: #e3edf685;
       z-index: 1;
       right: 0;
     }
@@ -369,19 +369,19 @@
     }
 
     .colResultado{
-      background-color: #2583c6;
+      background-color: #fff;
+      border-left: 5px solid #2584c6;
       border-radius: 5px;
       text-align: left;
       margin: 0% 0% 3% 0%;
-      padding: 3% 4.5%;
-      color: #d7efff;
+      padding: 3% 5%;
+      color: #3f3f3f;
       font-size: 15px;
     }
 
     .colResultado h4{
       font-size: 22px;
-      color: #fff;
-      font-weight: bold;
+      color: #2583c6;
     }
 
     .colTitulo-card h5{
@@ -537,7 +537,6 @@
       justify-content: center;
       display: flex;
       align-items: center;
-      padding: 10px 40px !important;
       background-color: #fff;
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
@@ -671,13 +670,15 @@
       align-items: center;
     }
 
+
+
     .economia {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
       border-left: 10px solid #2584c6;
       padding: 1rem;
       background-color: #fff;
       border-radius: 5px;
       margin-top: 3rem;
-      width: 98%;
     }
 
     .economia span{
@@ -689,8 +690,13 @@
  
 
     .rowFinal{
-      margin-top: 5rem;
+      margin-top: 3.5rem;
       border-radius: 12px;
+    }
+
+    .rowFinal hr{
+      color: #2584c6 !important;
+      font-weight: bold !important;
     }
 
 
@@ -915,12 +921,14 @@
     margin: 0 !important;
     display: block !important;
   }
+  
   .cardConteudo {
     padding: 0 !important;
   }
-  .conteudo, .espacoConteudo {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
+
+  .conteudo {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
   }
 
 
@@ -943,12 +951,70 @@
     }
 
     .colResultado{
-      background-color: #2583c6;
+      background-color: #fff;
+      border-left: 5px solid #2584c6;
       border-radius: 5px;
       text-align: left;
       margin: 0% 0% 3% 0%;
       padding: 5%;
-      color: #d7efff;
+      color: #3f3f3f;
       font-size: 15px;
     }
+
+
+
+    .link{
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+
+    .link a{
+      border: 1px solid #2584c6;
+      background-color: #fff;
+      color: #2584c6;
+      padding: 1.5% 3%;
+      border-radius: 10px;
+      text-decoration: none;
+      margin: 0 5%;
+      text-align: center;
+      font-size: 75%;
+    }
+
+    .tituloTopo {
+        width: 100%;
+        height: auto;
+        padding: 8% 0%;
+        background: linear-gradient(500deg, #2584c6 0%, #2e8dd1 90%);
+        text-align: center;
+    }
+
+    .tituloTopo h4 {
+        text-align: center !important;
+        color: #fff !important;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.2;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .tituloTopo p {
+        text-align: center !important;
+        color: #fff !important;
+        font-size: 0.9rem;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+  
+}
+
+
+
+@media (min-width: 991px) {
+  .indicador .step {
+    margin-bottom: 15px;
+  }
+  .indicador .step:last-child {
+    margin-bottom: 0;
+  }
 }
