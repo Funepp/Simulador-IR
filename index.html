@@ -25,15 +25,15 @@
         </div>
         <div class="indicador row">
           <div class="step col-xl-12 col-lg-12 col-md-4 col-sm-4">
-            <div class="circle">1</div>
-            <span class="step-title">Dados</span>
+            <div class="circle"><i class="bi bi-wallet2"></i></div>
+            <span class="step-title">Salário</span>
           </div>
           <div class="step col-xl-12 col-lg-12 col-md-4 col-sm-4">
-            <div class="circle">2</div>
+            <div class="circle"><i class="bi bi-percent"></i></div>
             <span class="step-title">Contribuição</span>
           </div>
           <div class="step col-xl-12 col-lg-12 col-md-4 col-sm-4">
-            <div class="circle">3</div>
+            <div class="circle"><i class="bi bi-bar-chart-line"></i></div>
             <span class="step-title">Resultado</span>
           </div>
         </div>
@@ -44,6 +44,7 @@
       </div>
 
       <!-- Conteúdo -->
+       
       <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 d-flex">
         <div class="espacoConteudo">
           <form id="formulario">
@@ -55,17 +56,7 @@
                 <p>Contribuições e benefícios de forma simples</p>
               </div>
               <div class="conteudo col-12">
-                <div class="row barraProgresso justify-content-center">
-                  <div class="col-4">
-                    <div class="progresso prog-telaUm"></div>
-                  </div>
-                  <div class="col-4">
-                    <div class="progresso prog-telaDois"></div>
-                  </div>
-                  <div class="col-4">
-                    <div class="progresso prog-telaTres"></div>
-                  </div>
-                </div>
+                
 
                 <div class="row">
                   <div class="col-12 colTexto">
@@ -256,17 +247,7 @@
                 <p>Contribuições e benefícios de forma simples</p>
               </div>
               <div class="conteudo col-12">
-                  <div class="row barraProgresso justify-content-center">
-                    <div class="col-4">
-                      <div class="progresso prog-telaUm"></div>
-                    </div>
-                    <div class="col-4">
-                      <div class="progresso prog-telaDois"></div>
-                    </div>
-                    <div class="col-4">
-                      <div class="progresso prog-telaTres"></div>
-                    </div>
-                  </div>
+                  
                   <div id="areaPeriodosTela2">
                     <!-- Primeira linha já no HTML -->
                     <div class="row">
@@ -405,17 +386,7 @@
                 <p>Contribuições e benefícios de forma simples</p>
               </div>
               <div class="conteudo col-12">
-                <div class="row barraProgresso justify-content-center">
-                  <div class="col-4">
-                    <div class="progresso prog-telaUm"></div>
-                  </div>
-                  <div class="col-4">
-                    <div class="progresso prog-telaDois"></div>
-                  </div>
-                  <div class="col-4">
-                    <div class="progresso prog-telaTres"></div>
-                  </div>
-                </div>
+                
 
                 <div class="row">
                     <div class="col-12 colResultado">
@@ -446,9 +417,21 @@
 
                 <br><br><br>
 
-                <button type="button" class="btn btn-secondary btnVoltar" onclick="voltarTela()">&larr; Voltar</button>
-                </div>
-            </div>
+                <div class="d-flex justify-content-between mt-4">
+                  <button type="button" class="btn btn-secondary btnVoltar" onclick="voltarTela()">
+                    &larr; Voltar
+                  </button>
+
+
+
+                  <!-- Botão para acionar modal -->
+<!-- Botão Simular -->
+<button type="button" class="btn btn-primary" style="color: #2584c6; background-color: transparent; border: none;" onclick="baixarSimulacaoPDF(event)">Baixar PDF da Simulação</button>
+
+
+</div>
+
+</div>
             
           </form>
         </div>
@@ -777,7 +760,10 @@ function calcularResultado() {
     
 
     <!-- Bloco bonito para quanto falta investir, barra e campo de valor já investido -->
+
+
     <div class="row rowFinal align-items-center gy-4">
+          <hr>
   <div class="col-12">
     <div class="falta-investir p-4 bg-white rounded-4 shadow-sm">
       <strong class="d-block mb-3 fs-5 text-dark">Para atingir o benefício fiscal máximo:</strong>
@@ -800,7 +786,7 @@ function calcularResultado() {
       </div>
     </div>
   </div>
-  <div class="col-12">
+  <div class="col-12 economiaTotal">
     <div class="investido-extra p-4 bg-white rounded-4 shadow-sm">
       <label for="investidoExtra" class="form-label fw-semibold mb-3">
         Você investiu algum valor extra na FUNEPP?
@@ -826,11 +812,7 @@ function calcularResultado() {
 </div>
 </div>
 
-<div class="row">
-  <div class="col-12 d-flex justify-content-end">
-    <button id="btnBaixarPDF" type="button" class="btn btn-primary mt-4" style="color: #2584c6; background-color: transparent; border: none;" onclick="baixarSimulacaoPDF(event)">Baixar PDF da Simulação</button>
-  </div>
-</div>
+
 
 
 
@@ -869,17 +851,6 @@ atualizarBarraComInvestido();
     // chama função que pinta o passo certo
     atualizarPasso(num);
 
-    // Atualiza as barras de progresso
-    document.querySelectorAll('.prog-telaUm, .prog-telaDois, .prog-telaTres').forEach(el => el.classList.remove('ativo'));
-    if (num >= 0) {
-      document.querySelectorAll('.prog-telaUm').forEach(el => el.classList.add('ativo'));
-    }
-    if (num >= 1) {
-      document.querySelectorAll('.prog-telaDois').forEach(el => el.classList.add('ativo'));
-    }
-    if (num >= 2) {
-      document.querySelectorAll('.prog-telaTres').forEach(el => el.classList.add('ativo'));
-    }
 
     
 // Mostra a barra só na tela 3 (índice 2)
