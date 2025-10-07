@@ -939,7 +939,7 @@
       border-radius: 5px;
       text-align: left;
       margin: 0% 0% 3% 0%;
-      padding: 5%;
+      padding: 5% 4.5%;
       color: #3f3f3f;
       font-size: 15px;
     }
@@ -1017,4 +1017,19 @@
   .indicador .step:last-child {
     margin-bottom: 0;
   }
+  
+}
+
+
+@media (min-width: 1200px) {
+
+  .colTexto{
+      background-color: #2583c61a;
+      border-radius: 5px;
+      text-align: left;
+      margin: 0% 0% 3% 0%;
+      padding: 1.5% 3%;
+      color: #3f3f3f;
+      font-size: 15px;
+    }
 }
