@@ -347,7 +347,7 @@
 
                   <!-- Botão para acionar modal -->
 <!-- Botão Simular -->
-<button type="button" class="btn btn-primary" onclick="abrirModalSimulacao()">
+<button type="button" class="btn btn-primary btn-direita" onclick="abrirModalSimulacao()">
   Simular
 </button>
 
@@ -650,7 +650,7 @@ function calcularResultado() {
 
   if ((mediaComum + mediaComumFunepp) <= (mediaSimplificado + mediaSimplificadoFunepp)) {
     melhorRow = `
-      <div class="row mt-4 rowTotal">
+      <div class="row rowTotal">
         <div id="corpoResultadoNormalMelhor" class="row cardTotal">
           <div class="cardResultado-Um col-xl-6 col-lg-6 col-md-12 col-sm-12">
             <div class="cardTitulo">CENÁRIO ATUAL - ANUAL</div>
@@ -762,10 +762,40 @@ function calcularResultado() {
     <!-- Bloco bonito para quanto falta investir, barra e campo de valor já investido -->
 
 
-    <div class="row rowFinal align-items-center gy-4">
-          <hr>
+     <div class="row rowFinal align-items-center gy-4">
+    <!-- substitui o <hr> feio por um separador estilizado -->
+    <div class="separator"><span>Contribuição FUNEPP</span></div>
+
+    <div class="col-12 economiaTotal">
+    <div class="investido-extra p-4 bg-white shadow-sm">
+      <!-- Novo label com tooltip (mesma estilização do Salário) -->
+      <label class="form-label">
+        Você investiu algum valor extra na FUNEPP?
+        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Informe um valor para simular um aporte extra (não acumulativo)." style="cursor:pointer; color:#2584c6; margin-left:4px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
+            <circle cx="8" cy="4.5" r="1"/>
+          </svg>
+        </span>
+      </label>
+
+      <!-- Input com aparência consistente (removei o botão "Atualizar") -->
+      <div class="input-group rounded-3 borderFim">
+        <span class="input-group-text"><i class="bi bi-coin"></i></span>
+        <input
+          type="text"
+          id="investidoExtra"
+          class="form-control investido-input"
+          placeholder="Digite o valor (R$)"
+          aria-label="Investimento extra"
+        />
+      </div>
+    </div>
+  </div>
+
   <div class="col-12">
-    <div class="falta-investir p-4 bg-white rounded-4 shadow-sm">
+    <div class="falta-investir p-4 bg-white shadow-sm">
       <strong class="d-block mb-3 fs-5 text-dark">Para atingir o benefício fiscal máximo:</strong>
       <div class="fs-6 text-secondary">
         Falta investir
@@ -786,24 +816,7 @@ function calcularResultado() {
       </div>
     </div>
   </div>
-  <div class="col-12 economiaTotal">
-    <div class="investido-extra p-4 bg-white rounded-4 shadow-sm">
-      <label for="investidoExtra" class="form-label fw-semibold mb-3">
-        Você investiu algum valor extra na FUNEPP?
-      </label>
-      <div class="input-group rounded-3 borderFim">
-        <input 
-          type="text" 
-          id="investidoExtra" 
-          class="form-control border-0" 
-          style="color: #2584c6;"
-          placeholder="Digite o valor (R$)"
-          aria-describedby="btnAtualizar"
-        />
-        <button type="button" class="btn btn-primary buttonFim" onclick="atualizarBarraComInvestido()">Atualizar</button>
-      </div>
-    </div>
-  </div>
+ 
 
   <div class="col-12 economia">
   <p>Você pode economizar <span>
@@ -817,7 +830,10 @@ function calcularResultado() {
 
 
   `;
-  container.style.display = "block";
+ container.style.display = "block";
+
+  // Inicializa tooltips do Bootstrap para o conteúdo dinâmico da tela 3
+  inicializarTooltips(container);
 
 // ...dentro da função calcularResultado, após container.innerHTML = ...
 
@@ -922,6 +938,8 @@ function atualizarPasso(num) {
     });
   });
 
+  
+
   // Função para formatar como moeda BRL
   function formatarMoedaBRL(input) {
     let valor = input.value.replace(/\D/g, "");
@@ -966,7 +984,7 @@ novaLinha.querySelectorAll('.preser-sim, .preser-nao').forEach(radio => {
   });
 
   // ...restante do código da função...
-  // ...existing code...
+  
 
     const selectInicio = novaLinha.querySelector(".inicio");
     const selectFim = novaLinha.querySelector(".fim");
@@ -1349,7 +1367,7 @@ function proximaTela() {
 }
 
 
-// ...existing code...
+
 
 function mostrarDiv(event) {
   const linha = event.target.closest('.linha');
@@ -1481,31 +1499,56 @@ function atualizarBarraContribuicao(percentual, faltaInvestir) {
   textoDiv.textContent = texto;
 }
 
-let investidoExtraAcumulado = 0;
+
+
+// ... remove acumulador antigo ...
+
+// let investidoExtraAcumulado = 0;
+
 
 function atualizarBarraComInvestido() {
   const dados = calcularTotais();
   const investidoExtraInput = document.getElementById('investidoExtra');
-  let novoInvestimento = valorNumerico(investidoExtraInput.value);
+  // NÃO acumulativo: cada valor digitado é um "simulado" que substitui o anterior
+  const aporteSimulado = investidoExtraInput ? valorNumerico(investidoExtraInput.value) : 0;
 
-  investidoExtraAcumulado += novoInvestimento;
-  investidoExtraInput.value = '';
-
-  const totalInvestido = dados.totalContribuicao + investidoExtraAcumulado;
+  const aporteAtual = dados.totalContribuicao;
   const maximo = dados.totalSalario * 0.12;
-  const faltaInvestir = maximo - totalInvestido;
+  // faltaInvestir calculado sempre a partir do estado atual + aporteSimulado (não acumulado)
+  const faltaInvestir = maximo - (aporteAtual + aporteSimulado);
 
-  // Calcula percentual normalmente
-  let percentual = maximo > 0 ? (totalInvestido / maximo) * 12 : 0;
+  // percentual relativo ao total (aprove atual + aporteSimulado)
+  const percentual = maximo > 0 ? ((aporteAtual + aporteSimulado) / maximo) * 12 : 0;
 
-  // Passa faltaInvestir para a barra
+  // atualiza barra e texto
   atualizarBarraContribuicao(percentual, faltaInvestir);
 
   const faltaInvestirSpan = document.getElementById('valorFaltaInvestir');
   if (faltaInvestirSpan) {
     faltaInvestirSpan.textContent = Math.max(0, faltaInvestir).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
+
+  // atualiza texto auxiliar com o valor simulado (opcional)
+  const valorInvestidoExtra = document.getElementById('valorInvestidoExtra');
+  if (valorInvestidoExtra) {
+    if (aporteSimulado > 0) {
+      valorInvestidoExtra.textContent = `Simulado: ${aporteSimulado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
+    } else {
+      valorInvestidoExtra.textContent = '';
+    }
+  }
 }
+
+// opcional: atualiza a barra ao digitar (melhora UX)
+document.addEventListener('input', function (e) {
+  if (e.target && e.target.id === 'investidoExtra') {
+    // formata valor enquanto digita
+    formatarMoedaBRL(e.target);
+    atualizarBarraComInvestido();
+  }
+});
+
+
 
 function abrirModalSimulacao() {
   if (validarTela2()) {
@@ -1527,6 +1570,58 @@ document.getElementById('btnSeguirSimulacao').addEventListener('click', function
   }
   // Se não estiver válido, não faz nada (avisos já aparecem)
 });
+
+
+
+
+// Adicione esta função (pode ficar perto das outras funções utilitárias)
+function resetSimulationState() {
+  // zera acumulados que podem ter sido alterados em execuções anteriores
+  investidoExtraAcumulado = 0;
+
+  // limpa inputs/visuais relacionados a aportes simulados
+  const investidoExtraInput = document.getElementById('investidoExtra');
+  if (investidoExtraInput) investidoExtraInput.value = '';
+
+  const valorInvestidoExtra = document.getElementById('valorInvestidoExtra');
+  if (valorInvestidoExtra) valorInvestidoExtra.textContent = '';
+
+  const resultadoAporteExtra = document.getElementById('resultadoAporteExtra');
+  if (resultadoAporteExtra) resultadoAporteExtra.innerHTML = '';
+
+  // esconde/limpa a área de resultado para forçar recálculo limpo
+  const resultadoContainer = document.getElementById('resultadoContainer');
+  if (resultadoContainer) {
+    resultadoContainer.style.display = 'none';
+    resultadoContainer.innerHTML = '';
+  }
+}
+
+// Substitua o listener atual do botão #btnSeguirSimulacao por este:
+document.getElementById('btnSeguirSimulacao').addEventListener('click', function(event) {
+  // evita comportamento padrão (por segurança)
+  if (event && event.preventDefault) event.preventDefault();
+
+  // valida a Tela 2 antes de prosseguir
+  if (!validarTela2()) return;
+
+  // reinicializa o estado como se a página tivesse sido recarregada
+  resetSimulationState();
+
+  // fecha o modal
+  const modal = bootstrap.Modal.getInstance(document.getElementById('modalExemplo'));
+  if (modal) modal.hide();
+
+  // vai para a tela 3
+  telaAtual = 2;
+  mostrarTela(telaAtual);
+
+  // pequeno atraso para garantir que DOM esteja atualizado antes do cálculo
+  setTimeout(() => {
+    calcularResultado();
+  }, 50);
+});
+
 
 
 </script>
