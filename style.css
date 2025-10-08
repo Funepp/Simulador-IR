@@ -433,7 +433,6 @@
 
     .btn-primary{
       background-color: #2584c6;
-      padding: 0.5% 5%;
     }
 
     .btn-primary:hover{
@@ -534,12 +533,12 @@
 
 
     .cardTotal {
+      box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
       justify-content: center;
       display: flex;
       align-items: center;
       background-color: #fff;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 5px !important;
       width: 100%;
       margin: auto;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -673,7 +672,7 @@
 
 
     .economia {
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      box-shadow: rgba(0, 0, 0, 0.075) 0px 0.125rem 0.25rem !important;
       border-left: 10px solid #2584c6;
       padding: 1rem;
       background-color: #fff;
@@ -761,6 +760,40 @@
 .faltaInvestir{
   color: #2583c6 !important;
 }
+
+.falta-investir, .investido-extra{
+  border-radius: 5px;
+}
+
+.investido-extra .form-label {
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.investido-extra .input-group-text {
+  background-color: #f1f5fb;
+  border: 1px solid #d8dee9;
+  color: #0069d9;
+  border-radius: 10px 0 0 10px;
+}
+
+.investido-input {
+  border-radius: 0 10px 10px 0;
+  color: #2584c6;
+  border: 1px solid #d8dee9;
+  border-left: none;
+  padding: 0.65rem 1rem;
+}
+
+/* manutenção de responsividade e espaçamento */
+@media (max-width: 600px) {
+  .investido-extra .input-group-text { padding: 0.5rem; }
+  .investido-input { padding: 0.5rem; font-size: 0.95rem; }
+}
+/* ...existing code... */
 
 .text-dark{
   font-size: 1.1rem !important;
@@ -907,6 +940,8 @@
     padding-right: 0 !important;
   }
   .cardTotal {
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+    border-radius: 5px !important;
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
@@ -1005,6 +1040,21 @@
         font-size: 0.9rem;
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     }
+
+
+    .linha{
+      padding: 5% 2.5%;
+      background-color: #fff;
+      border-radius: 5px;
+      margin-bottom: 3%;
+    }
+
+    .linhaDois{
+      padding: 5% 2.5%;
+      background-color: #fff;
+      border-radius: 5px;
+      margin-bottom: 2.5%;
+    }
   
 }
 
@@ -1033,3 +1083,41 @@
       font-size: 15px;
     }
 }
+
+
+.separator{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 1.25rem 0;
+  width: 100%;
+}
+.separator span {
+  color: #2583c6;
+  font-size: 1.2rem;
+  padding: 0 10px;
+  border-radius: 6px;
+}
+
+/* linhas laterais */
+.separator::before,
+.separator::after{
+  content: "";
+  flex: 1 1 0;
+  height: 1px;
+  background: #2583c6;
+  min-width: 30px;
+}
+
+/* ajuste para mobile: remove texto central e mantém apenas a linha */
+@media (max-width: 600px) {
+  .separator span { display: none; }
+  .separator { margin: 0.75rem 0; }
+  .separator::before, .separator::after { background: #ececec; }
+}
+
+/* um pouco mais de respiro entre rowTotal e a área de aportes */
+.rowFinal { padding-top: 0.5rem; }
+.economiaTotal, .falta-investir { margin-top: 0.5rem; }
+/* ...existing code... */
