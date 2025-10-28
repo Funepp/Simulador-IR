@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simulador de Contribuição FUNEPP</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous">
+  </script>
+
   <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
+
 <body>
   <div class="container-fluid">
     <div class="row rowGeral">
@@ -21,7 +33,7 @@
       <!-- Sidebar -->
       <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 espacoBanner">
         <div class="divImg">
-            <img src="Logo_baixa.PNG" alt="Logo FUNEPP">
+          <img src="Logo_baixa.PNG" alt="Logotipo da FUNEPP - Fundação Nestlé de Previdência Privada">
         </div>
         <div class="indicador row">
           <div class="step col-xl-12 col-lg-12 col-md-4 col-sm-4">
@@ -44,7 +56,6 @@
       </div>
 
       <!-- Conteúdo -->
-       
       <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 d-flex">
         <div class="espacoConteudo">
           <form id="formulario">
@@ -53,40 +64,48 @@
             <div class="tela mostrar row">
               <div class="tituloTopo col-12">
                 <h4>Simulador Incentivo Fiscal</h4>
-                <p>Contribuições e benefícios de forma simples</p>
+                <p>Veja o quanto você pode economizar com seu plano da Funepp</p>
               </div>
               <div class="conteudo col-12">
-                
+
 
                 <div class="row">
                   <div class="col-12 colTexto">
                     <h4>Faça sua simulação</h4>
-                    <p>Descubra como investir na FUNEPP pode aumentar seus benefícios fiscais e reduzir o valor do seu Imposto de Renda. Preencha os dados abaixo e veja o impacto direto na sua economia anual.</p>
+                    <p>O participante da Funepp tem o valor das suas contribuições deduzidas da base de cálculo do
+                      Imposto de Renda para os casos de declaração anual completa.
+                      O valor máximo dessa dedução representa 12% de todos os valores recebidos no ano (salário, preser,
+                      adicional de tempo de serviço, etc).
+                    </p>
                   </div>
                 </div>
 
                 <div id="areaPeriodos">
-                  <!-- Primeira linha já no HTML -->
                   <div class="row linha">
                     <div class="col-12 colTitulo-card">
                       <h5>Períodos de Salário</h5>
                       <hr>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">                      
+
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                       <label class="form-label">
-                        Mês Inicial
-                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Mês de início do período (padrão)." style="cursor:pointer; color:#2584c6; margin-left:4px;">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
-                            <circle cx="8" cy="4.5" r="1"/>
+                        Início do período
+                        <span data-bs-toggle="tooltip" data-bs-placement="top"
+                          title="Mês de início do período (padrão)."
+                          style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-info-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                            <path
+                              d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z" />
+                            <circle cx="8" cy="4.5" r="1" />
                           </svg>
                         </span>
                       </label>
                       <div class="input-group">
                         <span class="input-group-text"><i class="bi bi-calendar"></i></span>
                         <select class="form-select inicio" disabled>
-                          <option value="0" selected>Janeiro</option>
+                          <option value="0">Janeiro</option>
                           <option value="1">Fevereiro</option>
                           <option value="2">Março</option>
                           <option value="3">Abril</option>
@@ -103,19 +122,23 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                       <label class="form-label">
-                        Mês Final
-                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Mês de finalização do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
-                            <circle cx="8" cy="4.5" r="1"/>
+                        Fim do período
+                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Mês de finalização do período."
+                          style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-info-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                            <path
+                              d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z" />
+                            <circle cx="8" cy="4.5" r="1" />
                           </svg>
                         </span>
                       </label>
                       <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                        <span class="input-group-text"><i class="bi bi-calendar"></i></span>
                         <select class="form-select fim">
-                          <option value="0" selected>Janeiro</option>
+                          <option value="" selected disabled>Selecione um mês</option>
+                          <option value="0">Janeiro</option>
                           <option value="1">Fevereiro</option>
                           <option value="2">Março</option>
                           <option value="3">Abril</option>
@@ -131,308 +154,353 @@
                       </div>
                       <div class="msg-erro"></div>
                     </div>
-                    <br><br><br><br>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+
+                    
+
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" style="margin-top: 3.5%;">
                       <label class="form-label">
-                        Salário
-                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Informe o valor bruto do seu salário ou renda mensal, sem descontos." style="cursor:pointer; color:#2584c6; margin-left:4px;">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
-                            <circle cx="8" cy="4.5" r="1"/>
+                        Salário mensal (valor bruto)
+                        <span data-bs-toggle="tooltip" data-bs-placement="top"
+                          title="Informe o valor bruto do seu salário ou renda mensal, sem descontos."
+                          style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-info-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                            <path
+                              d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z" />
+                            <circle cx="8" cy="4.5" r="1" />
                           </svg>
                         </span>
                       </label>
                       <div class="input-group">
                         <span class="input-group-text"><i class="bi bi-cash"></i></span>
-                        <input type="text" class="form-control salario" placeholder="Salário">
-                      </div>
+                        <input type="text" class="form-control salario" placeholder="Salário" aria-label="Digite o valor do seu salário mensal bruto">                      </div>
                       <div class="msg-erro"></div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
 
-                      
 
-                      <label class="form-label">
-                          Você possui Preser ou ATS?
-                          <span data-bs-toggle="tooltip" data-bs-placement="top" title="Se você recebe Preser ou ATS, marque 'Sim' e informe o valor mensal." style="cursor:pointer; color:#2584c6; margin-left:4px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                              <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-                              <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
-                              <circle cx="8" cy="4.5" r="1"/>
-                            </svg>
-                          </span>
+
+                      <label class="form-label" style="margin-top: 7.5%;">
+                        Você possui Preser ou ATS?
+                        <span data-bs-toggle="tooltip" data-bs-placement="top"
+                          title="Se você recebe Preser ou ATS, marque 'Sim' e informe o valor mensal."
+                          style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-info-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                            <path
+                              d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z" />
+                            <circle cx="8" cy="4.5" r="1" />
+                          </svg>
+                        </span>
                       </label>
                       <br>
-                      <div class="form-check form-check-inline">
-  <input class="form-check-input preser-sim" type="radio" name="preserAts" onclick="mostrarDiv(event)">
-<label class="form-check-label">Sim</label>
+                      <div class="form-check form-check-inline" >
+                        <input class="form-check-input preser-sim" type="radio" name="preserAts"
+                          onclick="mostrarDiv(event)">
+                        <label class="form-check-label">Sim</label>
 
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input preser-nao" type="radio" name="preserAts" onclick="mostrarDiv2(event)">
-<label class="form-check-label">Não</label>
-</div>
-<div class="renda" style="display:none;">
-                        <br>
-                        <label class="form-label">
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input preser-nao" type="radio" name="preserAts"
+                          onclick="mostrarDiv2(event)">
+                        <label class="form-check-label">Não</label>
+                      </div>
+                      <div class="renda" style="display:none;">
+                        
+                        <label class="form-label" style="margin-top: 7.5%;">
                           Renda Extra
-                          <span data-bs-toggle="tooltip" data-bs-placement="top" title="Informe o valor do Preser e/ou ATS." style="cursor:pointer; color:#2584c6; margin-left:4px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                              <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-                              <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
-                              <circle cx="8" cy="4.5" r="1"/>
+                          <span data-bs-toggle="tooltip" data-bs-placement="top"
+                            title="Informe o valor do Preser e/ou ATS."
+                            style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                              class="bi bi-info-circle" viewBox="0 0 16 16">
+                              <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                              <path
+                                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z" />
+                              <circle cx="8" cy="4.5" r="1" />
                             </svg>
                           </span>
                         </label>
                         <div class="input-group">
                           <span class="input-group-text"><i class="bi bi-coin"></i></span>
-                          <input type="text" class="form-control" placeholder="Renda Extra">
+                          <input type="text" class="form-control" placeholder="Renda Extra" aria-label="Digite o valor da renda extra mensal (Preser ou ATS)">
                         </div>
+                        
                         <div class="msg-erro"></div>
                       </div>
                     </div>
                   </div>
-              </div>    
-        
+                </div>
+
                 <div class="row linhaDois">
                   <div class="col-12 colTitulo-card">
-                      <h5>Informações Adicionais</h5>
-                      <hr>
-                    </div>
+                    <h5>Informações Adicionais</h5>
+                    <hr>
+                  </div>
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label class="form-label">
                       Dependentes
-                      <span data-bs-toggle="tooltip" data-bs-placement="top" title="Informe o número de dependentes para dedução no cálculo do IRRF. Se não houver, informe 0." style="cursor:pointer; color:#2584c6; margin-left:4px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                          <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-                          <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
-                          <circle cx="8" cy="4.5" r="1"/>
+                      <span data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Informe o número de dependentes para dedução no cálculo do IR. Se não houver, informe 0."
+                        style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-info-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                          <path
+                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z" />
+                          <circle cx="8" cy="4.5" r="1" />
                         </svg>
                       </span>
                     </label>
                     <div class="input-group">
                       <span class="input-group-text"><i class="bi bi-people"></i></span>
-                      <input type="text" class="form-control dependentes" placeholder="Dependentes" max="10">
+                      <input type="text" class="form-control dependentes" placeholder="Dependentes" max="10" aria-label="Número de dependentes para dedução no IR">
                     </div>
                     <div class="msg-erro"></div>
                   </div>
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label class="form-label">
                       Outras Rendas
-                      <span data-bs-toggle="tooltip" data-bs-placement="top" title="Se houver, inclua outras fontes de renda mensal além do salário." style="cursor:pointer; color:#2584c6; margin-left:4px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                          <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-                          <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
-                          <circle cx="8" cy="4.5" r="1"/>
+                      <span data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Informe outras fontes de renda mensal além do salário."
+                        style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-info-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                          <path
+                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z" />
+                          <circle cx="8" cy="4.5" r="1" />
                         </svg>
                       </span>
                     </label>
                     <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-briefcase"></i></span>  
-                      <input type="text" class="form-control outrasRendas" placeholder="Outras Rendas">
+                      <span class="input-group-text"><i class="bi bi-briefcase"></i></span>
+                      <input type="text" class="form-control outrasRendas" placeholder="Outras Rendas" aria-label="Digite o valor de outras fontes de renda mensal">
                     </div>
-                    <!-- <div class="msg-erro"></div> -->
                   </div>
                 </div>
-        <button type="button" class="btn btn-primary btn-direita" onclick="proximaTela()">Próximo</button>
-        
-                </div>
-    </div>
+                <button type="button" class="btn btn-primary btn-direita" onclick="proximaTela()" aria-label="Avançar para a próxima tela">
+                  Próximo
+                </button>
+
+              </div>
+            </div>
 
             <!-- Tela 2 -->
             <div class="tela row">
               <div class="tituloTopo col-12">
                 <h4>Simulador Incentivo Fiscal</h4>
-                <p>Contribuições e benefícios de forma simples</p>
+                <p>Veja o quanto você pode economizar com seu plano da Funepp</p>
               </div>
               <div class="conteudo col-12">
-                  
-                  <div id="areaPeriodosTela2">
-                    <!-- Primeira linha já no HTML -->
-                    <div class="row">
+
+                <div id="areaPeriodosTela2">
+                  <!-- Primeira linha já no HTML -->
+                  <div class="row">
                     <div class="col-12 colTexto">
                       <h4>Suas Contribuições</h4>
-                      <p>Informe os períodos e percentuais de contribuição na FUNEPP para simular o impacto direto no seu benefício fiscal. Preencha os dados abaixo e veja como sua escolha pode aumentar sua economia no Imposto de Renda.</p>
+                      <p>Informe o seu percentual de contribuição na FUNEPP para simular e entender se já está
+                        aproveitando o máximo de dedução do IR.</p>
                     </div>
-                </div>
-                    <div class="row linha">
-                      <div class="col-12 colTitulo-card">
+                  </div>
+                  <div class="row linha">
+                    <div class="col-12 colTitulo-card">
                       <h5>Períodos de Contribuição</h5>
                       <hr>
                     </div>
-                      <div class="col-md-4">
-                        <label class="form-label">Mês inicial</label>
-                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Mês de início do período (padrão)." style="cursor:pointer; color:#2584c6; margin-left:4px;">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
-                            <circle cx="8" cy="4.5" r="1"/>
-                          </svg>
-                        </span>
-                        <div class="input-group">
-                          <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                          <select class="form-select inicio" disabled>
-                            <option value="0" selected>Janeiro</option>
-                            <option value="1">Fevereiro</option>
-                            <option value="2">Março</option>
-                            <option value="3">Abril</option>
-                            <option value="4">Maio</option>
-                            <option value="5">Junho</option>
-                            <option value="6">Julho</option>
-                            <option value="7">Agosto</option>
-                            <option value="8">Setembro</option>
-                            <option value="9">Outubro</option>
-                            <option value="10">Novembro</option>
-                            <option value="11">Dezembro</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <label class="form-label">Mês final</label>
-                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Mês de finalização do período." style="cursor:pointer; color:#2584c6; margin-left:4px;">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
-                            <circle cx="8" cy="4.5" r="1"/>
-                          </svg>
-                        </span>
-                        <div class="input-group">
-                          <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                          <select class="form-select fim">
-                            <option value="0" selected>Janeiro</option>
-                            <option value="1">Fevereiro</option>
-                            <option value="2">Março</option>
-                            <option value="3">Abril</option>
-                            <option value="4">Maio</option>
-                            <option value="5">Junho</option>
-                            <option value="6">Julho</option>
-                            <option value="7">Agosto</option>
-                            <option value="8">Setembro</option>
-                            <option value="9">Outubro</option>
-                            <option value="10">Novembro</option>
-                            <option value="11">Dezembro</option>
-                          </select>
-                        </div>
-                        <div class="msg-erro"></div>
-                      </div>
-                      <br><br><br><br>
-                      <div class="col-md-4">
-                        <label class="form-label">Contribuição %</label>
-                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Indique o percentual do salário que você contribui para a FUNEPP." style="cursor:pointer; color:#2584c6; margin-left:4px;">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
-                            <circle cx="8" cy="4.5" r="1"/>
-                          </svg>
-                        </span>
-                        <div class="input-group">
-                          <span class="input-group-text">%</span>
-                          <input type="number" class="form-control" placeholder="Contribuição %" min="0" max="12" step="1" style="border-radius: 0px 10px 10px 0px;">
-                          <br>
-                          <div class="msg-erro"></div>
-                        </div>
+
+                    <div class="col-md-4">
+                      <label class="form-label">Início do período</label>
+                      <span data-bs-toggle="tooltip" data-bs-placement="top" title="Mês de início do período (padrão)."
+                        style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-info-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                          <path
+                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z" />
+                          <circle cx="8" cy="4.5" r="1" />
+                        </svg>
+                      </span>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                        <select class="form-select inicio" disabled>
+                          <option value="0">Janeiro</option>
+                          <option value="1">Fevereiro</option>
+                          <option value="2">Março</option>
+                          <option value="3">Abril</option>
+                          <option value="4">Maio</option>
+                          <option value="5">Junho</option>
+                          <option value="6">Julho</option>
+                          <option value="7">Agosto</option>
+                          <option value="8">Setembro</option>
+                          <option value="9">Outubro</option>
+                          <option value="10">Novembro</option>
+                          <option value="11">Dezembro</option>
+                        </select>
                       </div>
                     </div>
-            </div>
-            <br><br>
+                    <div class="col-md-4">
+                      <label class="form-label">Fim do período</label>
+                      <span data-bs-toggle="tooltip" data-bs-placement="top" title="Mês de finalização do período."
+                        style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-info-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                          <path
+                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z" />
+                          <circle cx="8" cy="4.5" r="1" />
+                        </svg>
+                      </span>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                        <select class="form-select fim">
+                          <option value="" selected disabled>Selecione um mês</option>
+                          <option value="0">Janeiro</option>
+                          <option value="1">Fevereiro</option>
+                          <option value="2">Março</option>
+                          <option value="3">Abril</option>
+                          <option value="4">Maio</option>
+                          <option value="5">Junho</option>
+                          <option value="6">Julho</option>
+                          <option value="7">Agosto</option>
+                          <option value="8">Setembro</option>
+                          <option value="9">Outubro</option>
+                          <option value="10">Novembro</option>
+                          <option value="11">Dezembro</option>
+                        </select>
+                      </div>
+                      <div class="msg-erro"></div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                      <label class="form-label">Contribuição</label>
+                      <span data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Indique o percentual do salário que você contribui para a FUNEPP."
+                        style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-info-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                          <path
+                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z" />
+                          <circle cx="8" cy="4.5" r="1" />
+                        </svg>
+                      </span>
+
+                      <div class="input-group">
+                        <span class="input-group-text">%</span>
+                        <input type="number" class="form-control" placeholder="Contribuição %" min="0" max="12" step="1" style="border-radius: 0px 10px 10px 0px;" aria-label="Percentual de contribuição mensal na FUNEPP (de 0 a 12%)">
+                        <div class="msg-erro"></div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="row mt-3 linhaDois">
+                    <div class="col-12 colTitulo-card">
+                      <h5>Contribuição Voluntária</h5>
+                      <hr>
+                    </div>
+
+                    <div class="col-12">
+                      <label class="form-label">
+                        Contribuição voluntária já realizada neste ano
+                        <span data-bs-toggle="tooltip" data-bs-placement="top"
+                          title="Informe aportes voluntários já realizados além do percentual mensal (valor total acumulado no ano)."
+                          style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-info-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+                            <path
+                              d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z" />
+                            <circle cx="8" cy="4.5" r="1" />
+                          </svg>
+                        </span>
+                      </label>
+
+                      <div class="input-group">
+                        <span class="input-group-text">R$</span>
+                        <input type="text" id="contribuicaoExtra" class="form-control contribuicao-extra" placeholder="Contribuição Voluntária (R$)" aria-label="Valor total de Contribuição Voluntária já realizada neste ano em reais" />
+                      </div>
+                      <br>
+                    </div>
+                  </div>
+                </div>
 
 
                 <div class="d-flex justify-content-between mt-4">
-                  <button type="button" class="btn btn-secondary btnVoltar" onclick="voltarTela()">
+                  <button type="button" class="btn btn-secondary btnVoltar" onclick="voltarTela()" aria-label="Voltar para a tela anterior">
                     &larr; Voltar
                   </button>
 
+                  <button type="button" class="btn btn-primary btn-direita" onclick="abrirModalSimulacao()" aria-label="Abrir modal de confirmação para simulação">
+                    Simular
+                  </button>
 
+                  <!-- Modal -->
+                  <div class="modal fade" id="modalExemplo" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Atenção</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar modal de confirmação"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>O resultado apresentado é uma estimativa e pode variar conforme as informações e parâmetros
+                            inseridos.</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" id="btnSeguirSimulacao"
+                            onclick="proximoDaTela2()">Seguir para simulação</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-                  <!-- Botão para acionar modal -->
-<!-- Botão Simular -->
-<button type="button" class="btn btn-primary btn-direita" onclick="abrirModalSimulacao()">
-  Simular
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="modalExemplo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Aviso</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-      </div>
-      <div class="modal-body">
-        <p>Informamos que o resultado apresentado é apenas uma simulação e que poderá ser feito em diversos períodos do ano, mediante a análise de cada caso.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="btnSeguirSimulacao" onclick="proximoDaTela2()">Seguir para simulação</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-            </div>   
-            </div>
-
+              </div>
             </div>
 
             <!-- Tela 3 -->
             <div class="tela row">
               <div class="tituloTopo col-12 mb-3">
                 <h4>Simulador Incentivo Fiscal</h4>
-                <p>Contribuições e benefícios de forma simples</p>
+                <p>Veja o quanto você pode economizar com seu plano da Funepp</p>
               </div>
               <div class="conteudo col-12">
-                
 
                 <div class="row">
-                    <div class="col-12 colResultado">
-                      <h4>Resultado da simulação</h4>
-                      <p>Veja abaixo o resultado da sua simulação. Os valores apresentados são estimativas baseadas nos dados informados e servem apenas para referência. Para informações detalhadas e análise personalizada, consulte a FUNEPP.</p>
-                    </div>
+                  <div class="col-12 colResultado">
+                    <h4>Resultado da sua Simulação</h4>
+                    <p>Veja abaixo o resultado da sua simulação e entenda as oportunidades para garantir o máximo do
+                      benefício fiscal, seja pelo aumento do seu percentual mensal ou pela Contribuição Voluntária.</p>
+                  </div>
                 </div>
 
-
-                <button type="button" class="temporario" style="display: none;" onclick="mostrarDiferenca()">Ver diferença entre simplificado e comum</button>
-
+                <!-- Container para resultados -->
                 <div id="resultadoContainer" style="display:none; flex-direction:column; margin-top:20px;">
-                  <div id="corpoResultadoNormal"></div>
-                  <div id="corpoResultadoComFunepp"></div>
-                  <div id="maximoContainer" style="display:none;">
-                    
-                  </div>
-                  <div style="margin-top:24px;">
-                    <label for="aporteExtra" class="form-label">Simule um valor de aporte extra na FUNEPP:</label>
-                    <input type="text" id="aporteExtra" class="form-control" placeholder="Digite o valor (R$)">
-                    <button type="button" class="btn btn-primary mt-2" onclick="simularAporteExtra()">Simular IRRF com esse aporte</button>
-                  </div>
-                  <div id="resultadoAporteExtra"></div>
-                  
+
                 </div>
- 
 
-
-                <br><br><br>
+                
 
                 <div class="d-flex justify-content-between mt-4">
-                  <button type="button" class="btn btn-secondary btnVoltar" onclick="voltarTela()">
+                  <button type="button" class="btn btn-secondary btnVoltar" onclick="voltarTela()" aria-label="Voltar para a tela anterior">
                     &larr; Voltar
                   </button>
 
+                  <button type="button" class="btn btn-primary"
+                    style="color: #2584c6; background-color: transparent; border: none;"
+                    onclick="baixarSimulacaoPDF(event)" 
+                    aria-label="Baixar simulação em formato PDF">
+                    Baixar PDF da Simulação
+                  </button>
+                </div>
+              </div>
 
-
-                  <!-- Botão para acionar modal -->
-<!-- Botão Simular -->
-<button type="button" class="btn btn-primary" style="color: #2584c6; background-color: transparent; border: none;" onclick="baixarSimulacaoPDF(event)">Baixar PDF da Simulação</button>
-
-
-</div>
-
-</div>
-            
           </form>
         </div>
       </div>
@@ -440,739 +508,1050 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
   <script src="script.js"></script>
   <script>
-    
+
     function valorNumerico(valor) {
-  if (!valor) return 0;
-  return parseFloat(valor.replace(/\./g,'').replace(',', '.').replace(/[^\d.]/g,''));
-}
+      if (!valor) return 0;
+      return parseFloat(valor.replace(/\./g, '').replace(',', '.').replace(/[^\d.]/g, ''));
+    }
+
+
+    function calcularINSSMensal(salario) {
+      if (salario <= 1518.00) return salario * 0.075;
+      if (salario <= 2793.88) return salario * 0.09 - 22.77;
+      if (salario <= 4190.83) return salario * 0.12 - 106.59;
+      if (salario <= 8157.41) return salario * 0.14 - 190.40;
+      return 8157.41 * 0.14 - 190.40;
+    }
+
+    function calcularIR(baseAnual) {
+      const baseMensal = baseAnual / 12;
+      if (baseMensal <= 2428.80) return 0;
+      if (baseMensal <= 2826.65) return (baseMensal * 0.075 - 182.16) * 12;
+      if (baseMensal <= 3751.05) return (baseMensal * 0.15 - 394.16) * 12;
+      if (baseMensal <= 4664.68) return (baseMensal * 0.225 - 675.49) * 12;
+      return (baseMensal * 0.275 - 908.73) * 12;
+    }
+
+    function calcularTotais() {
+      let totalSalario = 0;
+      let totalINSS = 0;
+      let totalMeses = 0;
+      let totalContribuicao = 0;
+      let somaPercentual = 0;
+
+      // TELA 1: salários/rendas
+      const linhas = document.querySelectorAll("#areaPeriodos .linha");
+      const outrasRendas = valorNumerico(document.querySelector(".outrasRendas")?.value);
+
+      linhas.forEach(linha => {
+        const inicio = parseInt(linha.querySelector(".inicio").value);
+        const fim = parseInt(linha.querySelector(".fim").value);
+        const salario = valorNumerico(linha.querySelector(".salario").value);
+        const rendaExtraInput = linha.querySelector(".renda input");
+        const rendaExtra = rendaExtraInput ? valorNumerico(rendaExtraInput.value) : 0;
+
+        const mesesTrabalhados = fim - inicio + 1;
+
+        totalMeses += mesesTrabalhados;
+        const rendaTotalLinha = salario + rendaExtra;
+        totalSalario += rendaTotalLinha * mesesTrabalhados;
+        totalINSS += calcularINSSMensal(rendaTotalLinha) * mesesTrabalhados;
+      });
+
+      // Soma outras rendas para todos os meses
+      totalSalario += outrasRendas * totalMeses;
+      totalINSS += calcularINSSMensal(outrasRendas) * totalMeses;
+
+      // TELA 2: contribuição FUNEPP
+      // ...existing code inside function calcularTotais()...
+      // TELA 2: contribuição FUNEPP
+      const linhasContrib = document.querySelectorAll("#areaPeriodosTela2 .linha");
+      linhasContrib.forEach(linha => {
+        const inicio = parseInt(linha.querySelector(".inicio").value);
+        const fim = parseInt(linha.querySelector(".fim").value);
+        const mesesPeriodo = fim - inicio + 1;
+        const percentual = parseFloat(linha.querySelector('input[type=number]').value) || 0;
+
+        somaPercentual += percentual * mesesPeriodo;
+        totalContribuicao += (totalSalario / totalMeses) * (percentual / 100) * mesesPeriodo;
+      });
+
+      // --- NOVO: soma a contribuição extra informada (valor total já aportado no ano) ---
+      const contribExtra = valorNumerico(document.getElementById('contribuicaoExtra')?.value) || 0;
+      totalContribuicao += contribExtra;
+
+      const mediaPercentual = totalMeses ? somaPercentual / totalMeses : 0;
+
+
+      const numeroDependentes = parseInt(document.querySelector(".dependentes").value) || 0;
+      const descontoDependentes = numeroDependentes * 189.59 * totalMeses;
+
+      // Base após INSS
+      const baseAposINSS = totalSalario - totalINSS;
+
+      // Deduções legais (dependentes + previdência privada)
+      const deducoesLegais = descontoDependentes + totalContribuicao;
+
+      // Desconto simplificado fixo (R$ 607,20 por mês)
+      const descontoSimplificado = 607.20 * totalMeses;
+
+      // Usa o maior entre deduções legais e desconto simplificado
+      const maiorDesconto = Math.max(deducoesLegais, descontoSimplificado);
+
+      // Base de cálculo final (maior desconto)
+      const baseCalculo = baseAposINSS - maiorDesconto;
+
+      // Base legal (deduções legais)
+      const baseLegal = baseAposINSS - deducoesLegais;
+
+      // Base simplificada (desconto simplificado)
+      const baseSimplificado = baseAposINSS - descontoSimplificado;
+
+      return {
+        totalSalario,
+        totalContribuicao,
+        totalINSS,
+        descontoDependentes,
+        numeroDependentes,
+        baseCalculo,
+        baseLegal,
+        baseSimplificado,
+        deducoesLegais,
+        descontoSimplificado,
+        maiorDesconto,
+        mediaPercentual,
+        totalMeses
+      };
+    }
 
 
 
-function calcularINSSMensal(salario) {
-  if (salario <= 1518.00) return salario * 0.075;
-  if (salario <= 2793.88) return salario * 0.09 - 22.77;
-  if (salario <= 4190.83) return salario * 0.12 - 106.59;
-  if (salario <= 8157.41) return salario * 0.14 - 190.40;
-  return 8157.41 * 0.14 - 190.40;
-}
+    function calcularResultado() {
+      const dados = calcularTotais();
 
-function calcularIR(baseAnual) {
-  const baseMensal = baseAnual / 12;
-  if (baseMensal <= 2428.80) return 0;
-  if (baseMensal <= 2826.65) return (baseMensal * 0.075 - 182.16) * 12;
-  if (baseMensal <= 3751.05) return (baseMensal * 0.15 - 394.16) * 12;
-  if (baseMensal <= 4664.68) return (baseMensal * 0.225 - 675.49) * 12;
-  return (baseMensal * 0.275 - 908.73) * 12;
-}
+      // --- CENÁRIOS COM DEDUÇÕES LEGAIS ---
+      const baseLegal = dados.baseLegal;
+      const irLegal = calcularIR(baseLegal);
+      const contribuicao12 = dados.totalSalario * 0.12;
+      const baseLegalFunepp = baseLegal - (contribuicao12 - dados.totalContribuicao);
+      const irLegalFunepp = calcularIR(baseLegalFunepp);
 
-function calcularTotais() {
-  let totalSalario = 0;
-  let totalINSS = 0;
-  let totalMeses = 0;
-  let totalContribuicao = 0;
-  let somaPercentual = 0;
+      // --- CENÁRIOS SIMPLIFICADOS ---
+      const baseSimplificado = dados.baseSimplificado;
+      const irSimplificado = calcularIR(baseSimplificado);
+      const baseSimplificadoFunepp = baseSimplificado - (contribuicao12 - dados.totalContribuicao);
+      const irSimplificadoFunepp = calcularIR(baseSimplificadoFunepp);
 
-  // TELA 1: salários/rendas
-  const linhas = document.querySelectorAll("#areaPeriodos .linha");
-  const outrasRendas = valorNumerico(document.querySelector(".outrasRendas")?.value);
+      // Cálculo do aporte máximo e quanto falta investir
+      const aporteMaximo = dados.totalSalario * 0.12;
+      const aporteAtual = dados.totalContribuicao;
+      const faltaInvestir = aporteMaximo - aporteAtual;
 
-linhas.forEach(linha => {
-  const inicio = parseInt(linha.querySelector(".inicio").value);
-  const fim = parseInt(linha.querySelector(".fim").value);
-  const salario = valorNumerico(linha.querySelector(".salario").value);
-  const rendaExtraInput = linha.querySelector(".renda input");
-  const rendaExtra = rendaExtraInput ? valorNumerico(rendaExtraInput.value) : 0;
+      // ✅ VERIFICA SE JÁ ATINGIU 12%
+      const jaAtingiu12 = dados.mediaPercentual >= 12;// tolerância de R$ 1,00
 
-  const mesesTrabalhados = fim - inicio + 1;
-  console.log(`Período: ${inicio} a ${fim} = ${mesesTrabalhados} meses, Salário: ${salario}, Renda Extra: ${rendaExtra}, Total: ${(salario + rendaExtra) * mesesTrabalhados}`);
+      // Decide qual cenário compensa mais
+      const mediaComum = irLegal / 12;
+      const mediaComumFunepp = irLegalFunepp / 12;
+      const mediaSimplificado = irSimplificado / 12;
+      const mediaSimplificadoFunepp = irSimplificadoFunepp / 12;
 
-  totalMeses += mesesTrabalhados;
-  const rendaTotalLinha = salario + rendaExtra;
-  totalSalario += rendaTotalLinha * mesesTrabalhados;
-  totalINSS += calcularINSSMensal(rendaTotalLinha) * mesesTrabalhados;
-});
+      let economia = 0;
+      if ((mediaComum + mediaComumFunepp) <= (mediaSimplificado + mediaSimplificadoFunepp)) {
+        economia = irLegal - irLegalFunepp;
+      } else {
+        economia = irSimplificado - irSimplificadoFunepp;
+      }
 
-  // Soma outras rendas para todos os meses
-  totalSalario += outrasRendas * totalMeses;
-  totalINSS += calcularINSSMensal(outrasRendas) * totalMeses;
-
-  // TELA 2: contribuição FUNEPP
-  const linhasContrib = document.querySelectorAll("#areaPeriodosTela2 .linha");
-  linhasContrib.forEach(linha => {
-    const inicio = parseInt(linha.querySelector(".inicio").value);
-    const fim = parseInt(linha.querySelector(".fim").value);
-    const mesesPeriodo = fim - inicio + 1;
-    const percentual = parseFloat(linha.querySelector('input[type=number]').value) || 0;
-
-    somaPercentual += percentual * mesesPeriodo;
-    totalContribuicao += (totalSalario / totalMeses) * (percentual / 100) * mesesPeriodo;
-  });
-
-  const mediaPercentual = totalMeses ? somaPercentual / totalMeses : 0;
-
-  const numeroDependentes = parseInt(document.querySelector(".dependentes").value) || 0;
-  const descontoDependentes = numeroDependentes * 189.59 * totalMeses;
-
-  // Base após INSS
-  const baseAposINSS = totalSalario - totalINSS;
-
-  // Deduções legais (dependentes + previdência privada)
-  const deducoesLegais = descontoDependentes + totalContribuicao;
-
-  // Desconto simplificado fixo (R$ 607,20 por mês)
-  const descontoSimplificado = 607.20 * totalMeses;
-
-  // Usa o maior entre deduções legais e desconto simplificado
-  const maiorDesconto = Math.max(deducoesLegais, descontoSimplificado);
-
-  // Base de cálculo final (maior desconto)
-  const baseCalculo = baseAposINSS - maiorDesconto;
-
-  // Base legal (deduções legais)
-  const baseLegal = baseAposINSS - deducoesLegais;
-
-  // Base simplificada (desconto simplificado)
-  const baseSimplificado = baseAposINSS - descontoSimplificado;
-
-  return {
-    totalSalario,
-    totalContribuicao,
-    totalINSS,
-    descontoDependentes,
-    numeroDependentes,
-    baseCalculo,
-    baseLegal,
-    baseSimplificado,
-    deducoesLegais,
-    descontoSimplificado,
-    maiorDesconto,
-    mediaPercentual,
-    totalMeses
-  };
-}
-
-
-function exibirResultado(titulo, dados, base, ir, descontoSimplificado = false) {
-  const corpoNormal = document.getElementById("corpoResultadoNormal");
-  const corpoFunepp = document.getElementById("corpoResultadoComFunepp");
-  const container = document.getElementById("resultadoContainer");
-
-  const dependentesHtmlNormal = descontoSimplificado ? "" : 
-    `<p><strong>Total Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>`;
-
-  const contribuicaoHtmlNormal = descontoSimplificado ? "" :
-    `<p><strong>Contribuição FUNEPP: </strong> R$ ${dados.totalContribuicao.toFixed(2)}</p>`;
-
-  const dependentesHtmlFunepp = descontoSimplificado ? "" :
-    `<p><strong>Total Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>`;
-
-  const contribuicao12 = dados.totalSalario * 0.12;
-  const baseComFunepp = base - contribuicao12;
-  const irComFunepp = calcularIR(baseComFunepp);
-
-  const contribuicaoHtmlFunepp = `<p><strong>Contribuição (12%):</strong> R$ ${contribuicao12.toFixed(2)}</p>`;
-
-  corpoNormal.innerHTML = `
-    <h5>${titulo}</h5>
-    <p><strong>Renda Bruta Total Anual:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-    <p><strong>Total INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
-    ${dependentesHtmlNormal}
-    ${contribuicaoHtmlNormal}
-    <p><strong>Base de Cálculo:</strong> R$ ${base.toFixed(2)}</p>
-    <p><strong>IRRF Final Anual:</strong> R$ ${ir.toFixed(2)}</p>
-    <p><strong>Média IRRF Mensal:</strong> R$ ${(ir / 12).toFixed(2)}</p>
-  `;
-
-  corpoFunepp.innerHTML = `
-    <p><strong>Renda Bruta Total Anual:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-    <p><strong>Total INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
-    ${dependentesHtmlFunepp}
-    ${contribuicaoHtmlFunepp}
-    <p><strong>Nova Base de Cálculo:</strong> R$ ${baseComFunepp.toFixed(2)}</p>
-    <p><strong>IRRF Final Anual:</strong> R$ ${irComFunepp.toFixed(2)}</p>
-    <p><strong>Média IRRF Mensal:</strong> R$ ${(irComFunepp / 12).toFixed(2)}</p>
-    <p><strong>Economia de Imposto:</strong> R$ ${(ir - irComFunepp).toFixed(2)}</p>
-  `;
-
-  container.style.display = "flex";
-}
-
-
-
-function calcularResultado() {
-  const dados = calcularTotais();
-
-
-  // --- CENÁRIOS COM DEDUÇÕES LEGAIS ---
-  const baseLegal = dados.baseLegal;
-  const irLegal = calcularIR(baseLegal);
-  const contribuicao12 = dados.totalSalario * 0.12;
-  const baseLegalFunepp = baseLegal - (contribuicao12 - dados.totalContribuicao);
-  const irLegalFunepp = calcularIR(baseLegalFunepp);
-
-  // --- CENÁRIOS SIMPLIFICADOS ---
-  const baseSimplificado = dados.baseSimplificado;
-  const irSimplificado = calcularIR(baseSimplificado);
-  const baseSimplificadoFunepp = baseSimplificado - (contribuicao12 - dados.totalContribuicao);
-  const irSimplificadoFunepp = calcularIR(baseSimplificadoFunepp);
-
-  // Cálculo do aporte máximo e quanto falta investir
-  const aporteMaximo = dados.totalSalario * 0.12;
-  const aporteAtual = dados.totalContribuicao;
-  const faltaInvestir = aporteMaximo - aporteAtual;
-
-  
-
-  // Decide qual cenário compensa mais
-  const mediaComum = irLegal / 12;
-  const mediaComumFunepp = irLegalFunepp / 12;
-  const mediaSimplificado = irSimplificado / 12;
-  const mediaSimplificadoFunepp = irSimplificadoFunepp / 12;
-
-  // Se o comum for melhor, mostra os blocos comuns; se o simplificado for melhor, mostra os blocos simplificados
-  let melhorRow = "";
-
-  // ...dentro da função calcularResultado...
-
-  let economia = 0;
-  if ((mediaComum + mediaComumFunepp) <= (mediaSimplificado + mediaSimplificadoFunepp)) {
-    // Cenário legal é melhor
-    economia = irLegal - irLegalFunepp;
-  } else {
-    // Cenário simplificado é melhor
-    economia = irSimplificado - irSimplificadoFunepp;
-  }
-
-
-
-  if ((mediaComum + mediaComumFunepp) <= (mediaSimplificado + mediaSimplificadoFunepp)) {
-    melhorRow = `
-      <div class="row rowTotal">
+      let melhorRow = "";
+      if ((mediaComum + mediaComumFunepp) <= (mediaSimplificado + mediaSimplificadoFunepp)) {
+        melhorRow = `
+      <div class="row rowTotal px-0">
+        <div class="divTitulo">
+          VALORES NO ANO
+        </div>
         <div id="corpoResultadoNormalMelhor" class="row cardTotal">
           <div class="cardResultado-Um col-xl-6 col-lg-6 col-md-12 col-sm-12">
-            <div class="cardTitulo">CENÁRIO ATUAL - ANUAL</div>
+            <div class="cardTitulo">SITUAÇÃO ATUAL</div>
             <div class="cardConteudo">
               <p class="left"><strong style="font-weight: 500;"><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> ${dados.totalSalario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong style="font-weight: 500;"><i class="bi bi-shield-lock"></i>INSS:</strong> ${dados.totalINSS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong style="font-weight: 500;"><i class="bi bi-people"></i>Dependentes:</strong> ${dados.descontoDependentes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="cardLinha-Um"><strong style="font-weight: 500;"><i class="bi bi-gem"></i>Contribuição FUNEPP:</strong> ${dados.totalContribuicao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong style="font-weight: 500;"><i class="bi bi-calculator"></i>Base de Cálculo:</strong> ${baseLegal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
-              <p class="cardLinha-Dois"><strong style="font-weight: 500;">IRRF Final: ${irLegal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></p>
+              <p class="cardLinha-Dois"><strong style="font-weight: 500;">Valor que será pago de IR: ${irLegal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></p>
             </div>
-          </div> <div class="cardResultado-Dois col-xl-6 col-lg-6 col-md-12 col-sm-12">
-            <div class="cardTitulo">CONTRIBUIÇÃO 12% - FUNEPP</div>
+          </div> 
+          <div class="cardResultado-Dois col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <div class="cardTitulo">12% NA FUNEPP</div>
             <div class="cardConteudo">
               <p class="left"><strong style="font-weight: 500;"><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> ${dados.totalSalario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong style="font-weight: 500;"><i class="bi bi-shield-lock"></i>INSS:</strong> ${dados.totalINSS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong style="font-weight: 500;"><i class="bi bi-people"></i>Dependentes:</strong> ${dados.descontoDependentes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="cardLinha-Um"><strong style="font-weight: 500;"><i class="bi bi-gem"></i>Contribuição 12%:</strong> ${contribuicao12.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong style="font-weight: 500;"><i class="bi bi-calculator"></i>Base de Cálculo:</strong> ${baseLegalFunepp.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
-              <p class="cardLinha-Tres"><strong style="font-weight: 500;">IRRF Final: ${irLegalFunepp.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></p>
+              <p class="cardLinha-Tres"><strong style="font-weight: 500;">Valor que será pago de IR: ${irLegalFunepp.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></p>
             </div>
           </div>
         </div>
+      <div class="rowEconomiaTotal">
+        <div class="econo px-0">
+          <hr>
+          <p>💡 Você pode economizar <span>${economia.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span> em Imposto de Renda por ano se investir um total de <span>12%</span> na FUNEPP.</p>  
+        </div>
+      </div>
       </div>
     `;
-  } else {
-    melhorRow = `
-      <div class="row mt-4 rowTotal">
+      } else {
+        melhorRow = `
+      <div class="row mt-4 rowTotal px-0">
         <div id="corpoResultadoSimplificadoMelhor" class="row cardTotal">
           <div class="cardResultado-Um col-xl-6 col-lg-6 col-md-12 col-sm-12">
-            <div class="cardTitulo">CENÁRIO ATUAL - ANUAL</div>
+            <div class="cardTitulo">SITUAÇÃO ATUAL</div>
             <div class="cardConteudo">
               <p class="left"><strong><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> ${dados.totalSalario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong><i class="bi bi-shield-lock"></i>INSS:</strong> ${dados.totalINSS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> ${dados.descontoDependentes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="cardLinha-Um"><strong><i class="bi bi-gem"></i>Contribuição FUNEPP:</strong> ${dados.totalContribuicao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong><i class="bi bi-calculator"></i>Base de Cálculo:</strong> ${baseSimplificado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
-              <p class="cardLinha-Dois"><strong>IRRF Final: ${irSimplificado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></p>
+              <p class="cardLinha-Dois"><strong>Valor que será pago de IR: ${irSimplificado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></p>
             </div>
           </div>
           <div class="cardResultado-Dois col-xl-6 col-lg-6 col-md-12 col-sm-12">
-            <div class="cardTitulo">CONTRIBUIÇÃO 12% - FUNEPP</div>
+            <div class="cardTitulo">12% NA FUNEPP</div>
             <div class="cardConteudo">
               <p class="left"><strong><i class="bi bi-cash-stack"></i> Renda Bruta:</strong> ${dados.totalSalario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong><i class="bi bi-shield-lock"></i>INSS:</strong> ${dados.totalINSS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong><i class="bi bi-people"></i>Dependentes (${dados.numeroDependentes}):</strong> ${dados.descontoDependentes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="cardLinha-Um"><strong><i class="bi bi-gem"></i>Contribuição FUNEPP (12%):</strong> ${contribuicao12.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
               <p class="left"><strong><i class="bi bi-calculator"></i>Base de Cálculo:</strong> ${baseSimplificadoFunepp.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
-              <p class="cardLinha-Tres"><strong>IRRF Final: ${irSimplificadoFunepp.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></p>
+              <p class="cardLinha-Tres"><strong>Valor que será pago de IR: ${irSimplificadoFunepp.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></p>
+            </div>
+          </div>
+        </div>
+      <div class="rowEconomiaTotal">
+        <div class="econo px-0">
+          <p>💡 Você pode economizar <span>${economia.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span> em Imposto de Renda por ano se investir um total de <span>12%</span> na FUNEPP.</p>  
+        </div>
+      </div>
+      </div>
+    `;
+      }
+
+      // ✅ CONTEÚDO CONDICIONAL: se já atingiu 12%, mostra mensagem especial
+      let conteudoFinal = '';
+
+      if (jaAtingiu12) {
+        // ✅ MENSAGEM ESPECIAL PARA QUEM JÁ TEM 12%
+        conteudoFinal = `
+      <div class="row rowFinal align-items-center gy-4">
+        <div class="separator"><span>Contribuição FUNEPP!</span></div>
+        
+        <div class="col-12 px-0">
+          <div class="mensagem-sucesso p-5 bg-white shadow-sm text-center" style="border-radius:15px; border: 3px solid #2584c6;">
+            <div style="font-size: 4rem; color: #2584c6; margin-bottom: 20px;">
+              <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <h3 style="color: #2584c6; font-weight: bold; margin-bottom: 20px;">
+              Você já atingiu o benefício fiscal máximo!
+            </h3>
+            <p style="font-size: 1.1rem; color: #333; line-height: 1.8; margin-bottom: 25px;">
+              Parabéns! Sua contribuição mensal de <strong>12%</strong> na FUNEPP está garantindo o <strong>máximo de dedução no Imposto de Renda</strong>. 
+              Você está aproveitando todo o benefício fiscal disponível e construindo um futuro financeiro sólido! 🎯
+            </p>
+            <hr style="margin: 30px 0; border-color: #2584c6;">
+            <h5 style="color: #2584c6; font-weight: bold; margin-bottom: 15px;">
+              💡 Quer ir além?
+            </h5>
+            <p style="font-size: 1rem; color: #555; line-height: 1.7;">
+              A <strong>Contribuição Voluntária</strong> é uma contribuição extra que você pode fazer quando desejar e no valor que quiser investir. É simples e direto ao ponto, basta acessar a Área do Participante e realizar seu investimento via PIX ou boleto.
+
+            </p>
+            <p style="font-size: 1rem; color: #555; line-height: 1.7; margin-bottom: 25px;">
+              Acesse aqui para mais informações <a href="https://funepp.participante.com.br/estrutura#!/login" target="_blank" style="color:#2584c6; font-weight:600; text-decoration:underline;">Contribuição Voluntária - Funepp.</a> 
+            </p>
+          </div>
+        </div>
+
+        <div class="col-12 text-center" style="margin-top:30px;">
+          <h5 style="color:#2584c6; font-weight:bold;">Planejar é viver!</h5>
+          <p style="color:#666; font-size:1rem;">
+            Continue construindo seu futuro com a FUNEPP. <i class="bi bi-heart-fill" style="color:#2584c6;"></i>
+          </p>
+        </div>
+      </div>
+    `;
+      } else {
+        // ✅ CONTEÚDO NORMAL (quando NÃO atingiu 12%)
+        conteudoFinal = `
+      <div class="row rowFinal align-items-center gy-4">
+        <div class="separator"><span>CONTRIBUIÇÃO FUNEPP</span></div>
+
+       
+
+        <div class="col-12 px-0">
+          <div class="falta-investir p-4 bg-white shadow-sm">
+            <div class="fs-6 text-secondary faltaInvestir-letras">
+              Falta investir
+              <span id="valorFaltaInvestir" style="color:#2584c6; font-weight:600;">
+                ${(faltaInvestir).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+              </span>
+              em FUNEPP para alcançar o benefício fiscal máximo de 12%.
+            </div>
+            <div>
+              <span id="valorInvestidoExtra" style="color:#2584c6; font-weight:500;"></span>
+            </div>
+
+
+
+              <hr>
+
+
+            <div class="investido-extra">
+            <label class="form-label">
+              Pretende realizar alguma Contribuição Voluntária adicional neste ano?
+              <span data-bs-toggle="tooltip" data-bs-placement="top" title="Informe um valor para simular um aporte extra (não acumulativo)." style="cursor:pointer; color:#2584c6; margin-left:4px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
+                  <circle cx="8" cy="4.5" r="1"/>
+                </svg>
+              </span>
+            </label>
+            <div class="input-group rounded-3 borderFim">
+              <span class="input-group-text"><i class="bi bi-coin"></i></span>
+              <input type="text" id="investidoExtra" class="form-control investido-input" placeholder="Digite o valor (R$)" aria-label="Investimento extra" />
+            </div>
+          </div>
+
+
+
+            
+            <div class="barra-contribuicao">
+              <div id="barraContribuicao" class="barra-tracinhos d-flex gap-2" aria-live="polite"></div>
             </div>
           </div>
         </div>
 
+    
+        <div class="conteudoFinal">
+          <p>
+            A <b>Contribuição Voluntária</b> é uma contribuição extra que você pode fazer quando desejar e no valor que quiser investir.
+            Além de turbinar o seu patrimônio, você ainda diminui a mordida do leão no Imposto de Renda!
+            É simples e direto ao ponto, basta acessar a <a href="https://funepp.participante.com.br/estrutura#!/login" target="_blank">Área do Participante</a> e realizar seu investimento via PIX ou boleto. 
+            Acesse aqui para mais informações <a href="https://www.funepp.com.br/contribuicao-voluntaria" target="_blank">Contribuição Voluntária - Funepp</a>.   
+          </p>
+          
+          <h5>Planejar é viver!</h5>
+          <p>Uma outra forma de alcançar o benefício máximo é contribuir mensalmente com 12% na Funepp. Acesse o <a href="https://www.espacocolaborador.com.br/" target="_blank">Espaço do Colaborador</a> e atualize o seu percentual! Não fique fora dessa!</p>
+        </div>
       </div>
     `;
-  }
+      }
 
-  // Exibir resultados
-  const container = document.getElementById("resultadoContainer");
-  container.innerHTML = `
-    <div id="diferenca">
-      <div class="row">
-        <div id="corpoResultadoNormal" class="col-6">
-          <h5>Cenário Atual (deduções legais)</h5>
-          <p><strong>Renda Bruta Total Anual:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-          <p><strong>Total INSS:</strong> R$ ${dados.totalINSS.toFixed(2)}</p>
-          <p><strong>Total Dependentes (${dados.numeroDependentes}):</strong> R$ ${dados.descontoDependentes.toFixed(2)}</p>
-          <p><strong>Contribuição FUNEPP Informada:</strong> R$ ${dados.totalContribuicao.toFixed(2)}</p>
-          <p><strong>Base de Cálculo:</strong> R$ ${baseLegal.toFixed(2)}</p>
-          <p><strong>IRRF Final Anual:</strong> R$ ${irLegal.toFixed(2)}</p>
-          <p><strong>Média IRRF Mensal:</strong> R$ ${mediaComum.toFixed(2)}</p>
-        </div>
-        <div id="corpoResultadoLegalFunepp" class="col-6">
-          <h5>CONTRIBUIÇÃO 12% - FUNEPP (deduções legais)</h5>
-          <p><strong>Renda Bruta Total Anual:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-          <p><strong>Contribuição 12%:</strong> R$ ${contribuicao12.toFixed(2)}</p>
-          <p><strong>Nova Base de Cálculo:</strong> R$ ${baseLegalFunepp.toFixed(2)}</p>
-          <p><strong>IRRF Final Anual:</strong> R$ ${irLegalFunepp.toFixed(2)}</p>
-          <p><strong>Média IRRF Mensal:</strong> R$ ${mediaComumFunepp.toFixed(2)}</p>
-          <p><strong>Economia de Imposto:</strong> R$ ${(irLegal - irLegalFunepp).toFixed(2)}</p>
-        </div>
-      </div>
-      <br><hr><br>
-      <div class="row"> 
-        <div id="corpoResultadoSimplificado" class="col-6">
-          <h5>Cenário Atual (simplificado)</h5>
-          <p><strong>Renda Bruta Total Anual:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-          <p><strong>Desconto simplificado:</strong> R$ ${dados.descontoSimplificado.toFixed(2)}</p>
-          <p><strong>Base de Cálculo:</strong> R$ ${baseSimplificado.toFixed(2)}</p>
-          <p><strong>IRRF Final Anual:</strong> R$ ${irSimplificado.toFixed(2)}</p>
-          <p><strong>Média IRRF Mensal:</strong> R$ ${mediaSimplificado.toFixed(2)}</p>
-        </div>
-        <div id="corpoResultadoSimplificadoFunepp" class="col-6">
-          <h5>CONTRIBUIÇÃO 12% - FUNEPP (simplificado)</h5>
-          <p><strong>Renda Bruta Total Anual:</strong> R$ ${dados.totalSalario.toFixed(2)}</p>
-          <p><strong>Contribuição 12%:</strong> R$ ${contribuicao12.toFixed(2)}</p>
-          <p><strong>Nova Base de Cálculo:</strong> R$ ${baseSimplificadoFunepp.toFixed(2)}</p>
-          <p><strong>IRRF Final Anual:</strong> R$ ${irSimplificadoFunepp.toFixed(2)}</p>
-          <p><strong>Média IRRF Mensal:</strong> R$ ${mediaSimplificadoFunepp.toFixed(2)}</p>
-          <p><strong>Economia de Imposto:</strong> R$ ${(irSimplificado - irSimplificadoFunepp).toFixed(2)}</p>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      ${melhorRow}
-    </div>
-    
-
-    <!-- Bloco bonito para quanto falta investir, barra e campo de valor já investido -->
+      // Exibir resultados
+      const container = document.getElementById("resultadoContainer");
+      container.style.display = "block";
 
 
-     <div class="row rowFinal align-items-center gy-4">
-    <!-- substitui o <hr> feio por um separador estilizado -->
-    <div class="separator"><span>Contribuição FUNEPP</span></div>
+      container.innerHTML = melhorRow + conteudoFinal;
 
-    <div class="col-12 economiaTotal">
-    <div class="investido-extra p-4 bg-white shadow-sm">
-      <!-- Novo label com tooltip (mesma estilização do Salário) -->
-      <label class="form-label">
-        Você investiu algum valor extra na FUNEPP?
-        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Informe um valor para simular um aporte extra (não acumulativo)." style="cursor:pointer; color:#2584c6; margin-left:4px;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 .877-.252 1.02-.598l.088-.416c.073-.34.217-.466.465-.466z"/>
-            <circle cx="8" cy="4.5" r="1"/>
-          </svg>
-        </span>
-      </label>
+      inicializarTooltips(container);
 
-      <!-- Input com aparência consistente (removei o botão "Atualizar") -->
-      <div class="input-group rounded-3 borderFim">
-        <span class="input-group-text"><i class="bi bi-coin"></i></span>
-        <input
-          type="text"
-          id="investidoExtra"
-          class="form-control investido-input"
-          placeholder="Digite o valor (R$)"
-          aria-label="Investimento extra"
-        />
-      </div>
-    </div>
-  </div>
+      // ✅ Só inicializa barra/campo se NÃO atingiu 12%
+      if (!jaAtingiu12) {
+        const investidoExtraInput = document.getElementById('investidoExtra');
+        if (investidoExtraInput) {
+          investidoExtraInput.value = '';
+          investidoExtraInput.addEventListener('input', function () {
+            formatarMoedaBRL(this);
+          });
+        }
+        atualizarBarraComInvestido();
+      }
+    }
 
-  <div class="col-12">
-    <div class="falta-investir p-4 bg-white shadow-sm">
-      <strong class="d-block mb-3 fs-5 text-dark">Para atingir o benefício fiscal máximo:</strong>
-      <div class="fs-6 text-secondary">
-        Falta investir
-        <span id="valorFaltaInvestir" style="color:#2584c6; font-weight:600;">
-          ${(faltaInvestir).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-        </span>
-        em FUNEPP.
-      </div>
-      <div>
-        <span id="valorInvestidoExtra" style="color:#2584c6; font-weight:500;"></span>
-      </div>
-      <hr>
-      <div class="barra-contribuicao">
-        <label for="barraContribuicao" class="form-label fw-semibold mb-3">
-          Sua % de contribuição na FUNEPP:
-        </label>
-        <div id="barraContribuicao" class="barra-tracinhos d-flex gap-2" aria-live="polite"></div>
-      </div>
-    </div>
-  </div>
- 
 
-  <div class="col-12 economia">
-  <p>Você pode economizar <span>
-    ${economia.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-  </span> em Imposto de Renda por ano se investir <span>12%</span> na FUNEPP.</p>
-</div>
-</div>
+
+
+    // Bloqueia meses anteriores ao início no select FIM do PRIMEIRO CARD (Tela 1 e Tela 2)
+    function bloquearMesesAnterioresNoPrimeiroCard() {
+
+      // TELA 1 - Primeiro card
+      const primeiraLinhaTela1 = document.querySelector('#areaPeriodos .linha');
+      if (primeiraLinhaTela1) {
+        const inicioTela1 = primeiraLinhaTela1.querySelector('.inicio');
+        const fimTela1 = primeiraLinhaTela1.querySelector('.fim');
+
+        if (inicioTela1 && fimTela1) {
+          const valorInicio = parseInt(inicioTela1.value, 10);
+
+          // Bloqueia meses anteriores ao início
+          Array.from(fimTela1.options).forEach(opt => {
+            if (opt.value === '') {
+              opt.disabled = false;
+              return;
+            }
+            const valorMes = parseInt(opt.value, 10);
+            opt.disabled = valorMes < valorInicio;
+          });
+
+          // Se o fim selecionado ficou inválido, reseta
+          const valorFim = parseInt(fimTela1.value, 10);
+          if (!isNaN(valorFim) && valorFim < valorInicio) {
+            fimTela1.value = '';
+          }
+        }
+      }
+
+      // TELA 2 - Primeiro card
+      const primeiraLinhaTela2 = document.querySelector('#areaPeriodosTela2 .linha');
+      if (primeiraLinhaTela2) {
+        const inicioTela2 = primeiraLinhaTela2.querySelector('.inicio');
+        const fimTela2 = primeiraLinhaTela2.querySelector('.fim');
+
+        if (inicioTela2 && fimTela2) {
+          const valorInicio = parseInt(inicioTela2.value, 10);
+
+          // Bloqueia meses anteriores ao início
+          Array.from(fimTela2.options).forEach(opt => {
+            if (opt.value === '') {
+              opt.disabled = false;
+              return;
+            }
+            const valorMes = parseInt(opt.value, 10);
+            opt.disabled = valorMes < valorInicio;
+          });
+
+          // Se o fim selecionado ficou inválido, reseta
+          const valorFim = parseInt(fimTela2.value, 10);
+          if (!isNaN(valorFim) && valorFim < valorInicio) {
+            fimTela2.value = '';
+          }
+        }
+      }
+    }
 
 
 
 
 
-  `;
- container.style.display = "block";
+    // ------------ controle do form --------------
+    let telaAtual = 0;
+    const todasTelas = document.querySelectorAll(".tela");
+    const todosPassos = document.querySelectorAll(".step"); // pega os indicadores da lateral
 
-  // Inicializa tooltips do Bootstrap para o conteúdo dinâmico da tela 3
-  inicializarTooltips(container);
+    // mostra a tela certa e atualiza os indicadores
+    function mostrarTela(num) {
+      todasTelas.forEach((cadaTela, i) => {
+        cadaTela.classList.toggle("mostrar", i === num);
+      });
 
-// ...dentro da função calcularResultado, após container.innerHTML = ...
 
-const investidoExtraInput = document.getElementById('investidoExtra');
-if (investidoExtraInput) {
-  investidoExtraInput.value = '';
-  investidoExtraInput.addEventListener('input', function() {
-    formatarMoedaBRL(this);
-  });
-}
-atualizarBarraComInvestido();
-
-  
-}
+      // chama função que pinta o passo certo
+      atualizarPasso(num);
 
 
 
+      // Mostra a barra só na tela 3 (índice 2)
+      const barraContainer = document.getElementById('barraContribuicaoContainer');
+      if (barraContainer) barraContainer.style.display = (num === 2) ? 'block' : 'none';
 
-  // ------------ controle do form --------------
-  let telaAtual = 0; 
-  const todasTelas = document.querySelectorAll(".tela");
-  const todosPassos = document.querySelectorAll(".step"); // pega os indicadores da lateral
+    }
 
-  // mostra a tela certa e atualiza os indicadores
-  function mostrarTela(num) {
-    todasTelas.forEach((cadaTela, i) => {
-      cadaTela.classList.toggle("mostrar", i === num);
+
+
+
+
+
+
+    function voltarTela() {
+      if (telaAtual > 0) {
+        telaAtual--;
+        mostrarTela(telaAtual);
+      }
+    }
+
+    // ------------ função para pintar indicador --------------
+    function atualizarPasso(num) {
+      todosPassos.forEach((cadaPasso, i) => {
+        cadaPasso.classList.remove("ativo");
+        cadaPasso.querySelector('.circle').classList.remove("circle-azul");
+
+        // Passo ativo normal
+        if (i === num) {
+          cadaPasso.classList.add("ativo");
+        }
+
+        // Se estiver na tela 3 (num === 2), deixa o círculo do passo 2 azul
+        if (num === 2 && i === 1) {
+          cadaPasso.querySelector('.circle').classList.add("circle-azul");
+        }
+      });
+    }
+
+    // já mostra a tela inicial e pinta o passo 1
+    mostrarTela(telaAtual);
+
+
+    // --------------- Tela 1  ---------------
+
+    const areaPeriodos = document.getElementById("areaPeriodos");
+
+    // Pega a primeira linha
+    const primeiraLinha = areaPeriodos.querySelector(".linha");
+
+    // Tooltips
+    function inicializarTooltips(elementoPai = document) {
+      var tooltipTriggerList = [].slice.call(elementoPai.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+        new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    }
+
+
+    // Ajusta opções do selectFIM conforme selectINICIO (desabilita meses anteriores)
+    function ajustarFimOptions(selectInicio, selectFim) {
+      const inicioIdx = parseInt(selectInicio.value);
+      for (let i = 0; i < selectFim.options.length; i++) {
+        selectFim.options[i].disabled = i < inicioIdx;
+      }
+      // garante que o fim não fique menor que inicio
+      if (parseInt(selectFim.value) < inicioIdx) {
+        selectFim.selectedIndex = inicioIdx;
+      }
+    }
+
+    // Quando o início muda, remover linhas posteriores e ajustar fim/options
+    function onInicioChangeHandler(selectInicio, selectFim, linhaAtual, removerFn, criarFn) {
+      return function () {
+        ajustarFimOptions(selectInicio, selectFim);
+        // remove todas as linhas após a linha atual
+        if (typeof removerFn === 'function') removerFn(linhaAtual);
+        // cria nova linha se necessário (se fim < 11)
+        const fimIdx = parseInt(selectFim.value);
+        if (fimIdx < 11 && typeof criarFn === 'function') {
+          criarFn(fimIdx + 1, linhaAtual);
+        }
+      };
+    }
+
+    // Aplica comportamento ao primeiro bloco (Tela 1)
+    (function inicializarInicioTela1() {
+      const primeiraLinha = document.querySelector("#areaPeriodos .linha");
+      if (!primeiraLinha) return;
+      const selectInicio = primeiraLinha.querySelector(".inicio");
+      const selectFim = primeiraLinha.querySelector(".fim");
+      if (selectInicio && selectFim) {
+        // inicializa opções de fim conforme o valor inicial de inicio
+        ajustarFimOptions(selectInicio, selectFim);
+        selectInicio.addEventListener('change', onInicioChangeHandler(selectInicio, selectFim, primeiraLinha, removerLinhasApos, criarNovaLinha));
+      }
+      // já existia listener no fim; mantemos
+      const primeiroFim = primeiraLinha.querySelector(".fim");
+      if (primeiroFim) {
+        primeiroFim.addEventListener("change", () => {
+          ultimoMes = parseInt(primeiroFim.value);
+          removerLinhasApos(primeiraLinha);
+          if (ultimoMes < 11) {
+            criarNovaLinha(ultimoMes + 1, primeiraLinha);
+          }
+        });
+      }
+    })();
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+      bloquearMesesAnterioresNoPrimeiroCard();
+      
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+        new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+      
+      document.querySelectorAll('.inicio').forEach(s => s.disabled = false);
+      
+      document.querySelectorAll('#areaPeriodos .linha, #areaPeriodosTela2 .linha').forEach(linha => {
+        const selInicio = linha.querySelector('.inicio');
+        const selFim = linha.querySelector('.fim');
+        if (selInicio && selFim && typeof ajustarFimOptions === 'function') {
+          ajustarFimOptions(selInicio, selFim);
+        }
+      });
     });
 
 
-    // chama função que pinta o passo certo
-    atualizarPasso(num);
-
-
-    
-// Mostra a barra só na tela 3 (índice 2)
-const barraContainer = document.getElementById('barraContribuicaoContainer');
-if (barraContainer) barraContainer.style.display = (num === 2) ? 'block' : 'none';
-
-  }
-
-
-  
-
-
-
-
-  function voltarTela() {
-    if (telaAtual > 0) {
-      telaAtual--;
-      mostrarTela(telaAtual);
-    }
-  }
-
-  // ------------ função para pintar indicador --------------
-function atualizarPasso(num) {
-  todosPassos.forEach((cadaPasso, i) => {
-    cadaPasso.classList.remove("ativo");
-    cadaPasso.querySelector('.circle').classList.remove("circle-azul");
-
-    // Passo ativo normal
-    if (i === num) {
-      cadaPasso.classList.add("ativo");
+    // Função para formatar como moeda BRL
+    function formatarMoedaBRL(input) {
+      let valor = input.value.replace(/\D/g, "");
+      valor = (parseInt(valor, 10) / 100).toFixed(2);
+      if (isNaN(valor)) valor = "0,00";
+      input.value = Number(valor).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
     }
 
-    // Se estiver na tela 3 (num === 2), deixa o círculo do passo 2 azul
-    if (num === 2 && i === 1) {
-      cadaPasso.querySelector('.circle').classList.add("circle-azul");
+
+    function criarNovaLinha(mesInicio, linhaBase) {
+      const novaLinha = primeiraLinha.cloneNode(true);
+
+      // Desmarca os radios "Preser ou ATS" na nova linha
+      novaLinha.querySelectorAll('.preser-sim, .preser-nao').forEach(radio => {
+        radio.checked = false;
+      });
+
+      // Esconde a div renda por padrão
+      const divRenda = novaLinha.querySelector('.renda');
+      if (divRenda) divRenda.style.display = 'none';
+
+      // Gera um id único para o grupo de radios
+      const uniqueId = 'preserAts_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
+
+      // Atualiza o atributo name dos radios
+      novaLinha.querySelectorAll('input[type="radio"][name^="preserAts"]').forEach((radio, idx) => {
+        radio.name = uniqueId;
+        radio.id = uniqueId + '_' + (idx === 0 ? 'sim' : 'nao');
+      });
+
+      const selectInicio = novaLinha.querySelector(".inicio");
+      const selectFim = novaLinha.querySelector(".fim");
+
+      // Configura eventos para mostrar/ocultar renda
+      const checkboxSim = novaLinha.querySelector('.preser-sim');
+      const checkboxNao = novaLinha.querySelector('.preser-nao');
+
+      if (checkboxSim && divRenda) {
+        checkboxSim.addEventListener('change', function () {
+          divRenda.style.display = checkboxSim.checked ? 'block' : 'none';
+        });
+      }
+      if (checkboxNao && divRenda) {
+        checkboxNao.addEventListener('change', function () {
+          divRenda.style.display = 'none';
+        });
+      }
+
+      // CORRIGIDO: pega o último mês FINAL usado (não o inicial)
+      // Percorre todas as linhas anteriores e pega o MAIOR valor de .fim
+      const todasLinhasAnteriores = Array.from(document.querySelectorAll('#areaPeriodos .linha'));
+      const indexLinhaBase = todasLinhasAnteriores.indexOf(linhaBase);
+      const linhasAnteriores = todasLinhasAnteriores.slice(0, indexLinhaBase + 1);
+
+      let ultimoMesBloqueado = -1;
+      linhasAnteriores.forEach(linha => {
+        const fimSelect = linha.querySelector('.fim');
+        if (fimSelect && fimSelect.value !== '') {
+          const valorFim = parseInt(fimSelect.value, 10);
+          ultimoMesBloqueado = Math.max(ultimoMesBloqueado, valorFim);
+        }
+      });
+
+
+      // Ajusta opções do mês inicial - bloqueia até ultimoMesBloqueado (USANDO VALUE)
+      Array.from(selectInicio.options).forEach((opt) => {
+        if (opt.value === '') {
+          opt.disabled = false;
+          return;
+        }
+        const valorMes = parseInt(opt.value, 10);
+        opt.disabled = valorMes <= ultimoMesBloqueado;
+      });
+      selectInicio.value = String(Math.max(mesInicio, ultimoMesBloqueado + 1));
+
+      // Ajusta opções do mês final - bloqueia até ultimoMesBloqueado (USANDO VALUE)
+      Array.from(selectFim.options).forEach((opt) => {
+        if (opt.value === '') {
+          opt.disabled = false; // mantém placeholder ativo
+          return;
+        }
+        const valorMes = parseInt(opt.value, 10);
+        opt.disabled = valorMes <= ultimoMesBloqueado;
+      });
+
+      // FORÇA "Selecione o mês" no fim
+      selectFim.value = '';
+      selectFim.selectedIndex = 0;
+
+      // Limpa valores dos campos
+      const salarioInput = novaLinha.querySelector(".salario");
+      if (salarioInput) salarioInput.value = "";
+
+      const rendaInput = novaLinha.querySelector(".renda input");
+      if (rendaInput) rendaInput.value = "";
+
+      // Insere logo depois da linha base
+      linhaBase.insertAdjacentElement("afterend", novaLinha);
+      inicializarTooltips(novaLinha);
+
+
+      // Aplica formatação de moeda
+      novaLinha.querySelectorAll('.salario, .renda input').forEach(function (input) {
+        input.addEventListener('input', function () {
+          formatarMoedaBRL(this);
+        });
+      });
+
+      // Evento quando mudar mês final
+      selectFim.addEventListener("change", () => {
+        const valorFim = parseInt(selectFim.value);
+        if (isNaN(valorFim)) return;
+
+        ultimoMes = valorFim;
+
+        // remove todas as linhas seguintes antes de criar de novo
+        removerLinhasApos(novaLinha);
+        if (valorFim < 11) {
+          criarNovaLinha(valorFim + 1, novaLinha);
+        }
+      });
+
+      // Listener do início (se mudar, ajusta o fim)
+      selectInicio.addEventListener('change', function () {
+        const inicioVal = parseInt(this.value, 10);
+
+        // Atualiza opções do fim (USANDO VALUE)
+        Array.from(selectFim.options).forEach((opt) => {
+          if (opt.value === '') return;
+          const valorMes = parseInt(opt.value, 10);
+          opt.disabled = valorMes < inicioVal;
+        });
+
+        // Se o fim selecionado ficou inválido, reseta
+        const fimVal = parseInt(selectFim.value, 10);
+        if (!isNaN(fimVal) && fimVal < inicioVal) {
+          selectFim.value = '';
+        }
+
+        // Remove linhas posteriores
+        removerLinhasApos(novaLinha);
+      });
     }
-  });
-}
 
-  // já mostra a tela inicial e pinta o passo 1
-  mostrarTela(telaAtual);
-
-
-  // --------------- Tela 1  ---------------
-
-  const meses = [
-    "Janeiro","Fevereiro","Março","Abril","Maio","Junho",
-    "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"
-  ];
-
-  let ultimoMes = 0; // controla último mês escolhido
-  const areaPeriodos = document.getElementById("areaPeriodos");
-
-  // Pega a primeira linha
-  const primeiraLinha = areaPeriodos.querySelector(".linha");
-
-  // Tooltips
-  function inicializarTooltips(elementoPai = document) {
-    var tooltipTriggerList = [].slice.call(elementoPai.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-      new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-      new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-  });
-
-  
-
-  // Função para formatar como moeda BRL
-  function formatarMoedaBRL(input) {
-    let valor = input.value.replace(/\D/g, "");
-    valor = (parseInt(valor, 10) / 100).toFixed(2);
-    if (isNaN(valor)) valor = "0,00";
-    input.value = Number(valor).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-  }
-
-  // Aplica o evento nos campos já existentes
-document.querySelectorAll('.salario, .outrasRendas, .renda input').forEach(function(input) {
-  input.addEventListener('input', function() {
-    formatarMoedaBRL(this);
-  });
-});
-
-  // Função para criar nova linha copiando a anterior
-  // ...dentro da função criarNovaLinha...
-
-function criarNovaLinha(mesInicio, linhaBase) {
-  // ...dentro da função criarNovaLinha...
-
-const novaLinha = primeiraLinha.cloneNode(true);
-
-// Desmarca os radios "Preser ou ATS" na nova linha
-novaLinha.querySelectorAll('.preser-sim, .preser-nao').forEach(radio => {
-  radio.checked = false;
-});
-
-
-
-// ...restante do código...
-  // Gera um id único para o grupo de radios
-  const uniqueId = 'preserAts_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
-
-  // Atualiza o atributo name dos radios
-  novaLinha.querySelectorAll('input[type="radio"][name="preserAts"]').forEach((radio, idx) => {
-    radio.name = uniqueId;
-    // Atualiza também o id e o for do label para acessibilidade
-    radio.id = uniqueId + '_' + (idx === 0 ? 'sim' : 'nao');
-    const label = novaLinha.querySelector('label[for="' + (idx === 0 ? 'sim' : 'nao') + '"]');
-    if (label) label.setAttribute('for', radio.id);
-  });
-
-  // ...restante do código da função...
-  
-
-    const selectInicio = novaLinha.querySelector(".inicio");
-    const selectFim = novaLinha.querySelector(".fim");
-
-// ...dentro da função criarNovaLinha...
-
-const checkboxSim = novaLinha.querySelector('.preser-sim');
-const checkboxNao = novaLinha.querySelector('.preser-nao');
-const divRenda = novaLinha.querySelector('.renda');
-
-if (checkboxSim && divRenda) {
-  checkboxSim.addEventListener('change', function() {
-    divRenda.style.display = checkboxSim.checked ? 'block' : 'none';
-  });
-}
-if (checkboxNao && divRenda) {
-  checkboxNao.addEventListener('change', function() {
-    divRenda.style.display = 'none';
-  });
-}
-
-    // Ajusta opções do mês inicial
-    for (let i = 0; i < selectInicio.options.length; i++) {
-      selectInicio.options[i].disabled = i < mesInicio;
+    // Função para remover todas as linhas depois da escolhida
+    function removerLinhasApos(linhaBase) {
+      let proxima = linhaBase.nextElementSibling;
+      while (proxima) {
+        let remover = proxima;
+        proxima = proxima.nextElementSibling;
+        remover.remove();
+      }
     }
-    selectInicio.selectedIndex = mesInicio;
 
-    // Ajusta opções do mês final
-    for (let i = 0; i < selectFim.options.length; i++) {
-      selectFim.options[i].disabled = i < mesInicio;
-    }
-    selectFim.selectedIndex = mesInicio;
+    // Evento para a primeira linha
+    // Evento para a primeira linha
+    const primeiroFim = primeiraLinha.querySelector(".fim");
+    primeiroFim.addEventListener("change", () => {
+      const valorFim = parseInt(primeiroFim.value);
+      if (isNaN(valorFim)) return; // não faz nada se vazio
 
-    // Limpa valores
-    novaLinha.querySelector(".salario").value = "";
-    novaLinha.querySelector(".renda").value = "";
-
-    // Insere logo depois da linha base
-    linhaBase.insertAdjacentElement("afterend", novaLinha);
-    inicializarTooltips(novaLinha);
-
-    // Evento de formatação
-    // ...dentro da função criarNovaLinha...
-
-novaLinha.querySelectorAll('.salario, .renda input').forEach(function(input) {
-  input.addEventListener('input', function() {
-    formatarMoedaBRL(this);
-  });
-});
-
-    // Evento quando mudar mês final
-    selectFim.addEventListener("change", () => {
-      ultimoMes = parseInt(selectFim.value);
-      // remove todas as linhas seguintes antes de criar de novo
-      removerLinhasApos(novaLinha);
+      ultimoMes = valorFim;
+      removerLinhasApos(primeiraLinha);
       if (ultimoMes < 11) {
-        criarNovaLinha(ultimoMes + 1, novaLinha);
+        criarNovaLinha(ultimoMes + 1, primeiraLinha);
       }
     });
 
 
-    // ...dentro da função criarNovaLinha...
-
-// Limpa valores
-novaLinha.querySelector(".salario").value = "";
-const rendaInput = novaLinha.querySelector(".renda input");
-if (rendaInput) rendaInput.value = ""; // <-- Limpa o campo "Renda Extra"
 
 
-  }
+    // --------------- Tela 2  ---------------
 
-  // Função para remover todas as linhas depois da escolhida
-  function removerLinhasApos(linhaBase) {
-    let proxima = linhaBase.nextElementSibling;
-    while (proxima) {
-      let remover = proxima;
-      proxima = proxima.nextElementSibling;
-      remover.remove();
+    // Pega o container de períodos da tela 2
+    const areaPeriodosTela2 = document.getElementById("areaPeriodosTela2");
+    const primeiraLinha2 = areaPeriodosTela2.querySelector(".linha");
+
+
+
+
+    // Limita contribuição de 1 a 12
+    function limitarContribuicao(input) {
+      input.addEventListener('input', function () {
+        // Remove qualquer caractere não numérico
+        this.value = this.value.replace(/[^0-9]/g, '');
+
+        // Permite valores de 0 a 12
+        if (this.value !== '' && parseInt(this.value) < 0) {
+          this.value = 0;
+        }
+        if (parseInt(this.value) > 12) {
+          this.value = 12;
+        }
+      });
     }
-  }
 
-  // Evento para a primeira linha
-  const primeiroFim = primeiraLinha.querySelector(".fim");
-  primeiroFim.addEventListener("change", () => {
-    ultimoMes = parseInt(primeiroFim.value);
-    removerLinhasApos(primeiraLinha); // <-- limpa linhas seguintes antes de recriar
-    if (ultimoMes < 11) {
-      criarNovaLinha(ultimoMes + 1, primeiraLinha);
+
+    // --- NOVO: forçar início mínimo na Tela 2 com base no primeiro início da Tela 1 ---
+
+    function getPrimeiroInicioTela1() {
+      const sel = document.querySelector("#areaPeriodos .linha .inicio");
+      return sel ? parseInt(sel.value, 10) : 0;
     }
-  });
 
-
-  
-
-// --------------- Tela 2  ---------------
-
-// Pega o container de períodos da tela 2
-const areaPeriodosTela2 = document.getElementById("areaPeriodosTela2");
-const primeiraLinha2 = areaPeriodosTela2.querySelector(".linha");
-
-// Função para criar nova linha na tela 2
-function criarNovaLinhaTela2(mesInicio, linhaBase) {
-  const novaLinha = primeiraLinha2.cloneNode(true);
-  const selectInicio = novaLinha.querySelector(".inicio");
-  const selectFim = novaLinha.querySelector(".fim");
-  const inputContrib = novaLinha.querySelector('.form-control');
-
-  // Ajusta opções do mês inicial
-  for (let i = 0; i < selectInicio.options.length; i++) {
-    selectInicio.options[i].disabled = i < mesInicio;
-  }
-  selectInicio.selectedIndex = mesInicio;
-
-  // Ajusta opções do mês final
-  for (let i = 0; i < selectFim.options.length; i++) {
-    selectFim.options[i].disabled = i < mesInicio;
-  }
-  selectFim.selectedIndex = mesInicio;
-
-  // Limpa valor da contribuição
-  inputContrib.value = "";
-
-  linhaBase.insertAdjacentElement("afterend", novaLinha);
-
-  inicializarTooltips(novaLinha);
-
-  // ADICIONE ESTE BLOCO:
-  selectFim.addEventListener("change", () => {
-    let ultimoMes = parseInt(selectFim.value);
-    removerLinhasAposTela2(novaLinha);
-    if (ultimoMes < 11) {
-      criarNovaLinhaTela2(ultimoMes + 1, novaLinha);
+    function enforceTela2InicioMin() {
+      const min = getPrimeiroInicioTela1();
+      document.querySelectorAll("#areaPeriodosTela2 .inicio").forEach(sel => {
+        // desabilita opções anteriores ao mínimo e ajusta valor se necessário
+        Array.from(sel.options).forEach(opt => opt.disabled = parseInt(opt.value, 10) < min);
+        if (parseInt(sel.value, 10) < min) {
+          sel.value = String(min);
+          // atualiza fim correspondente (opcional)
+          const fim = sel.closest('.linha').querySelector('.fim');
+          if (fim && parseInt(fim.value, 10) < min) fim.value = String(min);
+        }
+      });
     }
-  });
-}
 
+    // Aplica bloqueio de meses no primeiro card da Tela 2 quando abrir a tela
+    function aplicarBloqueioInicialTela2() {
+      const primeiraLinha2 = document.querySelector("#areaPeriodosTela2 .linha");
+      if (!primeiraLinha2) return;
 
-  // Limita contribuição de 1 a 12
-function limitarContribuicao(input) {
-  input.addEventListener('input', function() {
-    // Remove qualquer caractere não numérico
-    this.value = this.value.replace(/[^0-9]/g, '');
+      const selectInicio2 = primeiraLinha2.querySelector(".inicio");
+      const selectFim2 = primeiraLinha2.querySelector(".fim");
 
-    // Permite valores de 0 a 12
-    if (this.value !== '' && parseInt(this.value) < 0) {
-      this.value = 0;
+      if (!selectInicio2 || !selectFim2) return;
+
+      const valorInicio = parseInt(selectInicio2.value, 10);
+      if (isNaN(valorInicio)) return;
+
+      Array.from(selectFim2.options).forEach(opt => {
+        if (opt.value === '') {
+          opt.disabled = false;
+          return;
+        }
+        const valorMes = parseInt(opt.value, 10);
+        opt.disabled = valorMes < valorInicio;
+      });
     }
-    if (parseInt(this.value) > 12) {
-      this.value = 12;
+
+    // Substitui/atualiza a inicialização da Tela 2 para aplicar a restrição
+    (function inicializarInicioTela2() {
+      const primeiraLinha2 = document.querySelector("#areaPeriodosTela2 .linha");
+      if (!primeiraLinha2) return;
+
+      const selectInicio2 = primeiraLinha2.querySelector(".inicio");
+      const selectFim2 = primeiraLinha2.querySelector(".fim");
+
+      if (selectInicio2 && selectFim2) {
+        // Função para bloquear meses anteriores ao início no select FIM
+        function bloquearMesesAnterioresAoInicio() {
+          const valorInicio = parseInt(selectInicio2.value, 10);
+          if (isNaN(valorInicio)) return;
+
+
+          Array.from(selectFim2.options).forEach(opt => {
+            if (opt.value === '') {
+              opt.disabled = false;
+              return;
+            }
+            const valorMes = parseInt(opt.value, 10);
+            opt.disabled = valorMes < valorInicio;
+          });
+
+          // Se o fim selecionado ficou inválido, reseta
+          const valorFim = parseInt(selectFim2.value, 10);
+          if (!isNaN(valorFim) && valorFim < valorInicio) {
+            selectFim2.value = '';
+          }
+        }
+
+        // Listener quando mudar o início
+        selectInicio2.addEventListener('change', function () {
+          const min = getPrimeiroInicioTela1();
+          const valorInicioAtual = parseInt(this.value, 10);
+
+          if (valorInicioAtual < min) {
+            this.value = String(min);
+          }
+
+          // CHAMA a função de bloqueio
+          bloquearMesesAnterioresAoInicio();
+
+          removerLinhasAposTela2(primeiraLinha2);
+          const fimIdx = parseInt(selectFim2.value, 10);
+          if (!isNaN(fimIdx) && fimIdx < 11) criarNovaLinhaTela2(fimIdx + 1, primeiraLinha2);
+          enforceTela2InicioMin();
+        });
+      }
+
+      const primeiroFim2 = primeiraLinha2.querySelector(".fim");
+      if (primeiroFim2) {
+        primeiroFim2.addEventListener("change", () => {
+          let ultimoMes = parseInt(primeiroFim2.value, 10);
+          if (isNaN(ultimoMes)) return;
+          removerLinhasAposTela2(primeiraLinha2);
+          if (ultimoMes < 11) {
+            criarNovaLinhaTela2(ultimoMes + 1, primeiraLinha2);
+          }
+        });
+      }
+    })();
+
+
+    function criarNovaLinhaTela2(mesInicio, linhaBase) {
+      const novaLinha = primeiraLinha2.cloneNode(true);
+      const selectInicio = novaLinha.querySelector(".inicio");
+      const selectFim = novaLinha.querySelector(".fim");
+      const inputContrib = novaLinha.querySelector('input[type=number]');
+
+      // CORRIGIDO: pega o último mês FINAL usado nas linhas anteriores
+      const todasLinhasAnteriores = Array.from(document.querySelectorAll('#areaPeriodosTela2 .linha'));
+      const indexLinhaBase = todasLinhasAnteriores.indexOf(linhaBase);
+      const linhasAnteriores = todasLinhasAnteriores.slice(0, indexLinhaBase + 1);
+
+      let ultimoMesBloqueado = -1;
+      linhasAnteriores.forEach(linha => {
+        const fimSelect = linha.querySelector('.fim');
+        if (fimSelect && fimSelect.value !== '') {
+          const valorFim = parseInt(fimSelect.value, 10);
+          ultimoMesBloqueado = Math.max(ultimoMesBloqueado, valorFim);
+        }
+      });
+
+      // garante que nunca seja menor que o início da Tela 1
+      const minTela1 = getPrimeiroInicioTela1();
+      ultimoMesBloqueado = Math.max(ultimoMesBloqueado, minTela1 - 1);
+
+
+      // Ajusta opções do mês inicial - bloqueia até ultimoMesBloqueado (USANDO VALUE)
+      Array.from(selectInicio.options).forEach((opt) => {
+        if (opt.value === '') {
+          opt.disabled = false;
+          return;
+        }
+        const valorMes = parseInt(opt.value, 10);
+        opt.disabled = valorMes <= ultimoMesBloqueado;
+      });
+      selectInicio.value = String(Math.max(mesInicio, ultimoMesBloqueado + 1));
+
+      // Ajusta opções do mês final - bloqueia até ultimoMesBloqueado (USANDO VALUE)
+      Array.from(selectFim.options).forEach((opt) => {
+        if (opt.value === '') {
+          opt.disabled = false; // mantém placeholder ativo
+          return;
+        }
+        const valorMes = parseInt(opt.value, 10);
+        opt.disabled = valorMes <= ultimoMesBloqueado;
+      });
+
+      // FORÇA "Selecione o mês" no fim
+      selectFim.value = '';
+      selectFim.selectedIndex = 0;
+
+      // Limpa valor da contribuição
+      if (inputContrib) inputContrib.value = "";
+
+      linhaBase.insertAdjacentElement("afterend", novaLinha);
+      inicializarTooltips(novaLinha);
+
+
+      // Listener do início (se mudar, ajusta o fim)
+      selectInicio.addEventListener('change', function () {
+        const atualMin = getPrimeiroInicioTela1();
+        const inicioVal = parseInt(this.value, 10);
+
+        if (inicioVal < atualMin) {
+          this.value = String(atualMin);
+        }
+
+        // Atualiza opções do fim (USANDO VALUE)
+        Array.from(selectFim.options).forEach((opt) => {
+          if (opt.value === '') return;
+          const valorMes = parseInt(opt.value, 10);
+          opt.disabled = valorMes < parseInt(this.value, 10);
+        });
+
+        // Se o fim selecionado ficou inválido, reseta
+        const fimVal = parseInt(selectFim.value, 10);
+        if (!isNaN(fimVal) && fimVal < parseInt(this.value, 10)) {
+          selectFim.value = '';
+        }
+
+        // Remove linhas posteriores
+        removerLinhasAposTela2(novaLinha);
+      });
+
+      // Evento quando mudar mês final
+      selectFim.addEventListener("change", () => {
+        let ultimoMes = parseInt(selectFim.value, 10);
+        if (isNaN(ultimoMes)) return; // não faz nada se vazio
+
+        removerLinhasAposTela2(novaLinha);
+        if (ultimoMes < 11) {
+          criarNovaLinhaTela2(ultimoMes + 1, novaLinha);
+        }
+      });
+
+      // Limita contribuição
+      if (inputContrib) limitarContribuicao(inputContrib);
+
+      return novaLinha;
     }
-  });
-}
 
-// Função para remover todas as linhas depois da escolhida
-function removerLinhasAposTela2(linhaBase) {
-  let proxima = linhaBase.nextElementSibling;
-  while (proxima) {
-    let remover = proxima;
-    proxima = proxima.nextElementSibling;
-    remover.remove();
-  }
-}
 
-// Evento para a primeira linha da tela 2
-const primeiroFim2 = primeiraLinha2.querySelector(".fim");
-primeiroFim2.addEventListener("change", () => {
-  let ultimoMes = parseInt(primeiroFim2.value);
-  removerLinhasAposTela2(primeiraLinha2);
-  if (ultimoMes < 11) {
-    criarNovaLinhaTela2(ultimoMes + 1, primeiraLinha2);
-  }
-});
+    // garante aplicação do mínimo quando o usuário avança para a Tela 2
+    document.addEventListener('click', function (e) {
+      // quando abrir modal "Simular" ou clicar para avançar, reaplica
+      if (e.target && (e.target.id === 'btnSeguirSimulacao' || e.target.closest('.btn-direita') || e.target.id === 'btnSeguirSimulacao')) {
+        setTimeout(enforceTela2InicioMin, 10);
+      }
+    });
 
 
 
-  // Aplica na linha inicial da tela 2
-  document.querySelectorAll('.tela')[1].querySelectorAll('.linha .form-control').forEach(limitarContribuicao);
+
+    function removerLinhasAposTela2(linhaBase) {
+      let proxima = linhaBase.nextElementSibling;
+      while (proxima) {
+        const atual = proxima;
+        proxima = proxima.nextElementSibling;
+        // remove somente elementos que forem linhas de período
+        if (atual.classList && atual.classList.contains('linha')) {
+          atual.remove();
+        }
+      }
+    }
 
 
-  // TELA 1 e TELA 2 - bloquear telas enquanto não preencher tudo
+    // Evento para a primeira linha da tela 2
+    const primeiroFim2 = primeiraLinha2.querySelector(".fim");
+    primeiroFim2.addEventListener("change", () => {
+      let ultimoMes = parseInt(primeiroFim2.value);
+      removerLinhasAposTela2(primeiraLinha2);
+      if (ultimoMes < 11) {
+        criarNovaLinhaTela2(ultimoMes + 1, primeiraLinha2);
+      }
+    });
 
+
+
+    // Aplica na linha inicial da tela 2
+    document.querySelectorAll('.tela')[1].querySelectorAll('.linha .form-control').forEach(limitarContribuicao);
+
+
+    // TELA 1 e TELA 2 - bloquear telas enquanto não preencher tudo
+
+   // ...existing code...
 function marcarErro(campo, mensagem = "Campo obrigatório") {
+  if (!campo) return;
+
+  // Se for um INPUT (não radio/checkbox) e o valor não for numérico, acrescenta "(apenas números)"
+  let mensagemFinal = mensagem;
+  if (
+    campo.tagName === 'INPUT' &&
+    campo.type !== 'radio' &&
+    campo.type !== 'checkbox'
+  ) {
+    const v = valorNumerico(campo.value);
+    if (isNaN(v) && !/\(apenas números\)/i.test(mensagemFinal)) {
+      mensagemFinal += " (apenas números)";
+    }
+  }
+
   campo.classList.add("is-invalid");
-  // Busca a .msg-erro logo após o campo
+
   let divErro = campo.nextElementSibling;
-  // Se não encontrar, procura dentro do parent
   if (!divErro || !divErro.classList.contains("msg-erro")) {
-    // Busca fora do input-group, no próximo irmão do parent
     if (campo.parentElement.nextElementSibling && campo.parentElement.nextElementSibling.classList.contains("msg-erro")) {
       divErro = campo.parentElement.nextElementSibling;
     } else {
@@ -1180,7 +1559,7 @@ function marcarErro(campo, mensagem = "Campo obrigatório") {
     }
   }
   if (divErro) {
-    divErro.textContent = mensagem;
+    divErro.textContent = mensagemFinal;
     divErro.style.color = "red";
     divErro.style.fontSize = "0.9em";
     divErro.style.marginTop = "4px";
@@ -1192,126 +1571,116 @@ function marcarErro(campo, mensagem = "Campo obrigatório") {
     campo.dataset.listenerAdicionado = "true";
   }
 }
+// ...existing code...
 
-function limparErro(campo) {
-  campo.classList.remove("is-invalid");
-  let divErro = campo.nextElementSibling;
-  if (!divErro || !divErro.classList.contains("msg-erro")) {
-    if (campo.parentElement.nextElementSibling && campo.parentElement.nextElementSibling.classList.contains("msg-erro")) {
-      divErro = campo.parentElement.nextElementSibling;
-    } else {
-      divErro = campo.parentElement.querySelector(".msg-erro");
+    function limparErro(campo) {
+      campo.classList.remove("is-invalid");
+      let divErro = campo.nextElementSibling;
+      if (!divErro || !divErro.classList.contains("msg-erro")) {
+        if (campo.parentElement.nextElementSibling && campo.parentElement.nextElementSibling.classList.contains("msg-erro")) {
+          divErro = campo.parentElement.nextElementSibling;
+        } else {
+          divErro = campo.parentElement.querySelector(".msg-erro");
+        }
+      }
+      if (divErro) {
+        divErro.textContent = "";
+      }
     }
-  }
-  if (divErro) {
-    divErro.textContent = "";
-  }
-}
 
 
-
+// ...existing code...
 function validarTela1() {
-  const linhas = todasTelas[0].querySelectorAll(".linha");
+  const linhas = document.querySelectorAll("#areaPeriodos .linha");
   let valido = true;
 
   linhas.forEach(linha => {
     const salario = linha.querySelector(".salario");
-    const renda = linha.querySelector(".renda input"); // <-- CORRIGIDO
-    const outrasRendas = todasTelas[0].querySelector(".outrasRendas");
+    const rendaInput = linha.querySelector(".renda input");
+    const radioSim = linha.querySelector('.preser-sim');
+    const radioNao = linha.querySelector('.preser-nao');
 
-    if (valorNumerico(salario.value) <= 0) {
+    // Salário: numérico > 0
+    if (!salario || valorNumerico(salario.value) <= 0) {
       marcarErro(salario, "Informe um salário maior que zero");
       valido = false;
     } else {
       limparErro(salario);
     }
 
-    if (renda && valorNumerico(renda.value) < 0) {
-      marcarErro(renda, "Informe uma renda extra válida");
-      valido = false;
-    } else if (renda) {
-      limparErro(renda);
+    // Radios Preser/ATS
+    let radioContainer = radioSim ? radioSim.closest('.col-xl-6, .col-lg-6, .col-md-6, .col-sm-12') || radioSim.parentElement : (radioNao ? radioNao.parentElement : null);
+    if (radioContainer) {
+      let radioErroDiv = radioContainer.querySelector('.msg-erro-preser');
+      if (!radioErroDiv) {
+        radioErroDiv = document.createElement('div');
+        radioErroDiv.className = 'msg-erro-preser msg-erro';
+        radioContainer.appendChild(radioErroDiv);
+      }
+      const algumMarcado = (radioSim && radioSim.checked) || (radioNao && radioNao.checked);
+      if (!algumMarcado) {
+        radioErroDiv.textContent = "Selecione se possui Preser ou ATS";
+        valido = false;
+      } else {
+        radioErroDiv.textContent = "";
+      }
     }
 
-    const sim = linha.querySelector("#sim");
-    if (sim && sim.checked) {
-      if (renda && renda.value.trim() === "") {
-        marcarErro(renda, "Campo obrigatório para quem possui Preser ou ATS");
+    // Se "Sim", renda obrigatória e numérica
+    if (radioSim && radioSim.checked) {
+      const rendaVal = rendaInput ? valorNumerico(rendaInput.value) : NaN;
+      if (!rendaInput || rendaInput.value.trim() === "" || isNaN(rendaVal)) {
+        let rendaErro = linha.querySelector('.renda .msg-erro');
+        if (!rendaErro && linha.querySelector('.renda')) {
+          rendaErro = document.createElement('div');
+          rendaErro.className = 'msg-erro';
+          linha.querySelector('.renda').appendChild(rendaErro);
+        }
+        marcarErro(rendaInput || radioSim, "Campo obrigatório para quem possui Preser ou ATS");
         valido = false;
+      } else {
+        limparErro(rendaInput);
       }
+    } else {
+      if (rendaInput) limparErro(rendaInput);
+      const rendaErro = linha.querySelector('.renda .msg-erro');
+      if (rendaErro) rendaErro.textContent = '';
     }
   });
 
-  // Dependentes
-  const dependentes = todasTelas[0].querySelector(".dependentes");
-  if (dependentes.value.trim() === "") {
-    marcarErro(dependentes, "Campo obrigatório (se não possuir, colocar 0)");
+  // Dependentes: obrigatório e numérico (se não possuir, 0)
+  const dependentes = document.querySelector(".dependentes");
+  const depVal = dependentes ? valorNumerico(dependentes.value) : NaN;
+  if (!dependentes || dependentes.value.trim() === "" || isNaN(depVal)) {
+    if (dependentes) marcarErro(dependentes, "Campo obrigatório (se não possuir, colocar 0)");
     valido = false;
   } else {
     limparErro(dependentes);
   }
 
-  // Outras Rendas
-  // const outrasRendas = todasTelas[0].querySelector(".outrasRendas");
-  // if (outrasRendas && (outrasRendas.value.trim() === "" || valorNumerico(outrasRendas.value) < 0)) {
-  //   marcarErro(outrasRendas, "Campo obrigatório (se não possuir, colocar 0)");
-  //   valido = false;
-  // } else if (outrasRendas) {
-  //   limparErro(outrasRendas);
-  // }
-
-  // Preser ou ATS (checkboxes)
-// ...dentro da função validarTela1...
-
-linhas.forEach(linha => {
-  // ...validação salário/renda...
-
-  // Validação dos radios Preser/ATS
-  const radioSim = linha.querySelector('.preser-sim');
-  const radioNao = linha.querySelector('.preser-nao');
-  const radios = [radioSim, radioNao];
-  const algumMarcado = radios.some(r => r && r.checked);
-
-  // Mensagem de erro (pode criar uma div .msg-erro logo após os radios)
-  let erroDiv = linha.querySelector('.msg-erro');
-  if (!algumMarcado) {
-    if (erroDiv) {
-      erroDiv.textContent = "Selecione se possui Preser ou ATS";
-      erroDiv.style.color = "red";
-      erroDiv.style.fontSize = "0.85em";
-    }
+  // Último fim deve ser Dezembro
+  const todasLinhas = Array.from(document.querySelectorAll("#areaPeriodos .linha"));
+  const ultimoFim = todasLinhas[todasLinhas.length - 1].querySelector(".fim");
+  if (!ultimoFim || parseInt(ultimoFim.value) !== 11) {
+    if (ultimoFim) marcarErro(ultimoFim, "Preencher salário mensal até Dezembro");
     valido = false;
   } else {
-    if (erroDiv) erroDiv.textContent = "";
-  }
-});
-
-  // Pega o último "fim"
-  const ultimoFim = linhas[linhas.length - 1].querySelector(".fim");
-  if (parseInt(ultimoFim.value) !== 11) {
-    marcarErro(ultimoFim, "Preencher salário mensal até Dezembro");
-    valido = false;
-  } else {
-    limparErro(ultimoFim);
+    if (ultimoFim) limparErro(ultimoFim);
   }
 
   return valido;
 }
-
-
-
-
+// ...existing code...
 function validarTela2() {
   let valido = true;
   const tela2 = document.querySelectorAll('.tela')[1];
   const linhas = tela2.querySelectorAll('.linha');
 
   linhas.forEach(linha => {
-    const inicio = linha.querySelector('.inicio');
     const fim = linha.querySelector('.fim');
     const contrib = linha.querySelector('input[type=number]');
 
-    // Validação do mês final
+    // Mês final
     if (!fim.value) {
       marcarErro(fim, "Selecione o mês final do período");
       valido = false;
@@ -1319,11 +1688,12 @@ function validarTela2() {
       limparErro(fim);
     }
 
-    // Validação da contribuição
-    if (contrib.value.trim() === "") {
+    // Contribuição: obrigatório e numérico (0 a 12)
+    const valNum = parseInt(contrib.value, 10);
+    if (contrib.value.trim() === "" || isNaN(valNum)) {
       marcarErro(contrib, "Informe a contribuição (se não tiver, coloque 0)");
       valido = false;
-    } else if (parseInt(contrib.value) < 0) {
+    } else if (valNum < 0) {
       marcarErro(contrib, "Informe um valor maior ou igual a zero");
       valido = false;
     } else {
@@ -1331,7 +1701,7 @@ function validarTela2() {
     }
   });
 
-  // Verifica se o último "fim" é dezembro
+  // Último fim deve ser Dezembro
   const ultimoFim = linhas[linhas.length - 1].querySelector('.fim');
   if (parseInt(ultimoFim.value) !== 11) {
     marcarErro(ultimoFim, "Preencher contribuição até Dezembro");
@@ -1342,170 +1712,120 @@ function validarTela2() {
 
   return valido;
 }
+// ...existing code...
 
-function proximoDaTela2() {
-  if (validarTela2()) {
-    calcularResultado();
-    proximaTela();
-  }
-}
-
-
-
-function proximaTela() {
-  console.log("proximaTela chamada");
-  if (telaAtual === 0) {
-    if (!validarTela1()) return;
-  }
-  if (telaAtual === 1) {
-    if (!validarTela2()) return;
-  }
-  if (telaAtual < todasTelas.length - 1) {
-    telaAtual++;
-    mostrarTela(telaAtual);
-  }
-}
-
-
-
-
-function mostrarDiv(event) {
-  const linha = event.target.closest('.linha');
-  const divRenda = linha.querySelector('.renda');
-  if (event.target.checked) {
-    divRenda.style.display = 'block';
-  } else {
-    divRenda.style.display = 'none';
-  }
-}
-
-function mostrarDiv2(event) {
-  const linha = event.target.closest('.linha');
-  const divRenda = linha.querySelector('.renda');
-  divRenda.style.display = 'none';
-}
-
-  function mostrarDiferenca(){
-      var divDiferenca = document.getElementById('diferenca');
-
-        if (divDiferenca.style.display === 'none') {
-          divDiferenca.style.display = 'block';
-        } else {
-          divDiferenca.style.display = 'none';
-        }
-  }
-
-
-
-
-
-  function simularAporteExtra() {
-  const dados = calcularTotais();
-  const valorInput = document.getElementById('aporteExtra').value;
-  const aporteExtra = valorNumerico(valorInput);
-
-  if (aporteExtra <= 0) {
-    document.getElementById('resultadoAporteExtra').innerHTML = `<div style="color:red;">Digite um valor maior que zero.</div>`;
-    return;
-  }
-
-  // Novo total de contribuição
-  const novaContribuicao = dados.totalContribuicao + aporteExtra;
-
-  // Recalcula base e IRRF comum
-  const baseLegalNova = dados.totalSalario - dados.totalINSS - dados.descontoDependentes - novaContribuicao;
-  const irLegalNova = calcularIR(baseLegalNova);
-
-  // Recalcula base e IRRF simplificado
-
-const baseSimplificadoNova = dados.totalSalario - dados.descontoSimplificado - aporteExtra;
-const irSimplificadoNova = calcularIR(baseSimplificadoNova);
-
-
-  document.getElementById('resultadoAporteExtra').innerHTML = `
-    <div class="row mt-4">
-      <div class="col-6">
-        <h5>Com esse aporte no modelo comum</h5>
-        <p>Seu IRRF anual cairia para <strong>R$ ${irLegalNova.toLocaleString('pt-BR', {minimumFractionDigits:2})}</strong>.<br>
-        Média mensal: <strong>R$ ${(irLegalNova/12).toLocaleString('pt-BR', {minimumFractionDigits:2})}</strong></p>
-      </div>
-      <div class="col-6">
-        <h5>Com esse aporte no modelo simplificado</h5>
-        <p>Seu IRRF anual cairia para <strong>R$ ${irSimplificadoNova.toLocaleString('pt-BR', {minimumFractionDigits:2})}</strong>.<br>
-        Média mensal: <strong>R$ ${(irSimplificadoNova/12).toLocaleString('pt-BR', {minimumFractionDigits:2})}</strong></p>
-      </div>
-    </div>
-    <div style="font-size:0.95em; margin-top:8px;">
-      Quanto maior o valor investido na FUNEPP, menor será o seu IRRF, até o limite do benefício fiscal.
-    </div>
-  `;
-}
-
-function atualizarBarraContribuicao(percentual, faltaInvestir) {
-  const barra = document.getElementById('barraContribuicao');
-  barra.innerHTML = '';
-
-  let quadrados = Math.round(percentual);
-
-  // Nunca mostra 12% se faltaInvestir > 0
-  let texto;
-  if (faltaInvestir <= 0 && quadrados >= 12) {
-    quadrados = 12;
-    texto = '12%';
-  } else {
-    quadrados = Math.min(quadrados, 11);
-    texto = quadrados + '%';
-  }
-
-  // Define cor única para todos os quadrados pintados
-  let corClasse = '';
-  if (quadrados < 5) {
-    corClasse = 'vermelho';
-  } else if (quadrados < 8) {
-    corClasse = 'amarelo';
-  } else if (quadrados < 12) {
-    corClasse = 'azul';
-  } else {
-    corClasse = 'verde';
-  }
-
-  for (let i = 1; i <= 12; i++) {
-    const div = document.createElement('div');
-    div.classList.add('tracinho');
-    if (i <= quadrados) {
-      div.classList.add(corClasse);
+    function proximoDaTela2() {
+      if (validarTela2()) {
+        calcularResultado();
+        proximaTela();
+      }
     }
-    barra.appendChild(div);
-  }
-
-  // Cria/atualiza o texto ao lado da barra
-  if (!barra.parentNode.classList.contains('barra-flex')) {
-    const flexDiv = document.createElement('div');
-    flexDiv.className = 'barra-flex d-flex align-items-center gap-2';
-    barra.parentNode.insertBefore(flexDiv, barra);
-    flexDiv.appendChild(barra);
-  }
-
-  let barraFlex = barra.parentNode;
-  let textoDiv = barraFlex.querySelector('.barra-texto');
-  if (!textoDiv) {
-    textoDiv = document.createElement('div');
-    textoDiv.className = 'barra-texto';
-    textoDiv.style.fontWeight = 'bold';
-    textoDiv.style.minWidth = '48px';
-    textoDiv.style.color = '#2584c6';
-    barraFlex.insertBefore(textoDiv, barra);
-  }
-  textoDiv.textContent = texto;
-}
 
 
 
-// ... remove acumulador antigo ...
+    function proximaTela() {
+      if (telaAtual === 0) {
+        if (!validarTela1()) return;
+      }
+      if (telaAtual === 1) {
+        if (!validarTela2()) return;
+      }
+      if (telaAtual < todasTelas.length - 1) {
+        telaAtual++;
+        mostrarTela(telaAtual);
 
-// let investidoExtraAcumulado = 0;
+        // ✅ Se avançou para a Tela 2, aplica bloqueio
+        if (telaAtual === 1) {
+          setTimeout(() => {
+            enforceTela2InicioMin();
+            aplicarBloqueioInicialTela2();
+          }, 50);
+        }
+      }
+    }
 
 
+
+
+    function mostrarDiv(event) {
+      const linha = event.target.closest('.linha');
+      const divRenda = linha.querySelector('.renda');
+      if (event.target.checked) {
+        divRenda.style.display = 'block';
+      } else {
+        divRenda.style.display = 'none';
+      }
+    }
+
+    function mostrarDiv2(event) {
+      const linha = event.target.closest('.linha');
+      const divRenda = linha.querySelector('.renda');
+      divRenda.style.display = 'none';
+    }
+
+
+
+    
+    function atualizarBarraContribuicao(percentual, faltaInvestir) {
+      const barra = document.getElementById('barraContribuicao');
+      barra.innerHTML = '';
+
+      let quadrados = Math.round(percentual);
+
+      // Nunca mostra 12% se faltaInvestir > 0
+      let texto;
+      if (faltaInvestir <= 0 && quadrados >= 12) {
+        quadrados = 12;
+        texto = '12%';
+      } else {
+        quadrados = Math.min(quadrados, 11);
+        texto = quadrados + '%';
+      }
+
+      // Define cor única para todos os quadrados pintados
+      let corClasse = '';
+      if (quadrados < 5) {
+        corClasse = 'vermelho';
+      } else if (quadrados < 8) {
+        corClasse = 'amarelo';
+      } else if (quadrados < 12) {
+        corClasse = 'azul';
+      } else {
+        corClasse = 'verde';
+      }
+
+      for (let i = 1; i <= 12; i++) {
+        const div = document.createElement('div');
+        div.classList.add('tracinho');
+        if (i <= quadrados) {
+          div.classList.add(corClasse);
+        }
+        barra.appendChild(div);
+      }
+
+      // Cria/atualiza o texto ao lado da barra
+      if (!barra.parentNode.classList.contains('barra-flex')) {
+        const flexDiv = document.createElement('div');
+        flexDiv.className = 'barra-flex d-flex align-items-center gap-2';
+        barra.parentNode.insertBefore(flexDiv, barra);
+        flexDiv.appendChild(barra);
+      }
+
+      let barraFlex = barra.parentNode;
+      let textoDiv = barraFlex.querySelector('.barra-texto');
+      if (!textoDiv) {
+        textoDiv = document.createElement('div');
+        textoDiv.className = 'barra-texto';
+        textoDiv.style.fontWeight = 'bold';
+        textoDiv.style.minWidth = '48px';
+        textoDiv.style.color = '#2584c6';
+        barraFlex.insertBefore(textoDiv, barra);
+      }
+      textoDiv.textContent = texto;
+    }
+
+
+// ...existing code...
 function atualizarBarraComInvestido() {
   const dados = calcularTotais();
   const investidoExtraInput = document.getElementById('investidoExtra');
@@ -1514,117 +1834,247 @@ function atualizarBarraComInvestido() {
 
   const aporteAtual = dados.totalContribuicao;
   const maximo = dados.totalSalario * 0.12;
-  // faltaInvestir calculado sempre a partir do estado atual + aporteSimulado (não acumulado)
-  const faltaInvestir = maximo - (aporteAtual + aporteSimulado);
 
-  // percentual relativo ao total (aprove atual + aporteSimulado)
-  const percentual = maximo > 0 ? ((aporteAtual + aporteSimulado) / maximo) * 12 : 0;
+  // ✅ NOVO: calcula percentual APENAS da contribuição mensal (SEM contrib voluntária já realizada)
+  const contribExtra = valorNumerico(document.getElementById('contribuicaoExtra')?.value) || 0;
+  const contribMensalApenas = aporteAtual - contribExtra; // retira contrib voluntária JÁ REALIZADA
 
-  // atualiza barra e texto
-  atualizarBarraContribuicao(percentual, faltaInvestir);
+  // ✅ MAS SOMA o aporte simulado (investidoExtra) para calcular o percentual da barra
+  const totalParaBarra = contribMensalApenas + aporteSimulado;
+  const percentualMensal = maximo > 0 ? (totalParaBarra / maximo) * 12 : 0;
+
+  // faltaInvestir calculado a partir da contrib mensal + aporteSimulado
+  const faltaInvestir = maximo - contribExtra - totalParaBarra;
+
+  // ✅ atualiza barra com percentual mensal + simulado
+  atualizarBarraContribuicao(percentualMensal, faltaInvestir);
 
   const faltaInvestirSpan = document.getElementById('valorFaltaInvestir');
   if (faltaInvestirSpan) {
     faltaInvestirSpan.textContent = Math.max(0, faltaInvestir).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
 
-  // atualiza texto auxiliar com o valor simulado (opcional)
+  // atualiza texto auxiliar com o valor simulado
   const valorInvestidoExtra = document.getElementById('valorInvestidoExtra');
   if (valorInvestidoExtra) {
     if (aporteSimulado > 0) {
-      valorInvestidoExtra.textContent = `Simulado: ${aporteSimulado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
+      valorInvestidoExtra.textContent = `Contribuição Voluntária: ${aporteSimulado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
     } else {
       valorInvestidoExtra.textContent = '';
     }
   }
-}
 
-// opcional: atualiza a barra ao digitar (melhora UX)
-document.addEventListener('input', function (e) {
-  if (e.target && e.target.id === 'investidoExtra') {
-    // formata valor enquanto digita
-    formatarMoedaBRL(e.target);
-    atualizarBarraComInvestido();
+  // ----------------- NOVA FUNÇÃO: mostra IR atualizado considerando o aporte simulado -----------------
+  // calcula base após INSS (reconstruída a partir dos dados retornados)
+  const baseAposINSS = (dados.baseLegal ?? 0) + (dados.deducoesLegais ?? 0);
+
+  // novo total de contribuição (inclui aporte simulado)
+  const novoTotalContrib = aporteAtual + aporteSimulado;
+
+  // base legal com o novo aporte
+  const baseLegalNovo = baseAposINSS - ((dados.descontoDependentes ?? 0) + novoTotalContrib);
+  const irLegalNovo = calcularIR(baseLegalNovo);
+
+  // base simplificada (não muda com contribuições, é desconto fixo)
+  const baseSimplificadoAtual = dados.baseSimplificado ?? (baseAposINSS - (dados.descontoSimplificado ?? 0));
+  const irSimplificadoAtual = calcularIR(baseSimplificadoAtual);
+
+  // escolhe o menor IR entre os dois métodos (como já faz na apresentação)
+  const irAtualizado = Math.min(irLegalNovo, irSimplificadoAtual);
+
+
+ // ...existing code...
+  // cria/atualiza elemento de exibição da frase
+  const investidoExtraBox = document.querySelector('.investido-extra');
+  let irSimuladoEl = document.getElementById('irAtualizadoSimulado');
+  if (!irSimuladoEl) {
+    irSimuladoEl = document.createElement('div');
+    irSimuladoEl.id = 'irAtualizadoSimulado';
+    irSimuladoEl.style.marginTop = '10px';
+    irSimuladoEl.style.fontWeight = '600';
+
+    if (investidoExtraBox) {
+      const afterInput = investidoExtraBox.querySelector('.input-group');
+      if (afterInput && afterInput.parentNode === investidoExtraBox) {
+        // insere logo após o campo de contribuição voluntária
+        investidoExtraBox.insertBefore(irSimuladoEl, afterInput.nextSibling);
+      } else {
+        investidoExtraBox.appendChild(irSimuladoEl);
+      }
+    }
   }
+  
+
+  // mostra/esconde conforme valor simulado
+  if (aporteSimulado > 0) {
+    irSimuladoEl.style.display = 'block';
+    irSimuladoEl.textContent = `Considerando o aumento de sua contribuição, o valor que será pago de IR atualizado é ${irAtualizado.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}.`;
+  } else {
+    irSimuladoEl.style.display = 'none';
+    irSimuladoEl.textContent = '';
+  }
+// ...existing code...
+
+  
+}
+// ...existing code...
+
+    // opcional: atualiza a barra ao digitar (melhora UX)
+    document.addEventListener('input', function (e) {
+      if (e.target && e.target.id === 'investidoExtra') {
+        // formata valor enquanto digita
+        formatarMoedaBRL(e.target);
+        atualizarBarraComInvestido();
+      }
+    });
+
+
+    // Aplica o evento nos campos já existentes
+    document.querySelectorAll('.salario, .outrasRendas, .renda input').forEach(function (input) {
+      input.addEventListener('input', function () {
+        formatarMoedaBRL(this);
+      });
+    });
+
+    // formata e atualiza quando digitar na contribuição extra
+    const contribExtraInput = document.getElementById('contribuicaoExtra');
+    if (contribExtraInput) {
+      contribExtraInput.addEventListener('input', function () {
+        formatarMoedaBRL(this);
+      });
+    }
+
+
+
+    function abrirModalSimulacao() {
+      if (validarTela2()) {
+        // Só abre o modal se estiver tudo válido
+        const modal = new bootstrap.Modal(document.getElementById('modalExemplo'));
+        modal.show();
+      }
+      // Se não estiver válido, os avisos já aparecem nos campos
+    }
+
+
+
+
+
+    // Adicione esta função (pode ficar perto das outras funções utilitárias)
+    function resetSimulationState() {
+
+      // limpa inputs/visuais relacionados a aportes simulados
+      const investidoExtraInput = document.getElementById('investidoExtra');
+      if (investidoExtraInput) investidoExtraInput.value = '';
+
+      const valorInvestidoExtra = document.getElementById('valorInvestidoExtra');
+      if (valorInvestidoExtra) valorInvestidoExtra.textContent = '';
+
+      const resultadoAporteExtra = document.getElementById('resultadoAporteExtra');
+      if (resultadoAporteExtra) resultadoAporteExtra.innerHTML = '';
+
+      // esconde/limpa a área de resultado para forçar recálculo limpo
+      const resultadoContainer = document.getElementById('resultadoContainer');
+      if (resultadoContainer) {
+        resultadoContainer.style.display = 'none';
+        resultadoContainer.innerHTML = '';
+      }
+    }
+
+    // Substitua o listener atual do botão #btnSeguirSimulacao por este:
+    document.getElementById('btnSeguirSimulacao').addEventListener('click', function (event) {
+      // evita comportamento padrão (por segurança)
+      if (event && event.preventDefault) event.preventDefault();
+
+      // valida a Tela 2 antes de prosseguir
+      if (!validarTela2()) return;
+
+      // reinicializa o estado como se a página tivesse sido recarregada
+      resetSimulationState();
+
+      // fecha o modal
+      const modal = bootstrap.Modal.getInstance(document.getElementById('modalExemplo'));
+      if (modal) modal.hide();
+
+      // vai para a tela 3
+      telaAtual = 2;
+      mostrarTela(telaAtual);
+
+      // pequeno atraso para garantir que DOM esteja atualizado antes do cálculo
+      setTimeout(() => {
+        calcularResultado();
+      }, 50);
+    });
+
+
+    document.addEventListener('change', function (e) {
+      if (!e.target) return;
+
+      // radios Preser/ATS (classes preser-sim / preser-nao)
+      if (e.target.classList && (e.target.classList.contains('preser-sim') || e.target.classList.contains('preser-nao'))) {
+        const radio = e.target;
+        const linha = radio.closest('.linha');
+        // limpa mensagem do grupo de radios
+        const radioContainer = radio.closest('.col-xl-6, .col-lg-6, .col-md-6, .col-sm-12') || radio.parentElement;
+        if (radioContainer) {
+          const radioErro = radioContainer.querySelector('.msg-erro-preser') || radioContainer.querySelector('.msg-erro');
+          if (radioErro) radioErro.textContent = '';
+        }
+
+        // comportamento de exibir/ocultar renda (garante limpeza de erro)
+        const rendaDiv = linha ? linha.querySelector('.renda') : null;
+        if (radio.classList.contains('preser-sim')) {
+          if (rendaDiv) {
+            rendaDiv.style.display = 'block';
+            const rendaErro = rendaDiv.querySelector('.msg-erro');
+            if (rendaErro) rendaErro.textContent = '';
+          }
+        } else {
+          // preser-nao
+          if (rendaDiv) {
+            rendaDiv.style.display = 'none';
+            const rendaInput = rendaDiv.querySelector('input');
+            if (rendaInput) {
+              rendaInput.classList.remove('is-invalid');
+              const rendaErro = rendaDiv.querySelector('.msg-erro');
+              if (rendaErro) rendaErro.textContent = '';
+            }
+          }
+        }
+      }
+    });
+// ...existing code...
+// Força teclado numérico em mobile
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.salario, #contribuicaoExtra, #investidoExtra').forEach(el => {
+    el.setAttribute('inputmode', 'numeric');
+    el.setAttribute('pattern', '\\d*');
+  });
 });
 
+// Bloqueia letras (funciona também para linhas clonadas e investidoExtra na tela 3)
+document.addEventListener('keydown', function (e) {
+  const el = e.target;
+  if (!(el.matches('.salario') || el.id === 'contribuicaoExtra' || el.id === 'investidoExtra')) return;
 
+  const allowed = ['Backspace','Tab','Enter','Escape','Delete','ArrowLeft','ArrowRight','Home','End'];
+  const combo = (e.ctrlKey || e.metaKey) && ['a','c','v','x'].includes(e.key.toLowerCase());
+  const isDigit = /^[0-9]$/.test(e.key);
 
-function abrirModalSimulacao() {
-  if (validarTela2()) {
-    // Só abre o modal se estiver tudo válido
-    const modal = new bootstrap.Modal(document.getElementById('modalExemplo'));
-    modal.show();
-  }
-  // Se não estiver válido, os avisos já aparecem nos campos
-}
-
-document.getElementById('btnSeguirSimulacao').addEventListener('click', function() {
-  // Só segue se a tela 2 estiver válida
-  if (validarTela2()) {
-    const modal = bootstrap.Modal.getInstance(document.getElementById('modalExemplo'));
-    modal.hide();
-    telaAtual = 2;
-    mostrarTela(telaAtual);
-    calcularResultado(); // se quiser calcular ao avançar
-  }
-  // Se não estiver válido, não faz nada (avisos já aparecem)
+  if (!isDigit && !allowed.includes(e.key) && !combo) e.preventDefault();
 });
 
+document.addEventListener('paste', function (e) {
+  const el = e.target;
+  if (!(el.matches('.salario') || el.id === 'contribuicaoExtra' || el.id === 'investidoExtra')) return;
 
-
-
-// Adicione esta função (pode ficar perto das outras funções utilitárias)
-function resetSimulationState() {
-  // zera acumulados que podem ter sido alterados em execuções anteriores
-  investidoExtraAcumulado = 0;
-
-  // limpa inputs/visuais relacionados a aportes simulados
-  const investidoExtraInput = document.getElementById('investidoExtra');
-  if (investidoExtraInput) investidoExtraInput.value = '';
-
-  const valorInvestidoExtra = document.getElementById('valorInvestidoExtra');
-  if (valorInvestidoExtra) valorInvestidoExtra.textContent = '';
-
-  const resultadoAporteExtra = document.getElementById('resultadoAporteExtra');
-  if (resultadoAporteExtra) resultadoAporteExtra.innerHTML = '';
-
-  // esconde/limpa a área de resultado para forçar recálculo limpo
-  const resultadoContainer = document.getElementById('resultadoContainer');
-  if (resultadoContainer) {
-    resultadoContainer.style.display = 'none';
-    resultadoContainer.innerHTML = '';
-  }
-}
-
-// Substitua o listener atual do botão #btnSeguirSimulacao por este:
-document.getElementById('btnSeguirSimulacao').addEventListener('click', function(event) {
-  // evita comportamento padrão (por segurança)
-  if (event && event.preventDefault) event.preventDefault();
-
-  // valida a Tela 2 antes de prosseguir
-  if (!validarTela2()) return;
-
-  // reinicializa o estado como se a página tivesse sido recarregada
-  resetSimulationState();
-
-  // fecha o modal
-  const modal = bootstrap.Modal.getInstance(document.getElementById('modalExemplo'));
-  if (modal) modal.hide();
-
-  // vai para a tela 3
-  telaAtual = 2;
-  mostrarTela(telaAtual);
-
-  // pequeno atraso para garantir que DOM esteja atualizado antes do cálculo
-  setTimeout(() => {
-    calcularResultado();
-  }, 50);
+  e.preventDefault();
+  const text = (e.clipboardData || window.clipboardData).getData('text') || '';
+  el.value = text.replace(/\D+/g, '');
+  if (typeof formatarMoedaBRL === 'function') formatarMoedaBRL(el);
 });
-
-
-
-</script>
+// ...existing code...
+  </script>
 
 </body>
+
 </html>
