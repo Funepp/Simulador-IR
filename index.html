@@ -747,22 +747,22 @@
         // ✅ MENSAGEM ESPECIAL PARA QUEM JÁ TEM 12%
         conteudoFinal = `
       <div class="row rowFinal align-items-center gy-4">
-        <div class="separator"><span>Contribuição FUNEPP!</span></div>
+        <div class="separator"><span>CONTRIBUIÇÃO FUNEPP!</span></div>
         
         <div class="col-12 px-0">
           <div class="mensagem-sucesso p-5 bg-white shadow-sm text-center" style="border-radius:15px; border: 3px solid #2584c6;">
-            <div style="font-size: 4rem; color: #2584c6; margin-bottom: 20px;">
+            <div style="font-size: 3rem; color: #2584c6; margin-bottom: 20px;">
               <i class="bi bi-check-circle-fill"></i>
             </div>
-            <h3 style="color: #2584c6; font-weight: bold; margin-bottom: 20px;">
+            <h3 style="color: #2584c6; margin-bottom: 20px;">
               Você já atingiu o benefício fiscal máximo!
             </h3>
             <p style="font-size: 1.1rem; color: #333; line-height: 1.8; margin-bottom: 25px;">
               Parabéns! Sua contribuição mensal de <strong>12%</strong> na FUNEPP está garantindo o <strong>máximo de dedução no Imposto de Renda</strong>. 
-              Você está aproveitando todo o benefício fiscal disponível e construindo um futuro financeiro sólido! 🎯
+              Você está aproveitando todo o benefício fiscal disponível e construindo um futuro financeiro sólido! 
             </p>
             <hr style="margin: 30px 0; border-color: #2584c6;">
-            <h5 style="color: #2584c6; font-weight: bold; margin-bottom: 15px;">
+            <h5 style="color: #2584c6; margin-bottom: 15px;">
               💡 Quer ir além?
             </h5>
             <p style="font-size: 1rem; color: #555; line-height: 1.7;">
@@ -770,16 +770,9 @@
 
             </p>
             <p style="font-size: 1rem; color: #555; line-height: 1.7; margin-bottom: 25px;">
-              Acesse aqui para mais informações <a href="https://funepp.participante.com.br/estrutura#!/login" target="_blank" style="color:#2584c6; font-weight:600; text-decoration:underline;">Contribuição Voluntária - Funepp.</a> 
+              Acesse aqui para mais informações <a href="https://funepp.participante.com.br/estrutura#!/login" target="_blank" style="color:#2584c6; text-decoration:none;">Contribuição Voluntária - Funepp.</a> 
             </p>
           </div>
-        </div>
-
-        <div class="col-12 text-center" style="margin-top:30px;">
-          <h5 style="color:#2584c6; font-weight:bold;">Planejar é viver!</h5>
-          <p style="color:#666; font-size:1rem;">
-            Continue construindo seu futuro com a FUNEPP. <i class="bi bi-heart-fill" style="color:#2584c6;"></i>
-          </p>
         </div>
       </div>
     `;
@@ -837,6 +830,8 @@
 
     
         <div class="conteudoFinal">
+          <h5>CONTRIBUIÇÃO VOLUNTÁRIA</h5>
+          <br>
           <p>
             A <b>Contribuição Voluntária</b> é uma contribuição extra que você pode fazer quando desejar e no valor que quiser investir.
             Além de turbinar o seu patrimônio, você ainda diminui a mordida do leão no Imposto de Renda!
@@ -844,7 +839,7 @@
             Acesse aqui para mais informações <a href="https://www.funepp.com.br/contribuicao-voluntaria" target="_blank">Contribuição Voluntária - Funepp</a>.   
           </p>
           
-          <h5>Planejar é viver!</h5>
+          <h6>Planejar é viver!</h6>
           <p>Uma outra forma de alcançar o benefício máximo é contribuir mensalmente com 12% na Funepp. Acesse o <a href="https://www.espacocolaborador.com.br/" target="_blank">Espaço do Colaborador</a> e atualize o seu percentual! Não fique fora dessa!</p>
         </div>
       </div>
@@ -1091,141 +1086,204 @@
       input.value = Number(valor).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
     }
 
+    let modalPeriodoJaExibido = false;
 
-    function criarNovaLinha(mesInicio, linhaBase) {
-      const novaLinha = primeiraLinha.cloneNode(true);
+// ...existing code...
+function criarNovaLinha(mesInicio, linhaBase) {
+  const novaLinha = primeiraLinha.cloneNode(true);
 
-      // Desmarca os radios "Preser ou ATS" na nova linha
-      novaLinha.querySelectorAll('.preser-sim, .preser-nao').forEach(radio => {
-        radio.checked = false;
-      });
+  // Desmarca os radios "Preser ou ATS" na nova linha
+  novaLinha.querySelectorAll('.preser-sim, .preser-nao').forEach(radio => {
+    radio.checked = false;
+  });
 
-      // Esconde a div renda por padrão
-      const divRenda = novaLinha.querySelector('.renda');
-      if (divRenda) divRenda.style.display = 'none';
+  // Esconde a div renda por padrão
+  const divRenda = novaLinha.querySelector('.renda');
+  if (divRenda) divRenda.style.display = 'none';
 
-      // Gera um id único para o grupo de radios
-      const uniqueId = 'preserAts_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
+  // Gera um id único para o grupo de radios
+  const uniqueId = 'preserAts_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
 
-      // Atualiza o atributo name dos radios
-      novaLinha.querySelectorAll('input[type="radio"][name^="preserAts"]').forEach((radio, idx) => {
-        radio.name = uniqueId;
-        radio.id = uniqueId + '_' + (idx === 0 ? 'sim' : 'nao');
-      });
+  // Atualiza o atributo name dos radios
+  novaLinha.querySelectorAll('input[type="radio"][name^="preserAts"]').forEach((radio, idx) => {
+    radio.name = uniqueId;
+    radio.id = uniqueId + '_' + (idx === 0 ? 'sim' : 'nao');
+  });
 
-      const selectInicio = novaLinha.querySelector(".inicio");
-      const selectFim = novaLinha.querySelector(".fim");
+  const selectInicio = novaLinha.querySelector(".inicio");
+  const selectFim = novaLinha.querySelector(".fim");
 
-      // Configura eventos para mostrar/ocultar renda
-      const checkboxSim = novaLinha.querySelector('.preser-sim');
-      const checkboxNao = novaLinha.querySelector('.preser-nao');
+  // Configura eventos para mostrar/ocultar renda
+  const checkboxSim = novaLinha.querySelector('.preser-sim');
+  const checkboxNao = novaLinha.querySelector('.preser-nao');
 
-      if (checkboxSim && divRenda) {
-        checkboxSim.addEventListener('change', function () {
-          divRenda.style.display = checkboxSim.checked ? 'block' : 'none';
-        });
-      }
-      if (checkboxNao && divRenda) {
-        checkboxNao.addEventListener('change', function () {
-          divRenda.style.display = 'none';
-        });
-      }
+  if (checkboxSim && divRenda) {
+    checkboxSim.addEventListener('change', function () {
+      divRenda.style.display = checkboxSim.checked ? 'block' : 'none';
+    });
+  }
+  if (checkboxNao && divRenda) {
+    checkboxNao.addEventListener('change', function () {
+      divRenda.style.display = 'none';
+    });
+  }
 
-      // CORRIGIDO: pega o último mês FINAL usado (não o inicial)
-      // Percorre todas as linhas anteriores e pega o MAIOR valor de .fim
-      const todasLinhasAnteriores = Array.from(document.querySelectorAll('#areaPeriodos .linha'));
-      const indexLinhaBase = todasLinhasAnteriores.indexOf(linhaBase);
-      const linhasAnteriores = todasLinhasAnteriores.slice(0, indexLinhaBase + 1);
+  // CORRIGIDO: pega o último mês FINAL usado (não o inicial)
+  // Percorre todas as linhas anteriores e pega o MAIOR valor de .fim
+  const todasLinhasAnteriores = Array.from(document.querySelectorAll('#areaPeriodos .linha'));
+  const indexLinhaBase = todasLinhasAnteriores.indexOf(linhaBase);
+  const linhasAnteriores = todasLinhasAnteriores.slice(0, indexLinhaBase + 1);
 
-      let ultimoMesBloqueado = -1;
-      linhasAnteriores.forEach(linha => {
-        const fimSelect = linha.querySelector('.fim');
-        if (fimSelect && fimSelect.value !== '') {
-          const valorFim = parseInt(fimSelect.value, 10);
-          ultimoMesBloqueado = Math.max(ultimoMesBloqueado, valorFim);
-        }
-      });
-
-
-      // Ajusta opções do mês inicial - bloqueia até ultimoMesBloqueado (USANDO VALUE)
-      Array.from(selectInicio.options).forEach((opt) => {
-        if (opt.value === '') {
-          opt.disabled = false;
-          return;
-        }
-        const valorMes = parseInt(opt.value, 10);
-        opt.disabled = valorMes <= ultimoMesBloqueado;
-      });
-      selectInicio.value = String(Math.max(mesInicio, ultimoMesBloqueado + 1));
-
-      // Ajusta opções do mês final - bloqueia até ultimoMesBloqueado (USANDO VALUE)
-      Array.from(selectFim.options).forEach((opt) => {
-        if (opt.value === '') {
-          opt.disabled = false; // mantém placeholder ativo
-          return;
-        }
-        const valorMes = parseInt(opt.value, 10);
-        opt.disabled = valorMes <= ultimoMesBloqueado;
-      });
-
-      // FORÇA "Selecione o mês" no fim
-      selectFim.value = '';
-      selectFim.selectedIndex = 0;
-
-      // Limpa valores dos campos
-      const salarioInput = novaLinha.querySelector(".salario");
-      if (salarioInput) salarioInput.value = "";
-
-      const rendaInput = novaLinha.querySelector(".renda input");
-      if (rendaInput) rendaInput.value = "";
-
-      // Insere logo depois da linha base
-      linhaBase.insertAdjacentElement("afterend", novaLinha);
-      inicializarTooltips(novaLinha);
-
-
-      // Aplica formatação de moeda
-      novaLinha.querySelectorAll('.salario, .renda input').forEach(function (input) {
-        input.addEventListener('input', function () {
-          formatarMoedaBRL(this);
-        });
-      });
-
-      // Evento quando mudar mês final
-      selectFim.addEventListener("change", () => {
-        const valorFim = parseInt(selectFim.value);
-        if (isNaN(valorFim)) return;
-
-        ultimoMes = valorFim;
-
-        // remove todas as linhas seguintes antes de criar de novo
-        removerLinhasApos(novaLinha);
-        if (valorFim < 11) {
-          criarNovaLinha(valorFim + 1, novaLinha);
-        }
-      });
-
-      // Listener do início (se mudar, ajusta o fim)
-      selectInicio.addEventListener('change', function () {
-        const inicioVal = parseInt(this.value, 10);
-
-        // Atualiza opções do fim (USANDO VALUE)
-        Array.from(selectFim.options).forEach((opt) => {
-          if (opt.value === '') return;
-          const valorMes = parseInt(opt.value, 10);
-          opt.disabled = valorMes < inicioVal;
-        });
-
-        // Se o fim selecionado ficou inválido, reseta
-        const fimVal = parseInt(selectFim.value, 10);
-        if (!isNaN(fimVal) && fimVal < inicioVal) {
-          selectFim.value = '';
-        }
-
-        // Remove linhas posteriores
-        removerLinhasApos(novaLinha);
-      });
+  let ultimoMesBloqueado = -1;
+  linhasAnteriores.forEach(linha => {
+    const fimSelect = linha.querySelector('.fim');
+    if (fimSelect && fimSelect.value !== '') {
+      const valorFim = parseInt(fimSelect.value, 10);
+      ultimoMesBloqueado = Math.max(ultimoMesBloqueado, valorFim);
     }
+  });
+
+  // Ajusta opções do mês inicial - bloqueia até ultimoMesBloqueado (USANDO VALUE)
+  Array.from(selectInicio.options).forEach((opt) => {
+    if (opt.value === '') {
+      opt.disabled = false;
+      return;
+    }
+    const valorMes = parseInt(opt.value, 10);
+    opt.disabled = valorMes <= ultimoMesBloqueado;
+  });
+  selectInicio.value = String(Math.max(mesInicio, ultimoMesBloqueado + 1));
+
+  // Ajusta opções do mês final - bloqueia até ultimoMesBloqueado (USANDO VALUE)
+  Array.from(selectFim.options).forEach((opt) => {
+    if (opt.value === '') {
+      opt.disabled = false;
+      return;
+    }
+    const valorMes = parseInt(opt.value, 10);
+    opt.disabled = valorMes <= ultimoMesBloqueado;
+  });
+
+  // FORÇA "Selecione o mês" no fim
+  selectFim.value = '';
+  selectFim.selectedIndex = 0;
+
+  // Limpa valores dos campos
+  const salarioInput = novaLinha.querySelector(".salario");
+  if (salarioInput) salarioInput.value = "";
+
+  const rendaInput = novaLinha.querySelector(".renda input");
+  if (rendaInput) rendaInput.value = "";
+
+  // Insere logo depois da linha base
+  linhaBase.insertAdjacentElement("afterend", novaLinha);
+  inicializarTooltips(novaLinha);
+
+  // ✅ NOVO: Mostra modal explicativo apenas no SEGUNDO período
+  const totalLinhas = document.querySelectorAll('#areaPeriodos .linha').length;
+  if (totalLinhas === 2 && !modalPeriodoJaExibido) {
+    mostrarModalPeriodo();
+    modalPeriodoJaExibido = true; // marca como exibido nesta sessão
+  }
+
+  // Aplica formatação de moeda
+  novaLinha.querySelectorAll('.salario, .renda input').forEach(function (input) {
+    input.addEventListener('input', function () {
+      formatarMoedaBRL(this);
+    });
+  });
+
+  // Evento quando mudar mês final
+  selectFim.addEventListener("change", () => {
+    const valorFim = parseInt(selectFim.value);
+    if (isNaN(valorFim)) return;
+
+    ultimoMes = valorFim;
+
+    // remove todas as linhas seguintes antes de criar de novo
+    removerLinhasApos(novaLinha);
+    if (valorFim < 11) {
+      criarNovaLinha(valorFim + 1, novaLinha);
+    }
+  });
+
+  // Listener do início (se mudar, ajusta o fim)
+  selectInicio.addEventListener('change', function () {
+    const inicioVal = parseInt(this.value, 10);
+
+    // Atualiza opções do fim (USANDO VALUE)
+    Array.from(selectFim.options).forEach((opt) => {
+      if (opt.value === '') return;
+      const valorMes = parseInt(opt.value, 10);
+      opt.disabled = valorMes < inicioVal;
+    });
+
+    // Se o fim selecionado ficou inválido, reseta
+    const fimVal = parseInt(selectFim.value, 10);
+    if (!isNaN(fimVal) && fimVal < inicioVal) {
+      selectFim.value = '';
+    }
+
+    // Remove linhas posteriores
+    removerLinhasApos(novaLinha);
+  });
+}
+
+
+
+// ...existing code...
+// ✅ NOVA FUNÇÃO: Exibe modal explicativo sobre períodos múltiplos
+function mostrarModalPeriodo() {
+  // Cria o modal dinamicamente
+  const modalHTML = `
+    <div class="modal fade" id="modalExplicacaoPeriodo" tabindex="-1" aria-labelledby="modalExplicacaoPeriodoLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-periodo-custom">
+          <div class="modal-header modal-periodo-header">
+            <h5 class="modal-title" id="modalExplicacaoPeriodoLabel">
+              <i class="bi bi-info-circle-fill me-2"></i>Períodos de Salário
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+          <div class="modal-body modal-periodo-body">
+            <p style="font-size: 1.05rem; color: #333; margin-bottom: 15px;">
+              <strong>Por que criar múltiplos períodos?</strong>
+            </p>
+            <p style="color: #555;">
+              Se houve <strong>mudança no seu salário</strong> durante o ano (aumento, promoção, etc.), 
+              você pode criar períodos diferentes para refletir os valores corretos em cada fase.
+            </p>
+            <p style="color: #555; margin-top: 15px;">
+              <strong>Exemplo:</strong> Janeiro a Março com R$ 5.000, depois Abril a Dezembro com R$ 6.000.
+            </p>
+          </div>
+          <div class="modal-footer modal-periodo-footer">
+            <button type="button" class="btn btn-primary btn-periodo-custom" data-bs-dismiss="modal">
+              Entendi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Remove modal anterior se existir (segurança)
+  const modalAntigo = document.getElementById('modalExplicacaoPeriodo');
+  if (modalAntigo) modalAntigo.remove();
+
+  // Adiciona ao body
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+  // Exibe o modal
+  const modal = new bootstrap.Modal(document.getElementById('modalExplicacaoPeriodo'));
+  modal.show();
+
+  // Remove do DOM quando fechado
+  document.getElementById('modalExplicacaoPeriodo').addEventListener('hidden.bs.modal', function () {
+    this.remove();
+  });
+}
+// ...existing code...
 
     // Função para remover todas as linhas depois da escolhida
     function removerLinhasApos(linhaBase) {
@@ -1387,107 +1445,166 @@
       }
     })();
 
+// ...existing code...
+// ✅ VARIÁVEL GLOBAL para controlar exibição do modal de contribuição (reseta ao recarregar)
+let modalContribuicaoJaExibido = false;
 
-    function criarNovaLinhaTela2(mesInicio, linhaBase) {
-      const novaLinha = primeiraLinha2.cloneNode(true);
-      const selectInicio = novaLinha.querySelector(".inicio");
-      const selectFim = novaLinha.querySelector(".fim");
-      const inputContrib = novaLinha.querySelector('input[type=number]');
+function criarNovaLinhaTela2(mesInicio, linhaBase) {
+  const novaLinha = primeiraLinha2.cloneNode(true);
+  const selectInicio = novaLinha.querySelector(".inicio");
+  const selectFim = novaLinha.querySelector(".fim");
+  const inputContrib = novaLinha.querySelector('input[type=number]');
 
-      // CORRIGIDO: pega o último mês FINAL usado nas linhas anteriores
-      const todasLinhasAnteriores = Array.from(document.querySelectorAll('#areaPeriodosTela2 .linha'));
-      const indexLinhaBase = todasLinhasAnteriores.indexOf(linhaBase);
-      const linhasAnteriores = todasLinhasAnteriores.slice(0, indexLinhaBase + 1);
+  // CORRIGIDO: pega o último mês FINAL usado nas linhas anteriores
+  const todasLinhasAnteriores = Array.from(document.querySelectorAll('#areaPeriodosTela2 .linha'));
+  const indexLinhaBase = todasLinhasAnteriores.indexOf(linhaBase);
+  const linhasAnteriores = todasLinhasAnteriores.slice(0, indexLinhaBase + 1);
 
-      let ultimoMesBloqueado = -1;
-      linhasAnteriores.forEach(linha => {
-        const fimSelect = linha.querySelector('.fim');
-        if (fimSelect && fimSelect.value !== '') {
-          const valorFim = parseInt(fimSelect.value, 10);
-          ultimoMesBloqueado = Math.max(ultimoMesBloqueado, valorFim);
-        }
-      });
+  let ultimoMesBloqueado = -1;
+  linhasAnteriores.forEach(linha => {
+    const fimSelect = linha.querySelector('.fim');
+    if (fimSelect && fimSelect.value !== '') {
+      const valorFim = parseInt(fimSelect.value, 10);
+      ultimoMesBloqueado = Math.max(ultimoMesBloqueado, valorFim);
+    }
+  });
 
-      // garante que nunca seja menor que o início da Tela 1
-      const minTela1 = getPrimeiroInicioTela1();
-      ultimoMesBloqueado = Math.max(ultimoMesBloqueado, minTela1 - 1);
+  // garante que nunca seja menor que o início da Tela 1
+  const minTela1 = getPrimeiroInicioTela1();
+  ultimoMesBloqueado = Math.max(ultimoMesBloqueado, minTela1 - 1);
 
+  // Ajusta opções do mês inicial - bloqueia até ultimoMesBloqueado (USANDO VALUE)
+  Array.from(selectInicio.options).forEach((opt) => {
+    if (opt.value === '') {
+      opt.disabled = false;
+      return;
+    }
+    const valorMes = parseInt(opt.value, 10);
+    opt.disabled = valorMes <= ultimoMesBloqueado;
+  });
+  selectInicio.value = String(Math.max(mesInicio, ultimoMesBloqueado + 1));
 
-      // Ajusta opções do mês inicial - bloqueia até ultimoMesBloqueado (USANDO VALUE)
-      Array.from(selectInicio.options).forEach((opt) => {
-        if (opt.value === '') {
-          opt.disabled = false;
-          return;
-        }
-        const valorMes = parseInt(opt.value, 10);
-        opt.disabled = valorMes <= ultimoMesBloqueado;
-      });
-      selectInicio.value = String(Math.max(mesInicio, ultimoMesBloqueado + 1));
+  // Ajusta opções do mês final - bloqueia até ultimoMesBloqueado (USANDO VALUE)
+  Array.from(selectFim.options).forEach((opt) => {
+    if (opt.value === '') {
+      opt.disabled = false;
+      return;
+    }
+    const valorMes = parseInt(opt.value, 10);
+    opt.disabled = valorMes <= ultimoMesBloqueado;
+  });
 
-      // Ajusta opções do mês final - bloqueia até ultimoMesBloqueado (USANDO VALUE)
-      Array.from(selectFim.options).forEach((opt) => {
-        if (opt.value === '') {
-          opt.disabled = false; // mantém placeholder ativo
-          return;
-        }
-        const valorMes = parseInt(opt.value, 10);
-        opt.disabled = valorMes <= ultimoMesBloqueado;
-      });
+  // FORÇA "Selecione o mês" no fim
+  selectFim.value = '';
+  selectFim.selectedIndex = 0;
 
-      // FORÇA "Selecione o mês" no fim
-      selectFim.value = '';
-      selectFim.selectedIndex = 0;
+  // Limpa valor da contribuição
+  if (inputContrib) inputContrib.value = "";
 
-      // Limpa valor da contribuição
-      if (inputContrib) inputContrib.value = "";
+  linhaBase.insertAdjacentElement("afterend", novaLinha);
+  inicializarTooltips(novaLinha);
 
-      linhaBase.insertAdjacentElement("afterend", novaLinha);
-      inicializarTooltips(novaLinha);
+  // ✅ NOVO: Mostra modal explicativo apenas no SEGUNDO período de contribuição
+  const totalLinhas = document.querySelectorAll('#areaPeriodosTela2 .linha').length;
+  if (totalLinhas === 2 && !modalContribuicaoJaExibido) {
+    mostrarModalContribuicao();
+    modalContribuicaoJaExibido = true;
+  }
 
+  // Listener do início (se mudar, ajusta o fim)
+  selectInicio.addEventListener('change', function () {
+    const atualMin = getPrimeiroInicioTela1();
+    const inicioVal = parseInt(this.value, 10);
 
-      // Listener do início (se mudar, ajusta o fim)
-      selectInicio.addEventListener('change', function () {
-        const atualMin = getPrimeiroInicioTela1();
-        const inicioVal = parseInt(this.value, 10);
-
-        if (inicioVal < atualMin) {
-          this.value = String(atualMin);
-        }
-
-        // Atualiza opções do fim (USANDO VALUE)
-        Array.from(selectFim.options).forEach((opt) => {
-          if (opt.value === '') return;
-          const valorMes = parseInt(opt.value, 10);
-          opt.disabled = valorMes < parseInt(this.value, 10);
-        });
-
-        // Se o fim selecionado ficou inválido, reseta
-        const fimVal = parseInt(selectFim.value, 10);
-        if (!isNaN(fimVal) && fimVal < parseInt(this.value, 10)) {
-          selectFim.value = '';
-        }
-
-        // Remove linhas posteriores
-        removerLinhasAposTela2(novaLinha);
-      });
-
-      // Evento quando mudar mês final
-      selectFim.addEventListener("change", () => {
-        let ultimoMes = parseInt(selectFim.value, 10);
-        if (isNaN(ultimoMes)) return; // não faz nada se vazio
-
-        removerLinhasAposTela2(novaLinha);
-        if (ultimoMes < 11) {
-          criarNovaLinhaTela2(ultimoMes + 1, novaLinha);
-        }
-      });
-
-      // Limita contribuição
-      if (inputContrib) limitarContribuicao(inputContrib);
-
-      return novaLinha;
+    if (inicioVal < atualMin) {
+      this.value = String(atualMin);
     }
 
+    // Atualiza opções do fim (USANDO VALUE)
+    Array.from(selectFim.options).forEach((opt) => {
+      if (opt.value === '') return;
+      const valorMes = parseInt(opt.value, 10);
+      opt.disabled = valorMes < parseInt(this.value, 10);
+    });
+
+    // Se o fim selecionado ficou inválido, reseta
+    const fimVal = parseInt(selectFim.value, 10);
+    if (!isNaN(fimVal) && fimVal < parseInt(this.value, 10)) {
+      selectFim.value = '';
+    }
+
+    // Remove linhas posteriores
+    removerLinhasAposTela2(novaLinha);
+  });
+
+  // Evento quando mudar mês final
+  selectFim.addEventListener("change", () => {
+    let ultimoMes = parseInt(selectFim.value, 10);
+    if (isNaN(ultimoMes)) return;
+
+    removerLinhasAposTela2(novaLinha);
+    if (ultimoMes < 11) {
+      criarNovaLinhaTela2(ultimoMes + 1, novaLinha);
+    }
+  });
+
+  // Limita contribuição
+  if (inputContrib) limitarContribuicao(inputContrib);
+
+  return novaLinha;
+}
+
+// ✅ NOVA FUNÇÃO: Exibe modal explicativo sobre períodos de contribuição
+function mostrarModalContribuicao() {
+  const modalHTML = `
+    <div class="modal fade" id="modalExplicacaoContribuicao" tabindex="-1" aria-labelledby="modalExplicacaoContribuicaoLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-periodo-custom">
+          <div class="modal-header modal-periodo-header">
+            <h5 class="modal-title" id="modalExplicacaoContribuicaoLabel">
+              <i class="bi bi-info-circle-fill me-2"></i>Períodos de Contribuição
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+          <div class="modal-body modal-periodo-body">
+            <p style="font-size: 1.05rem; color: #333; margin-bottom: 15px;">
+              <strong>Por que criar múltiplos períodos de contribuição?</strong>
+            </p>
+            <p style="color: #555;">
+              Se você <strong>alterou o percentual de contribuição</strong> durante o ano, 
+              você pode criar períodos diferentes para informar o percentual correto de cada fase.
+            </p>
+            <p style="color: #555; margin-top: 15px;">
+              <strong>Exemplo:</strong> Janeiro a Abril contribuindo 8%, depois Maio a Dezembro contribuindo 10%.
+            </p>
+          </div>
+          <div class="modal-footer modal-periodo-footer">
+            <button type="button" class="btn btn-primary btn-periodo-custom" data-bs-dismiss="modal">
+              Entendi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Remove modal anterior se existir
+  const modalAntigo = document.getElementById('modalExplicacaoContribuicao');
+  if (modalAntigo) modalAntigo.remove();
+
+  // Adiciona ao body
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+  // Exibe o modal
+  const modal = new bootstrap.Modal(document.getElementById('modalExplicacaoContribuicao'));
+  modal.show();
+
+  // Remove do DOM quando fechado
+  document.getElementById('modalExplicacaoContribuicao').addEventListener('hidden.bs.modal', function () {
+    this.remove();
+  });
+}
+// ...existing code...
 
     // garante aplicação do mínimo quando o usuário avança para a Tela 2
     document.addEventListener('click', function (e) {
